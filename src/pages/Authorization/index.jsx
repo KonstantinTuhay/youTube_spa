@@ -35,6 +35,7 @@ const Authorization = () => {
       className={styles.registration_form}
     >
       <div>
+        <img src="../../../public/monitor26.png" width="60px" alt="computer" />
         <h1>Authorization</h1>
         <label>Email:</label>
         <Controller

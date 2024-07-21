@@ -38,6 +38,7 @@ const Registr = () => {
       onSubmit={handleSubmit(onSubmit)}
       className={styles.registration_form}
     >
+      <img src="../../../public/monitor26.png" width="60px" alt="computer" />
       <h1 className={styles.header}>Registration</h1>
       <div className={styles.labels}>
         <label>First name:</label>
@@ -69,7 +70,7 @@ const Registr = () => {
         <p>{errors.email?.message}</p>
       </div>
       <div className={styles.labels}>
-        <label>Gender:</label>
+        <label>Gender: </label>
         <Controller
           className={styles.inp}
           name="gender"
