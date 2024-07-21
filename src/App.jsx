@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import Authorization from "";
+import Authorization from "../pages/Authorization";
+import Registr from "../pages/Registration";
 import "./App.css";
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path="/registr" element={<Authorization />} />
+        <Route path="/registr" element={<Registr />} />
       </Routes>
     </>
   );
