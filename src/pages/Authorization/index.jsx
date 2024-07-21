@@ -1,4 +1,3 @@
-import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Input, Button } from "antd";
@@ -21,7 +20,7 @@ const Authorization = () => {
       console.log(response);
 
       localStorage.setItem("token", response.data.token);
-      navigate("/todo");
+      navigate("/main");
 
       reset();
     } catch (error) {
