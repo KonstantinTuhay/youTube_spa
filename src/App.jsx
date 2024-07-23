@@ -2,6 +2,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Authorization from "./pages/Authorization";
 import Registr from "./pages/Registration";
 import MainPage from "./pages/MainPage.jsx";
+import PrivateRoute from "./components/PrivateRoute";
+import Favorites from "./components/Favotites";
+import Menu from "./components/Menu";
 import "./App.css";
 
 function App() {
@@ -10,7 +13,13 @@ function App() {
       <Routes>
         <Route path="/registr" element={<Registr />} />
         <Route path="/authorization" element={<Authorization />} />
-        <Route path="/main" element={<MainPage />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/" element={<Menu />}>
+            <Route path="main" element={<MainPage />} />
+            <Route path="favorites" element={<Favorites />} />
+          </Route>
+        </Route>
+
         <Route path="*" element={<Navigate to="registr" />} />
       </Routes>
     </>
