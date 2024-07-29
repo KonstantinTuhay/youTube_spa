@@ -1,5 +1,24 @@
 .content {
-  position: absolute;
-  left: 50%;
-  top: 40%;
+  position: relative;
+  /* left: 40%; */
+  top: 200px;
+}
+
+input {
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid #1390e5;
+  outline: none;
+  background-color: #1391e51d;
+}
+
+button {
+  width: 100px;
+  height: 35.63px;
+  background-color: #1390e5;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
 }
