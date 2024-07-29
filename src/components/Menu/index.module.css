@@ -1,0 +1,30 @@
+.nav {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  background-color: rgba(206, 206, 206, 0.398);
+  width: 100%;
+  align-items: center;
+  justify-items: center;
+}
+
+.pages {
+  justify-self: start;
+}
+
+.link {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  background-color: rgba(118, 111, 111, 0.209);
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+.pages > a {
+  justify-self: center;
+}
