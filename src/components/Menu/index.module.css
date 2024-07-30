@@ -30,3 +30,9 @@
 .pages > a {
   justify-self: center;
 }
+
+.link:focus {
+  color: rgb(156, 68, 68);
+  background-color: rgba(119, 96, 96, 0.209);
+  border-radius: 50%;
+}
