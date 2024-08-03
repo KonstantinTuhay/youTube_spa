@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
-import { useGetToDosQuery } from "../../redux/apiVideos";
 import styles from "./index.module.css";
+import { useNavigate } from "react-router-dom";
 
 const MainPage = () => {
-  const { data: tasks } = useGetToDosQuery();
+  const navigate = useNavigate();
+
   const focusOnInput = useRef(null);
 
   useEffect(() => {
@@ -11,7 +12,7 @@ const MainPage = () => {
   });
 
   const findMovies = () => {
-    console.log(tasks);
+    navigate("list");
   };
 
   return (
@@ -20,7 +21,6 @@ const MainPage = () => {
         <h1>Search video</h1>
         <input type="text" ref={focusOnInput} />
         <button onClick={findMovies}>Search</button>
-        {/* <button>Search</button> */}
       </div>
     </>
   );
