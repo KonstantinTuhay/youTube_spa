@@ -5,6 +5,7 @@ import MainPage from "./pages/MainPage.jsx";
 import PrivateRoute from "./components/PrivateRoute";
 import Favorites from "./components/Favotites";
 import Menu from "./components/Menu";
+import ListMovies from "./components/ListMovies/index.jsx";
 import "./App.css";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Menu />}>
             <Route path="main" element={<MainPage />} />
             <Route path="favorites" element={<Favorites />} />
+            <Route path="list" element={<ListMovies />} />
           </Route>
         </Route>
 
