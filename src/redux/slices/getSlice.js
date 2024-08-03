@@ -1,14 +1,19 @@
-// import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
-// const getSlice = createSlice({
-//   name: "tasks",
-//   initialState: "",
-//   reducers: {
-//     getSliceMovies: (state, action) => {
-//       return (state = action.payload);
-//     },
-//   },
-// });
+const initialState = {
+  value: "",
+};
 
-// export const { getSliceMovies } = getSlice.actions;
-// export default getSlice.reducer;
+export const textSlice = createSlice({
+  name: "text",
+  initialState,
+  reducers: {
+    enterText: (state, action) => {
+      state.value = action.payload;
+    },
+  },
+});
+
+export const { enterText } = textSlice.actions;
+
+export default textSlice.reducer;

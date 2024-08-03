@@ -1,14 +1,12 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import { getReducer } from "./reducers/getReducer.js";
-// import { getSlice } from "./slices/getSlice.js";
-// import { toDoApi } from "./apiVideos";
+import { configureStore } from "@reduxjs/toolkit";
+import { apiGetMovies } from "./apiGetMovies";
+import getSlice from "./slices/getSlice";
 
-// export const store = configureStore({
-//   reducer: {
-//     getReducer: getReducer,
-//     getSlice: getSlice,
-//     [toDoApi.reducerPath]: toDoApi.reducer,
-//   },
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware().concat(toDoApi.middleware),
-// });
+export const store = configureStore({
+  reducer: {
+    getMoviesSlice: getSlice,
+    [apiGetMovies.reducerPath]: apiGetMovies.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiGetMovies.middleware),
+});
