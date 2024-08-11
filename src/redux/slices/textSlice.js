@@ -1,15 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  value: "",
-};
-
 export const textSlice = createSlice({
   name: "text",
-  initialState,
+  initialState: "",
   reducers: {
     enterText: (state, action) => {
-      state.value = action.payload;
+      console.log(state);
+      return (state = action.payload);
     },
   },
 });

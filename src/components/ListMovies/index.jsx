@@ -1,4 +1,4 @@
-import { useGetMoviesQuery } from "../../redux/apiGetMovies";
+import { useGetMoviesQuery } from "../../redux/apiMovies";
 
 const ListMovies = () => {
   const { data: tasks, error, isLoading } = useGetMoviesQuery();
@@ -17,10 +17,10 @@ const ListMovies = () => {
   return (
     <>
       <div>
-        {(tasks.length === 0 || undefined) && ""}
-        {tasks.map((item) => {
-          <div>{item.etag}</div>;
-        })}
+        {/* {(tasks.length === 0 || undefined) && ""}
+        {tasks.map((task) => {
+          <div>{task.kind}</div>;
+        })} */}
       </div>
     </>
   );

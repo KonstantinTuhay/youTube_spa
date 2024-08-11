@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { apiGetMovies } from "./apiGetMovies";
-import getSlice from "./slices/getSlice";
+import { apiGetMovies } from "./apiMovies";
+import getSlice from "./slices/textSlice";
 
 export const store = configureStore({
   reducer: {
-    getMoviesSlice: getSlice,
+    getSlice: getSlice,
     [apiGetMovies.reducerPath]: apiGetMovies.reducer,
   },
   middleware: (getDefaultMiddleware) =>
