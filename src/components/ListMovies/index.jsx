@@ -1,7 +1,10 @@
 import { useGetMoviesQuery } from "../../redux/apiMovies";
+import { useSelector } from "react-redux";
 
 const ListMovies = () => {
-  const { data: tasks, error, isLoading } = useGetMoviesQuery();
+  const text = useSelector((state) => state.getSlice);
+
+  const { data: tasks, error, isLoading } = useGetMoviesQuery(text);
 
   if (isLoading) {
     return <p>Loading...</p>;

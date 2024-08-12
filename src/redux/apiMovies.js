@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { useSelector } from "react-redux";
 
 // const headers = {
 //   Authorization: `Bearer ${import.meta.env.VITE_KEY}`,
@@ -13,11 +12,9 @@ export const apiGetMovies = createApi({
   tagTypes: ["Movies"],
   endpoints: (builder) => ({
     getMovies: builder.query({
-      query: () => {
+      query: (q) => {
         return {
-          url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=12&q=${useSelector(
-            (state) => state.getSlice
-          )}`,
+          url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=12&q=${q}`,
           method: "GET",
           // headers,
         };
