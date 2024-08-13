@@ -18,15 +18,14 @@ const ListMovies = () => {
   console.log(movies);
 
   return (
-    <>
-      <div>
-        {/* {(movies.length === 0 || undefined) && ""} */}
-        {movies.map((movie) => {
-          <ShowMovie key={movie.id.videoId} movie={movie} />;
-          // <p key={movie.id.videoId}>{movie.snippet.title}</p>;
-        })}
-      </div>
-    </>
+    <div>
+      <h5>Видео по запросу {`"${text}"`}</h5>
+
+      {/* {(movies.length === 0 || undefined) && ""} */}
+      {movies.map((movie) => {
+        return <ShowMovie key={movie.id.videoId} movie={movie} />;
+      })}
+    </div>
   );
 };
 
