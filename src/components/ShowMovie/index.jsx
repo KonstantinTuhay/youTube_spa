@@ -1,17 +1,18 @@
+import styles from "./index.module.css";
+
 const ShowMovie = ({ movie }) => {
-  console.log(movie);
   return (
     <>
-      {/* {movie.snippet.thumbnails.default} */}
-
-      <img src={movie.snippet.thumbnails.default.url} alt="Image Movie" />
-      <br />
-      {movie.snippet.title}
-      <br />
-      {movie.snippet.channelTitle}
-      <br />
-      <br />
-      <br />
+      <div className={styles.cubes}>
+        <img
+          src={movie.snippet.thumbnails.default.url}
+          alt="Image Movie"
+          width="245px"
+          height="138px"
+        />
+        <p className={styles.videoTitle}>{movie.snippet.title}</p>
+        <p className={styles.author}>{movie.snippet.channelTitle}</p>
+      </div>
     </>
   );
   // return <>аывтаавыолаыркгкруцщшк</>;

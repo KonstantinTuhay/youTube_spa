@@ -1,0 +1,26 @@
+.cubes {
+  width: 245px;
+  height: 226px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.videoTitle,
+.author {
+  font-size: 14px;
+}
+
+.videoTitle {
+  /* width: 145px; */
+  font-weight: 900;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+}
+
+.author {
+  font-weight: 100;
+  opacity: 0.5;
+}

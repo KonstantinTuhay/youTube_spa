@@ -1,6 +1,7 @@
 import { useGetMoviesQuery } from "../../redux/apiMovies";
 import { useSelector } from "react-redux";
 import ShowMovie from "../ShowMovie";
+import styles from "./index.module.css";
 
 const ListMovies = () => {
   const text = useSelector((state) => state.getSlice);
@@ -19,12 +20,14 @@ const ListMovies = () => {
 
   return (
     <div>
-      <h5>Видео по запросу {`"${text}"`}</h5>
+      <h5>Video on demand {`"${text}"`}</h5>
 
       {/* {(movies.length === 0 || undefined) && ""} */}
-      {movies.map((movie) => {
-        return <ShowMovie key={movie.id.videoId} movie={movie} />;
-      })}
+      <div className={styles.allMovies}>
+        {movies.map((movie) => {
+          return <ShowMovie key={movie.id.videoId} movie={movie} />;
+        })}
+      </div>
     </div>
   );
 };
