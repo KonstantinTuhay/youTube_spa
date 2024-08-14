@@ -1,26 +1,28 @@
 .cubes {
-  width: 245px;
-  height: 226px;
-  border: 1px solid black;
+  /* width: 245px; */
+  /* height: 226px; */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.videoTitle,
+/* .videoTitle,
+.author {
+  margin: 0;
+} */
+/* .videoTitle,
 .author {
   font-size: 14px;
-}
-
+  align-self: start;
+  padding: 0;
+} */
+/* 
 .videoTitle {
-  /* width: 145px; */
   font-weight: 900;
-  /* overflow: hidden; */
-  /* text-overflow: ellipsis; */
-}
+} */
 
-.author {
+/* .author {
   font-weight: 100;
   opacity: 0.5;
-}
+} */

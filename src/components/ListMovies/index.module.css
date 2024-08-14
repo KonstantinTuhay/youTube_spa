@@ -1,4 +1,7 @@
 .allMovies {
+  width: 100vh;
+
+  margin: 0 auto;
   display: grid;
   grid-template-columns: auto auto auto;
 }
