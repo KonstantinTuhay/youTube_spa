@@ -41,6 +41,7 @@ const MainPage = () => {
           <input
             type="text"
             ref={focusOnInput}
+            value={text}
             onChange={(event) => dispatch(enterText(event.target.value))}
           />
           <div className={styles.heart}>

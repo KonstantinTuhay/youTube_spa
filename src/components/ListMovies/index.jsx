@@ -4,10 +4,15 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { enterText } from "../../redux/slices/textSlice";
+import { change } from "../../redux/slices/changesColors";
+import { HeartOutlined } from "@ant-design/icons";
+import { addFavoriteMovie } from "../../redux/slices/addFavorites";
 import ShowMovie from "../ShowMovie";
 import styles from "./index.module.css";
 
 const ListMovies = () => {
+  const color = useSelector((state) => state.changesColors);
+
   const dispatch = useDispatch();
 
   const focusOnInput = useRef(null);
@@ -32,16 +37,31 @@ const ListMovies = () => {
     navigate("/list");
   };
 
+  const style = {
+    color: color,
+  };
+
+  const changeColor = () => {
+    dispatch(change(style.color));
+    dispatch(addFavoriteMovie(text));
+  };
+
   return (
     <div>
       <h3>Search video</h3>
 
-      <input
-        type="text"
-        ref={focusOnInput}
-        onChange={(event) => dispatch(enterText(event.target.value))}
-      />
-      <button onClick={findMovies}>Search</button>
+      <div className={styles.searchSystem}>
+        <input
+          type="text"
+          ref={focusOnInput}
+          value={text}
+          onChange={(event) => dispatch(enterText(event.target.value))}
+        />
+        <div className={styles.heart}>
+          <HeartOutlined onClick={changeColor} style={style} />
+        </div>
+        <button onClick={findMovies}>Search</button>
+      </div>
 
       <h5>Video on demand {`"${text}"`}</h5>
 
