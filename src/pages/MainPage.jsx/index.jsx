@@ -12,6 +12,7 @@ const MainPage = () => {
   const dispatch = useDispatch();
   const color = useSelector((state) => state.changesColors);
   const text = useSelector((state) => state.getSlice);
+  const favoriteMovie = useSelector((state) => state.addFavorites);
 
   const navigate = useNavigate();
 
@@ -41,6 +42,15 @@ const MainPage = () => {
     </div>
   );
 
+  const similarText = (e) => {
+    // const isSimilar = favoriteMovie.find(text);
+    // console.log(isSimilar);
+    // if (isSimilar) {
+    //   dispatch(change("red"));
+    // }
+    return dispatch(enterText(e.target.value));
+  };
+
   return (
     <>
       <div className={styles.content}>
@@ -50,7 +60,7 @@ const MainPage = () => {
             type="text"
             ref={focusOnInput}
             value={text}
-            onChange={(event) => dispatch(enterText(event.target.value))}
+            onChange={(event) => similarText(event)}
           />
           <div className={styles.heart}>
             <Popover content={content} trigger="click">
