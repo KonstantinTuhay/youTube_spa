@@ -10,7 +10,6 @@
 .favoriteHeart {
   color: #707070;
   cursor: pointer;
-  /* font-size: 40px; */
 }
 
 .inputBase {
@@ -24,8 +23,4 @@ h1 {
 
 input[type="text"] {
   font-size: 40px;
-}
-
-.searchIcon {
-  /* font-size: 40px; */
 }
