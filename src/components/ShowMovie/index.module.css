@@ -5,6 +5,8 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 10px;
+  /* padding: 10px; */
 }
 
 /* .videoTitle,
@@ -26,3 +28,7 @@
   font-weight: 100;
   opacity: 0.5;
 } */
+
+.videoTitle {
+  margin: 10px;
+}

@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const changesColors = createSlice({
   name: "color",
-  initialState: "",
+  initialState: "#707070",
   reducers: {
     change: (state, action) => {
-      if (action.payload === "black") {
+      if (action.payload === "#707070") {
         return (state = "red");
       } else {
-        return (state = "black");
+        return (state = "#707070");
       }
     },
   },

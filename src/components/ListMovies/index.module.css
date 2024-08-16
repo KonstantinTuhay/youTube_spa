@@ -1,11 +1,11 @@
 .allMovies {
-  width: 100vh;
+  /* width: 100vh; */
   margin: 0 auto;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
 }
 
-/* input {
+input {
   width: 300px;
   height: 30px;
   border-radius: 5px 0px 0px 5px;
@@ -13,7 +13,7 @@
   border-right: none;
   outline: none;
   background-color: #1391e51d;
-} */
+}
 
 /* button {
   width: 100px;
@@ -38,8 +38,26 @@
 }
 
 .searchSystem {
-  position: absolute;
-  left: 25%;
+  /* left: 35%; */
+  align-self: center;
+  align-items: center;
   display: flex;
-  flex-direction: row;
+}
+
+.content {
+  /* position: relative; */
+  /* left: 40%; */
+  /* top: 200px; */
+  /* top: 50%; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
+  /* align-items: center; */
+  /* margin-top: auto; */
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* margin-right: -50%; */
+  /* transform: translate(-50%, -50%); */
+  /* margin: 0; */
 }
