@@ -1,10 +1,8 @@
 .nav {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  /* border-bottom: 1px solid rgb(255, 255, 255); */
   background-color: rgba(206, 206, 206, 0.398);
   padding: 10px;
-  /* width: 100%; */
 }
 
 .pages {
@@ -30,12 +28,30 @@
 }
 
 .link:focus {
-  /* color: rgb(156, 68, 68); */
-  /* background-color: rgba(119, 96, 96, 0.209); */
-  /* border-radius: 50%; */
+  color: rgb(156, 68, 68);
+  background-color: rgba(119, 96, 96, 0.209);
+  border-radius: 50%;
 }
 
-.logo {
-  /* display: block; */
-  /* margin: 10px; */
+.logOut {
+  text-decoration: none;
+  color: #202020;
+}
+
+.box {
+  display: flex;
+}
+
+.dayNight {
+  position: absolute;
+  top: 2em;
+}
+
+.profile {
+  margin-top: 2px;
+  margin-left: 40px;
+}
+
+.img {
+  color: black;
 }

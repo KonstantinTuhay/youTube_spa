@@ -12,6 +12,8 @@ import { Popover } from "antd";
 import ShowMovie from "../ShowMovie";
 import styles from "./index.module.css";
 
+import CircularProgress from "@mui/material/CircularProgress";
+
 const ListMovies = () => {
   const color = useSelector((state) => state.changesColors);
   const favoriteMovie = useSelector((state) => state.addFavorites);
@@ -27,7 +29,13 @@ const ListMovies = () => {
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    // return <p>Loading...</p>;
+    return (
+      <p>
+        {" "}
+        <CircularProgress color="inherit" />
+      </p>
+    );
   }
 
   if (error) {
