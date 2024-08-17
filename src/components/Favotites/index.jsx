@@ -41,7 +41,7 @@ const Favorites = () => {
                     <ListItem>
                       <ListItemText primary={videoName} />
                       <IconButton aria-label="delete">
-                        <EditIcon />
+                        <EditIcon onClick={()=>} />
                       </IconButton>
                       <IconButton aria-label="delete">
                         <DeleteIcon />
@@ -58,7 +58,7 @@ const Favorites = () => {
                     <ListItem>
                       <ListItemText primary={videoName} />
                       <IconButton aria-label="delete">
-                        <EditIcon />
+                        <EditIcon onClick={()=>}/>
                       </IconButton>
                       <IconButton aria-label="delete">
                         <DeleteIcon />
