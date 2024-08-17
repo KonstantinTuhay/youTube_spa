@@ -5,6 +5,9 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
 
 const Favorites = () => {
   const style = {
@@ -37,7 +40,12 @@ const Favorites = () => {
                   >
                     <ListItem>
                       <ListItemText primary={videoName} />
-                      <p>21312313</p>
+                      <IconButton aria-label="delete">
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton aria-label="delete">
+                        <DeleteIcon />
+                      </IconButton>
                     </ListItem>
                   </div>
                 );
@@ -49,7 +57,12 @@ const Favorites = () => {
                   >
                     <ListItem>
                       <ListItemText primary={videoName} />
-                      <p>21312313</p>
+                      <IconButton aria-label="delete">
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton aria-label="delete">
+                        <DeleteIcon />
+                      </IconButton>
                     </ListItem>
                     <Divider variant="middle" component="li" />
                   </div>
