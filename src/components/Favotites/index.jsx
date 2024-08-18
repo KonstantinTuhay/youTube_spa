@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./index.module.css";
 
@@ -8,6 +9,10 @@ import Divider from "@mui/material/Divider";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 
 const Favorites = () => {
   const style = {
@@ -19,6 +24,22 @@ const Favorites = () => {
     borderColor: "divider",
     backgroundColor: "background.paper",
   };
+
+  const styleForModal = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const [open, setOpen] = useState(false);
+  const handleOpenModal = () => setOpen(true);
+  const handleCloseModal = () => setOpen(false);
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
   console.log(favoriteMovie);
@@ -40,9 +61,32 @@ const Favorites = () => {
                   >
                     <ListItem>
                       <ListItemText primary={videoName} />
-                      <IconButton aria-label="delete">
-                        <EditIcon onClick={()=>} />
+                      <IconButton aria-label="delete" onClick={handleOpenModal}>
+                        <EditIcon />
                       </IconButton>
+                      <Modal
+                        open={open}
+                        onClose={handleCloseModal}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={styleForModal}>
+                          <Typography
+                            id="modal-modal-title"
+                            variant="h6"
+                            component="h2"
+                          >
+                            Text in a modal
+                          </Typography>
+                          <Typography
+                            id="modal-modal-description"
+                            sx={{ mt: 2 }}
+                          >
+                            Duis mollis, est non commodo luctus, nisi erat
+                            porttitor ligula.
+                          </Typography>
+                        </Box>
+                      </Modal>
                       <IconButton aria-label="delete">
                         <DeleteIcon />
                       </IconButton>
@@ -57,9 +101,32 @@ const Favorites = () => {
                   >
                     <ListItem>
                       <ListItemText primary={videoName} />
-                      <IconButton aria-label="delete">
-                        <EditIcon onClick={()=>}/>
+                      <IconButton aria-label="delete" onClick={handleOpenModal}>
+                        <EditIcon />
                       </IconButton>
+                      <Modal
+                        open={open}
+                        onClose={handleCloseModal}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={styleForModal}>
+                          <Typography
+                            id="modal-modal-title"
+                            variant="h6"
+                            component="h2"
+                          >
+                            Text in a modal
+                          </Typography>
+                          <Typography
+                            id="modal-modal-description"
+                            sx={{ mt: 2 }}
+                          >
+                            Duis mollis, est non commodo luctus, nisi erat
+                            porttitor ligula.
+                          </Typography>
+                        </Box>
+                      </Modal>
                       <IconButton aria-label="delete">
                         <DeleteIcon />
                       </IconButton>
