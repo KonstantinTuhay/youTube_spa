@@ -7,7 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
-import EditIcon from "@mui/icons-material/Edit";
+// import EditIcon from "@mui/icons-material/Edit";
 import { remove } from "../../redux/slices/addFavorites";
 
 const Favorites = () => {
@@ -16,7 +16,6 @@ const Favorites = () => {
   const style = {
     py: 0,
     width: "100%",
-    // maxWidth: 360,
     borderRadius: 2,
     border: "1px solid",
     borderColor: "divider",
@@ -24,7 +23,6 @@ const Favorites = () => {
   };
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
-  console.log(favoriteMovie);
 
   const removeFavorite = (id) => {
     dispatch(remove(id));
