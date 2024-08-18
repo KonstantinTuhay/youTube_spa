@@ -45,7 +45,7 @@ const MainPage = () => {
 
   const changeColor = () => {
     dispatch(change(style.color));
-    dispatch(addFavoriteMovie(text));
+    dispatch(addFavoriteMovie({ id: crypto.randomUUID(), text: text }));
   };
 
   const similarText = (e) => {

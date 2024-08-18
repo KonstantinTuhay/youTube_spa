@@ -7,8 +7,11 @@ const addFavorites = createSlice({
     addFavoriteMovie: (state, action) => {
       state.push(action.payload);
     },
+    remove: (state, action) => {
+      return state.filter((task) => task.id !== action.payload);
+    },
   },
 });
 
-export const { addFavoriteMovie } = addFavorites.actions;
+export const { addFavoriteMovie, remove } = addFavorites.actions;
 export default addFavorites.reducer;
