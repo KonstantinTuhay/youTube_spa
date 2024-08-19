@@ -148,7 +148,9 @@ const Favorites = () => {
                                 id="maximum"
                                 className={styles.inputMaximum}
                               >
-                                Maximum quantity
+                                <p className={styles.inputMaximum}>
+                                  Maximum quantity
+                                </p>
                               </InputLabel>
                               <FormControl
                                 variant="standard"
@@ -171,7 +173,12 @@ const Favorites = () => {
                               <br />
                               <div>
                                 <Button variant="contained">Save</Button>{" "}
-                                <Button variant="outlined">Do not save</Button>
+                                <Button
+                                  variant="outlined"
+                                  onClick={handleCloseModal}
+                                >
+                                  Do not save
+                                </Button>
                               </div>
                             </Box>
                           </Typography>
@@ -266,7 +273,9 @@ const Favorites = () => {
                                 id="maximum"
                                 className={styles.inputMaximum}
                               >
-                                Maximum quantity
+                                <p className={styles.inputMaximum}>
+                                  Maximum quantity
+                                </p>
                               </InputLabel>
                               <FormControl
                                 variant="standard"
@@ -289,7 +298,12 @@ const Favorites = () => {
                               <br />
                               <div>
                                 <Button variant="contained">Save</Button>{" "}
-                                <Button variant="outlined">Do not save</Button>
+                                <Button
+                                  variant="outlined"
+                                  onClick={handleCloseModal}
+                                >
+                                  Do not save
+                                </Button>
                               </div>
                             </Box>
                           </Typography>
