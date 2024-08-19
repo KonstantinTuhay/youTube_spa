@@ -13,7 +13,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Input from "@mui/material/Input";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import Slider from "@mui/material/Slider";
 
 const Favorites = () => {
   const style = {
@@ -44,6 +49,12 @@ const Favorites = () => {
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
   console.log(favoriteMovie);
+
+  const [age, setAge] = useState("");
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
   return (
     <>
       <div className={styles.container}>
@@ -71,31 +82,97 @@ const Favorites = () => {
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                       >
-                        <Box sx={styleForModal}>
+                        <Box sx={styleForModal} className={styles.mainBox}>
                           <Typography
                             id="modal-modal-title"
                             variant="h6"
                             component="h2"
                           >
-                            Change request
+                            <h2>Change request</h2>{" "}
                           </Typography>
                           <Typography
                             id="modal-modal-description"
                             sx={{ mt: 2 }}
                           >
                             <Box
+                              className={styles.box}
                               component="form"
                               sx={{
-                                "& > :not(style)": { m: 1, width: "25ch" },
+                                "& > :not(style)": { m: 1 },
                               }}
                               noValidate
                               autoComplete="off"
                             >
-                              <TextField
-                                id="outlined-basic"
-                                label="Request"
-                                variant="outlined"
-                              />
+                              <FormControl variant="standard" disabled>
+                                <InputLabel htmlFor="component-simple" disabled>
+                                  Request
+                                </InputLabel>
+                                <Input
+                                  id="component-simple"
+                                  defaultValue={videoName}
+                                />
+                              </FormControl>
+                              <br />
+                              <FormControl variant="standard">
+                                <InputLabel htmlFor="component-simple">
+                                  Change request
+                                </InputLabel>
+                                <Input
+                                  id="component-simple"
+                                  defaultValue={videoName}
+                                />
+                              </FormControl>
+                              <br />
+                              <FormControl
+                                variant="standard"
+                                sx={{ m: 1, minWidth: 120 }}
+                              >
+                                <InputLabel id="sorting">Sorting</InputLabel>
+                                <Select
+                                  labelId="sorting"
+                                  id="sorting"
+                                  value={age}
+                                  onChange={handleChange}
+                                  label="Sorting"
+                                >
+                                  <MenuItem value={10}>default</MenuItem>
+                                  <MenuItem value={20}>date</MenuItem>
+                                  <MenuItem value={30}>score</MenuItem>
+                                  <MenuItem value={30}>name</MenuItem>
+                                  <MenuItem value={30}>views</MenuItem>
+                                </Select>
+                              </FormControl>
+                              <br />
+
+                              <InputLabel
+                                id="maximum"
+                                className={styles.inputMaximum}
+                              >
+                                Maximum quantity
+                              </InputLabel>
+                              <FormControl
+                                variant="standard"
+                                sx={{ m: 1, minWidth: 120 }}
+                              >
+                                <Slider
+                                  // label="Maximum quantity"
+                                  // labelId="maximum"
+                                  // aria-label="Videos"
+                                  defaultValue={30}
+                                  // getAriaValueText={10}
+                                  valueLabelDisplay="auto"
+                                  shiftStep={30}
+                                  step={10}
+                                  marks
+                                  min={10}
+                                  max={100}
+                                />
+                              </FormControl>
+                              <br />
+                              <div>
+                                <Button variant="contained">Save</Button>{" "}
+                                <Button variant="outlined">Do not save</Button>
+                              </div>
                             </Box>
                           </Typography>
                         </Box>
@@ -123,31 +200,97 @@ const Favorites = () => {
                         aria-labelledby="modal-modal-title"
                         aria-describedby="modal-modal-description"
                       >
-                        <Box sx={styleForModal}>
+                        <Box sx={styleForModal} className={styles.mainBox}>
                           <Typography
                             id="modal-modal-title"
                             variant="h6"
                             component="h2"
                           >
-                            Change request
+                            <h2>Change request</h2>{" "}
                           </Typography>
                           <Typography
                             id="modal-modal-description"
                             sx={{ mt: 2 }}
                           >
                             <Box
+                              className={styles.box}
                               component="form"
                               sx={{
-                                "& > :not(style)": { m: 1, width: "25ch" },
+                                "& > :not(style)": { m: 1 },
                               }}
                               noValidate
                               autoComplete="off"
                             >
-                              <TextField
-                                id="outlined-basic"
-                                label="Request"
-                                variant="outlined"
-                              />
+                              <FormControl variant="standard" disabled>
+                                <InputLabel htmlFor="component-simple" disabled>
+                                  Request
+                                </InputLabel>
+                                <Input
+                                  id="component-simple"
+                                  defaultValue={videoName}
+                                />
+                              </FormControl>
+                              <br />
+                              <FormControl variant="standard">
+                                <InputLabel htmlFor="component-simple">
+                                  Change request
+                                </InputLabel>
+                                <Input
+                                  id="component-simple"
+                                  defaultValue={videoName}
+                                />
+                              </FormControl>
+                              <br />
+                              <FormControl
+                                variant="standard"
+                                sx={{ m: 1, minWidth: 120 }}
+                              >
+                                <InputLabel id="sorting">Sorting</InputLabel>
+                                <Select
+                                  labelId="sorting"
+                                  id="sorting"
+                                  value={age}
+                                  onChange={handleChange}
+                                  label="Sorting"
+                                >
+                                  <MenuItem value={10}>default</MenuItem>
+                                  <MenuItem value={20}>date</MenuItem>
+                                  <MenuItem value={30}>score</MenuItem>
+                                  <MenuItem value={30}>name</MenuItem>
+                                  <MenuItem value={30}>views</MenuItem>
+                                </Select>
+                              </FormControl>
+                              <br />
+
+                              <InputLabel
+                                id="maximum"
+                                className={styles.inputMaximum}
+                              >
+                                Maximum quantity
+                              </InputLabel>
+                              <FormControl
+                                variant="standard"
+                                sx={{ m: 1, minWidth: 120 }}
+                              >
+                                <Slider
+                                  // label="Maximum quantity"
+                                  // labelId="maximum"
+                                  // aria-label="Videos"
+                                  defaultValue={30}
+                                  // getAriaValueText={10}
+                                  valueLabelDisplay="auto"
+                                  shiftStep={30}
+                                  step={10}
+                                  marks
+                                  min={10}
+                                  max={100}
+                                />
+                              </FormControl>
+                              <br />
+                              <div>
+                                <Button variant="contained">Save</Button>{" "}
+                                <Button variant="outlined">Do not save</Button>
+                              </div>
                             </Box>
                           </Typography>
                         </Box>

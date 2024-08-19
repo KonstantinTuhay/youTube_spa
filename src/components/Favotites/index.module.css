@@ -13,3 +13,17 @@ h2 {
   color: rgb(0, 0, 0);
   line-height: 0px;
 }
+
+.box {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainBox {
+  border-radius: 30px;
+}
+
+.inputMaximum {
+  text-align: left;
+  font-size: 1px;
+}
