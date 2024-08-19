@@ -13,6 +13,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
 
 const Favorites = () => {
   const style = {
@@ -76,14 +77,26 @@ const Favorites = () => {
                             variant="h6"
                             component="h2"
                           >
-                            Text in a modal
+                            Change request
                           </Typography>
                           <Typography
                             id="modal-modal-description"
                             sx={{ mt: 2 }}
                           >
-                            Duis mollis, est non commodo luctus, nisi erat
-                            porttitor ligula.
+                            <Box
+                              component="form"
+                              sx={{
+                                "& > :not(style)": { m: 1, width: "25ch" },
+                              }}
+                              noValidate
+                              autoComplete="off"
+                            >
+                              <TextField
+                                id="outlined-basic"
+                                label="Request"
+                                variant="outlined"
+                              />
+                            </Box>
                           </Typography>
                         </Box>
                       </Modal>
@@ -116,14 +129,26 @@ const Favorites = () => {
                             variant="h6"
                             component="h2"
                           >
-                            Text in a modal
+                            Change request
                           </Typography>
                           <Typography
                             id="modal-modal-description"
                             sx={{ mt: 2 }}
                           >
-                            Duis mollis, est non commodo luctus, nisi erat
-                            porttitor ligula.
+                            <Box
+                              component="form"
+                              sx={{
+                                "& > :not(style)": { m: 1, width: "25ch" },
+                              }}
+                              noValidate
+                              autoComplete="off"
+                            >
+                              <TextField
+                                id="outlined-basic"
+                                label="Request"
+                                variant="outlined"
+                              />
+                            </Box>
                           </Typography>
                         </Box>
                       </Modal>
