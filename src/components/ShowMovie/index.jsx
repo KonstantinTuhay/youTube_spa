@@ -1,7 +1,9 @@
 import styles from "./index.module.css";
-import { Card } from "antd";
-
-const { Meta } = Card;
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
 
 const ShowMovie = ({ movie }) => {
   return (
@@ -14,7 +16,27 @@ const ShowMovie = ({ movie }) => {
           width="245px"
           height="138px"
         /> */}
-        <Card
+
+        <Card sx={{ maxWidth: 345 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              // width="245"
+              image={movie.snippet.thumbnails.default.url}
+              alt="Image Movie"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {movie.snippet.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {movie.snippet.channelTitle}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        {/* <Card
           hoverable
           style={{
             width: 245,
@@ -29,7 +51,7 @@ const ShowMovie = ({ movie }) => {
             title={movie.snippet.title}
             description={movie.snippet.channelTitle}
           />
-        </Card>
+        </Card> */}
 
         {/* <p className={styles.videoTitle}>{movie.snippet.title}</p> */}
         {/* <p className={styles.author}>{movie.snippet.channelTitle}</p> */}

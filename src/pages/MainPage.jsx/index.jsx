@@ -25,6 +25,7 @@ const MainPage = () => {
   const color = useSelector((state) => state.changesColors);
   const text = useSelector((state) => state.getSlice);
   const favoriteMovie = useSelector((state) => state.addFavorites);
+  console.log(favoriteMovie);
 
   const navigate = useNavigate();
 
@@ -44,8 +45,10 @@ const MainPage = () => {
   };
 
   const changeColor = () => {
+    const objRequest = { id: crypto.randomUUID(), text: text };
     dispatch(change(style.color));
-    dispatch(addFavoriteMovie(text));
+    dispatch(addFavoriteMovie(objRequest));
+    // dispatch(addFavoriteMovie(text));
   };
 
   const similarText = (e) => {

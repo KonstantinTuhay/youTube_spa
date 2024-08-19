@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styles from "./index.module.css";
 
 import List from "@mui/material/List";
@@ -19,8 +19,18 @@ import Input from "@mui/material/Input";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Slider from "@mui/material/Slider";
+import { newEdit } from "../../redux/slices/newEditSlice";
+import { addFavoriteMovie } from "../../redux/slices/addFavorites";
+import { edit } from "../../redux/slices/addFavorites";
+import { editId } from "../../redux/slices/editIdSlice";
+import { editPreText } from "../../redux/slices/editPreviousText";
 
 const Favorites = () => {
+  const getEditText = useSelector((state) => state.editPreviousText);
+  const getEditId = useSelector((state) => state.editIdSlice);
+  const dispatch = useDispatch();
+  const newEditText = useSelector((state) => state.newEditSlice);
+  // console.log(getEditId);
   const style = {
     py: 0,
     width: "100%",
@@ -30,6 +40,12 @@ const Favorites = () => {
     borderColor: "divider",
     backgroundColor: "background.paper",
   };
+
+  const focusOnEditInput = useRef(null);
+  useEffect(() => {
+    console.log(232432423432);
+    // focusOnEditInput.current.focus();
+  }, [getEditText]);
 
   const styleForModal = {
     position: "absolute",
@@ -55,135 +71,173 @@ const Favorites = () => {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+  const saveChangeRequest = (id) => {
+    console.log(getEditText);
+    dispatch(edit({ id: id, text: getEditText }));
+    dispatch(editId(null));
+    setOpen(false);
+  };
+
+  const typeEdit = (e) => {
+    dispatch(editPreText(e));
+  };
+
+  const handleEditId = (id, text) => {
+    dispatch(editId(id));
+    dispatch(editPreText(text));
+    setOpen(true);
+  };
+  console.log(favoriteMovie);
+
   return (
     <>
       <div className={styles.container}>
         <h2>FAVORITES</h2>
 
         {favoriteMovie.length === 0 ? (
-          ""
+          "---------+++++++++"
         ) : (
           <List sx={style}>
             {favoriteMovie.map((videoName, index) => {
-              if (index === favoriteMovie.length - 1) {
+              if (videoName.id === getEditId || getEditId !== null) {
+                console.log("------------!!!!---------");
+                return (
+                  <Modal
+                    key={crypto.randomUUID()}
+                    open={open}
+                    onClose={handleCloseModal}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <Box sx={styleForModal} className={styles.mainBox}>
+                      <Typography
+                        id="modal-modal-title"
+                        variant="h6"
+                        component="h2"
+                      >
+                        <h2>Change request</h2>{" "}
+                      </Typography>
+                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                        <Box
+                          className={styles.box}
+                          component="form"
+                          sx={{
+                            "& > :not(style)": { m: 1 },
+                          }}
+                          noValidate
+                          autoComplete="off"
+                        >
+                          <FormControl variant="standard" disabled>
+                            <InputLabel htmlFor="component-simple" disabled>
+                              Request
+                            </InputLabel>
+                            <Input
+                              id="component-simple"
+                              defaultValue={getEditText}
+                            />
+                          </FormControl>
+                          <br />
+                          <FormControl variant="standard">
+                            <InputLabel htmlFor="component-simple">
+                              Change request
+                            </InputLabel>
+                            <Input
+                              inputRef={focusOnEditInput}
+                              id="component-simple"
+                              defaultValue={getEditText}
+                              onChange={(e) => typeEdit(e.target.value)}
+                              // onChange={(e) =>
+                              //   dispatch(newEdit(e.target.value))
+                              // }
+                            />
+                          </FormControl>
+                          <br />
+                          <FormControl
+                            variant="standard"
+                            sx={{ m: 1, minWidth: 120 }}
+                          >
+                            <InputLabel id="sorting">Sorting</InputLabel>
+                            <Select
+                              labelId="sorting"
+                              id="sorting"
+                              value={age}
+                              onChange={handleChange}
+                              label="Sorting"
+                            >
+                              <MenuItem value={10}>default</MenuItem>
+                              <MenuItem value={20}>date</MenuItem>
+                              <MenuItem value={30}>score</MenuItem>
+                              <MenuItem value={30}>name</MenuItem>
+                              <MenuItem value={30}>views</MenuItem>
+                            </Select>
+                          </FormControl>
+                          <br />
+
+                          <InputLabel
+                            id="maximum"
+                            className={styles.inputMaximum}
+                          >
+                            <p className={styles.inputMaximum}>
+                              Maximum quantity
+                            </p>
+                          </InputLabel>
+                          <FormControl
+                            variant="standard"
+                            sx={{ m: 1, minWidth: 120 }}
+                          >
+                            <Slider
+                              // label="Maximum quantity"
+                              // labelId="maximum"
+                              // aria-label="Videos"
+                              defaultValue={30}
+                              // getAriaValueText={10}
+                              valueLabelDisplay="auto"
+                              shiftStep={30}
+                              step={10}
+                              marks
+                              min={10}
+                              max={100}
+                            />
+                          </FormControl>
+                          <br />
+                          <div>
+                            <Button
+                              variant="contained"
+                              onClick={() => saveChangeRequest(videoName.id)}
+                            >
+                              Save
+                            </Button>{" "}
+                            <Button
+                              variant="outlined"
+                              onClick={handleCloseModal}
+                            >
+                              Do not save
+                            </Button>
+                          </div>
+                        </Box>
+                      </Typography>
+                    </Box>
+                  </Modal>
+                );
+              } else if (index === favoriteMovie.length - 1) {
                 return (
                   <div
                     key={crypto.randomUUID()}
                     className={styles.oneFavoriteVideo}
                   >
                     <ListItem>
-                      <ListItemText primary={videoName} />
-                      <IconButton aria-label="delete" onClick={handleOpenModal}>
+                      <ListItemText primary={videoName.text} />
+                      {/* <IconButton aria-label="delete" onClick={handleOpenModal}> */}
+                      <IconButton
+                        aria-label="delete"
+                        onClick={() =>
+                          handleEditId(videoName.id, videoName.text)
+                        }
+                      >
                         <EditIcon />
                       </IconButton>
-                      <Modal
-                        open={open}
-                        onClose={handleCloseModal}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={styleForModal} className={styles.mainBox}>
-                          <Typography
-                            id="modal-modal-title"
-                            variant="h6"
-                            component="h2"
-                          >
-                            <h2>Change request</h2>{" "}
-                          </Typography>
-                          <Typography
-                            id="modal-modal-description"
-                            sx={{ mt: 2 }}
-                          >
-                            <Box
-                              className={styles.box}
-                              component="form"
-                              sx={{
-                                "& > :not(style)": { m: 1 },
-                              }}
-                              noValidate
-                              autoComplete="off"
-                            >
-                              <FormControl variant="standard" disabled>
-                                <InputLabel htmlFor="component-simple" disabled>
-                                  Request
-                                </InputLabel>
-                                <Input
-                                  id="component-simple"
-                                  defaultValue={videoName}
-                                />
-                              </FormControl>
-                              <br />
-                              <FormControl variant="standard">
-                                <InputLabel htmlFor="component-simple">
-                                  Change request
-                                </InputLabel>
-                                <Input
-                                  id="component-simple"
-                                  defaultValue={videoName}
-                                />
-                              </FormControl>
-                              <br />
-                              <FormControl
-                                variant="standard"
-                                sx={{ m: 1, minWidth: 120 }}
-                              >
-                                <InputLabel id="sorting">Sorting</InputLabel>
-                                <Select
-                                  labelId="sorting"
-                                  id="sorting"
-                                  value={age}
-                                  onChange={handleChange}
-                                  label="Sorting"
-                                >
-                                  <MenuItem value={10}>default</MenuItem>
-                                  <MenuItem value={20}>date</MenuItem>
-                                  <MenuItem value={30}>score</MenuItem>
-                                  <MenuItem value={30}>name</MenuItem>
-                                  <MenuItem value={30}>views</MenuItem>
-                                </Select>
-                              </FormControl>
-                              <br />
 
-                              <InputLabel
-                                id="maximum"
-                                className={styles.inputMaximum}
-                              >
-                                <p className={styles.inputMaximum}>
-                                  Maximum quantity
-                                </p>
-                              </InputLabel>
-                              <FormControl
-                                variant="standard"
-                                sx={{ m: 1, minWidth: 120 }}
-                              >
-                                <Slider
-                                  // label="Maximum quantity"
-                                  // labelId="maximum"
-                                  // aria-label="Videos"
-                                  defaultValue={30}
-                                  // getAriaValueText={10}
-                                  valueLabelDisplay="auto"
-                                  shiftStep={30}
-                                  step={10}
-                                  marks
-                                  min={10}
-                                  max={100}
-                                />
-                              </FormControl>
-                              <br />
-                              <div>
-                                <Button variant="contained">Save</Button>{" "}
-                                <Button
-                                  variant="outlined"
-                                  onClick={handleCloseModal}
-                                >
-                                  Do not save
-                                </Button>
-                              </div>
-                            </Box>
-                          </Typography>
-                        </Box>
-                      </Modal>
                       <IconButton aria-label="delete">
                         <DeleteIcon />
                       </IconButton>
@@ -197,118 +251,130 @@ const Favorites = () => {
                     className={styles.oneFavoriteVideo}
                   >
                     <ListItem>
-                      <ListItemText primary={videoName} />
-                      <IconButton aria-label="delete" onClick={handleOpenModal}>
+                      <ListItemText primary={videoName.text} />
+                      {/* <IconButton aria-label="delete" onClick={handleOpenModal}> */}
+                      <IconButton
+                        aria-label="delete"
+                        onClick={() =>
+                          handleEditId(videoName.id, videoName.text)
+                        }
+                      >
                         <EditIcon />
                       </IconButton>
-                      <Modal
-                        open={open}
-                        onClose={handleCloseModal}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
+                      {/* <Modal
+                open={open}
+                onClose={handleCloseModal}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Box sx={styleForModal} className={styles.mainBox}>
+                  <Typography
+                    id="modal-modal-title"
+                    variant="h6"
+                    component="h2"
+                  >
+                    <h2>Change request</h2>{" "}
+                  </Typography>
+                  <Typography
+                    id="modal-modal-description"
+                    sx={{ mt: 2 }}
+                  >
+                    <Box
+                      className={styles.box}
+                      component="form"
+                      sx={{
+                        "& > :not(style)": { m: 1 },
+                      }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <FormControl variant="standard" disabled>
+                        <InputLabel htmlFor="component-simple" disabled>
+                          Request
+                        </InputLabel>
+                        <Input
+                          id="component-simple"
+                          defaultValue={videoName.text}
+                        />
+                      </FormControl>
+                      <br />
+                      <FormControl variant="standard">
+                        <InputLabel htmlFor="component-simple">
+                          Change request
+                        </InputLabel>
+                        <Input
+                          id="component-simple"
+                          defaultValue={videoName.text}
+                          onChange={(e) => typeEdit(e.target.value)}
+                        />
+                      </FormControl>
+                      <br />
+                      <FormControl
+                        variant="standard"
+                        sx={{ m: 1, minWidth: 120 }}
                       >
-                        <Box sx={styleForModal} className={styles.mainBox}>
-                          <Typography
-                            id="modal-modal-title"
-                            variant="h6"
-                            component="h2"
-                          >
-                            <h2>Change request</h2>{" "}
-                          </Typography>
-                          <Typography
-                            id="modal-modal-description"
-                            sx={{ mt: 2 }}
-                          >
-                            <Box
-                              className={styles.box}
-                              component="form"
-                              sx={{
-                                "& > :not(style)": { m: 1 },
-                              }}
-                              noValidate
-                              autoComplete="off"
-                            >
-                              <FormControl variant="standard" disabled>
-                                <InputLabel htmlFor="component-simple" disabled>
-                                  Request
-                                </InputLabel>
-                                <Input
-                                  id="component-simple"
-                                  defaultValue={videoName}
-                                />
-                              </FormControl>
-                              <br />
-                              <FormControl variant="standard">
-                                <InputLabel htmlFor="component-simple">
-                                  Change request
-                                </InputLabel>
-                                <Input
-                                  id="component-simple"
-                                  defaultValue={videoName}
-                                />
-                              </FormControl>
-                              <br />
-                              <FormControl
-                                variant="standard"
-                                sx={{ m: 1, minWidth: 120 }}
-                              >
-                                <InputLabel id="sorting">Sorting</InputLabel>
-                                <Select
-                                  labelId="sorting"
-                                  id="sorting"
-                                  value={age}
-                                  onChange={handleChange}
-                                  label="Sorting"
-                                >
-                                  <MenuItem value={10}>default</MenuItem>
-                                  <MenuItem value={20}>date</MenuItem>
-                                  <MenuItem value={30}>score</MenuItem>
-                                  <MenuItem value={30}>name</MenuItem>
-                                  <MenuItem value={30}>views</MenuItem>
-                                </Select>
-                              </FormControl>
-                              <br />
+                        <InputLabel id="sorting">Sorting</InputLabel>
+                        <Select
+                          labelId="sorting"
+                          id="sorting"
+                          value={age}
+                          onChange={handleChange}
+                          label="Sorting"
+                        >
+                          <MenuItem value={10}>default</MenuItem>
+                          <MenuItem value={20}>date</MenuItem>
+                          <MenuItem value={30}>score</MenuItem>
+                          <MenuItem value={30}>name</MenuItem>
+                          <MenuItem value={30}>views</MenuItem>
+                        </Select>
+                      </FormControl>
+                      <br />
 
-                              <InputLabel
-                                id="maximum"
-                                className={styles.inputMaximum}
-                              >
-                                <p className={styles.inputMaximum}>
-                                  Maximum quantity
-                                </p>
-                              </InputLabel>
-                              <FormControl
-                                variant="standard"
-                                sx={{ m: 1, minWidth: 120 }}
-                              >
-                                <Slider
-                                  // label="Maximum quantity"
-                                  // labelId="maximum"
-                                  // aria-label="Videos"
-                                  defaultValue={30}
-                                  // getAriaValueText={10}
-                                  valueLabelDisplay="auto"
-                                  shiftStep={30}
-                                  step={10}
-                                  marks
-                                  min={10}
-                                  max={100}
-                                />
-                              </FormControl>
-                              <br />
-                              <div>
-                                <Button variant="contained">Save</Button>{" "}
-                                <Button
-                                  variant="outlined"
-                                  onClick={handleCloseModal}
-                                >
-                                  Do not save
-                                </Button>
-                              </div>
-                            </Box>
-                          </Typography>
-                        </Box>
-                      </Modal>
+                      <InputLabel
+                        id="maximum"
+                        className={styles.inputMaximum}
+                      >
+                        <p className={styles.inputMaximum}>
+                          Maximum quantity
+                        </p>
+                      </InputLabel>
+                      <FormControl
+                        variant="standard"
+                        sx={{ m: 1, minWidth: 120 }}
+                      >
+                        <Slider
+                          // label="Maximum quantity"
+                          // labelId="maximum"
+                          // aria-label="Videos"
+                          defaultValue={30}
+                          // getAriaValueText={10}
+                          valueLabelDisplay="auto"
+                          shiftStep={30}
+                          step={10}
+                          marks
+                          min={10}
+                          max={100}
+                        />
+                      </FormControl>
+                      <br />
+                      <div>
+                        <Button
+                          variant="contained"
+                          onClick={saveChangeRequest(videoName.id)}
+                        >
+                          Save
+                        </Button>{" "}
+                        <Button
+                          variant="outlined"
+                          onClick={handleCloseModal}
+                        >
+                          Do not save
+                        </Button>
+                      </div>
+                    </Box>
+                  </Typography>
+                </Box>
+              </Modal> */}
                       <IconButton aria-label="delete">
                         <DeleteIcon />
                       </IconButton>
