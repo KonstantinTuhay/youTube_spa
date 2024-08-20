@@ -19,8 +19,8 @@ import Input from "@mui/material/Input";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Slider from "@mui/material/Slider";
-import { newEdit } from "../../redux/slices/newEditSlice";
-import { addFavoriteMovie } from "../../redux/slices/addFavorites";
+// import { newEdit } from "../../redux/slices/newEditSlice";
+// import { addFavoriteMovie } from "../../redux/slices/addFavorites";
 import { edit } from "../../redux/slices/addFavorites";
 import { editId } from "../../redux/slices/editIdSlice";
 import { editPreText } from "../../redux/slices/editPreviousText";
@@ -29,7 +29,7 @@ const Favorites = () => {
   const getEditText = useSelector((state) => state.editPreviousText);
   const getEditId = useSelector((state) => state.editIdSlice);
   const dispatch = useDispatch();
-  const newEditText = useSelector((state) => state.newEditSlice);
+  // const newEditText = useSelector((state) => state.newEditSlice);
   // console.log(getEditId);
   const style = {
     py: 0,
@@ -61,7 +61,12 @@ const Favorites = () => {
 
   const [open, setOpen] = useState(false);
   const handleOpenModal = () => setOpen(true);
-  const handleCloseModal = () => setOpen(false);
+  // const handleCloseModal = () => setOpen(false);
+  const handleCloseModal = () => {
+    dispatch(editId(null));
+    dispatch(editPreText(null));
+    setOpen(false);
+  };
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
   console.log(favoriteMovie);
@@ -76,6 +81,7 @@ const Favorites = () => {
     console.log(getEditText);
     dispatch(edit({ id: id, text: getEditText }));
     dispatch(editId(null));
+    dispatch(editPreText(null));
     setOpen(false);
   };
 
@@ -204,7 +210,7 @@ const Favorites = () => {
                           <div>
                             <Button
                               variant="contained"
-                              onClick={() => saveChangeRequest(videoName.id)}
+                              onClick={() => saveChangeRequest(getEditId)}
                             >
                               Save
                             </Button>{" "}
