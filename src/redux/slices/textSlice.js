@@ -5,8 +5,6 @@ export const textSlice = createSlice({
   initialState: "",
   reducers: {
     enterText: (state, action) => {
-      console.log("state ------", state);
-      console.log("action ------", action.payload);
       return (state = action.payload);
     },
   },
