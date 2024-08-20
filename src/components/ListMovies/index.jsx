@@ -29,7 +29,6 @@ const ListMovies = () => {
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
 
   if (isLoading) {
-    // return <p>Loading...</p>;
     return (
       <p>
         {" "}

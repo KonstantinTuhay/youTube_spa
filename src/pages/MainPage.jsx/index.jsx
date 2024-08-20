@@ -25,14 +25,15 @@ const MainPage = () => {
   const color = useSelector((state) => state.changesColors);
   const text = useSelector((state) => state.getSlice);
   const favoriteMovie = useSelector((state) => state.addFavorites);
+  console.log(favoriteMovie);
 
   const navigate = useNavigate();
 
-  const focusOnInput = useRef(null);
+  // const [focusOnInput] = useRef(null);
 
-  useEffect(() => {
-    focusOnInput.current.focus();
-  });
+  // useEffect(() => {
+  //   focusOnInput.current.focus();
+  // });
 
   const findMovies = () => {
     navigate("/list");
@@ -44,8 +45,11 @@ const MainPage = () => {
   };
 
   const changeColor = () => {
+    const objRequest = { id: crypto.randomUUID(), text: text };
     dispatch(change(style.color));
-    dispatch(addFavoriteMovie({ id: crypto.randomUUID(), text: text }));
+
+    dispatch(addFavoriteMovie(objRequest));
+
   };
 
   const similarText = (e) => {
@@ -77,7 +81,7 @@ const MainPage = () => {
             className={styles.inputBase}
             sx={{ ml: 1, flex: 1 }}
             placeholder="Enter your request"
-            ref={focusOnInput}
+            // ref={focusOnInput}
             value={text}
             onChange={(e) => similarText(e)}
           />
