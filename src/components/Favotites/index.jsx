@@ -91,7 +91,7 @@ const Favorites = () => {
   return (
     <>
       <Modal
-        key={crypto.randomUUID()}
+        // key={crypto.randomUUID()}
         open={open}
         onClose={handleCloseModal}
         aria-labelledby="modal-modal-title"
