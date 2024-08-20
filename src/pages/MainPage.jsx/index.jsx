@@ -29,11 +29,11 @@ const MainPage = () => {
 
   const navigate = useNavigate();
 
-  const focusOnInput = useRef(null);
+  // const [focusOnInput] = useRef(null);
 
-  useEffect(() => {
-    focusOnInput.current.focus();
-  });
+  // useEffect(() => {
+  //   focusOnInput.current.focus();
+  // });
 
   const findMovies = () => {
     navigate("/list");
@@ -79,7 +79,7 @@ const MainPage = () => {
             className={styles.inputBase}
             sx={{ ml: 1, flex: 1 }}
             placeholder="Enter your request"
-            ref={focusOnInput}
+            // ref={focusOnInput}
             value={text}
             onChange={(e) => similarText(e)}
           />

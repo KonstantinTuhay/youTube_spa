@@ -35,11 +35,11 @@ const Favorites = () => {
     backgroundColor: "background.paper",
   };
 
-  const focusOnEditInput = useRef(null);
-  useEffect(() => {
-    console.log(232432423432);
-    // focusOnEditInput.current.focus();
-  }, [getEditText]);
+  // const focusOnEditInput = useRef(null);
+  // useEffect(() => {
+  // console.log(232432423432);
+  // focusOnEditInput.current.focus();
+  // }, [getEditText]);
 
   const styleForModal = {
     position: "absolute",
@@ -93,7 +93,7 @@ const Favorites = () => {
         {favoriteMovie.length === 0 ? (
           ""
         ) : (
-          <List sx={styles.list}>
+          <List sx={style}>
             {/* <List className={styles.list}> */}
             {favoriteMovie.map((videoName, index) => {
               if (videoName.id === getEditId || getEditId !== null) {
@@ -139,7 +139,7 @@ const Favorites = () => {
                             </InputLabel>
                             <Input
                               // inputRef={focusOnEditInput}
-                              ref={focusOnEditInput}
+                              // ref={focusOnEditInput}
                               id="component-simple"
                               defaultValue={getEditText}
                               onChange={(e) => typeEdit(e.target.value)}
