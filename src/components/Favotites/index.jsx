@@ -1,7 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import styles from "./index.module.css";
-
+import { edit } from "../../redux/slices/addFavorites";
+import { editId } from "../../redux/slices/editIdSlice";
+import { editPreText } from "../../redux/slices/editPreviousText";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -19,9 +20,7 @@ import Input from "@mui/material/Input";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Slider from "@mui/material/Slider";
-import { edit } from "../../redux/slices/addFavorites";
-import { editId } from "../../redux/slices/editIdSlice";
-import { editPreText } from "../../redux/slices/editPreviousText";
+import styles from "./index.module.css";
 
 const Favorites = () => {
   const getEditText = useSelector((state) => state.editPreviousText);
@@ -62,7 +61,6 @@ const Favorites = () => {
   };
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
-  console.log(favoriteMovie);
 
   const [age, setAge] = useState("");
 
@@ -71,7 +69,6 @@ const Favorites = () => {
   };
 
   const saveChangeRequest = (id) => {
-    console.log(getEditText);
     dispatch(edit({ id: id, text: getEditText }));
     dispatch(editId(null));
     dispatch(editPreText(null));
@@ -87,7 +84,6 @@ const Favorites = () => {
     dispatch(editPreText(text));
     setOpen(true);
   };
-  console.log(favoriteMovie);
 
   return (
     <>
@@ -97,7 +93,8 @@ const Favorites = () => {
         {favoriteMovie.length === 0 ? (
           ""
         ) : (
-          <List sx={style}>
+          <List sx={styles.list}>
+            {/* <List className={styles.list}> */}
             {favoriteMovie.map((videoName, index) => {
               if (videoName.id === getEditId || getEditId !== null) {
                 return (
@@ -141,7 +138,8 @@ const Favorites = () => {
                               Change request
                             </InputLabel>
                             <Input
-                              inputRef={focusOnEditInput}
+                              // inputRef={focusOnEditInput}
+                              ref={focusOnEditInput}
                               id="component-simple"
                               defaultValue={getEditText}
                               onChange={(e) => typeEdit(e.target.value)}

@@ -27,3 +27,13 @@ h2 {
   text-align: left;
   font-size: 12px;
 }
+
+.list {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: "100%";
+  border-radius: 2px;
+  border: 1px solid;
+  border-color: "divider";
+  background-color: "background.paper";
+}
