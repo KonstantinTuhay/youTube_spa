@@ -1,14 +1,21 @@
+
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { edit } from "../../redux/slices/addFavorites";
 import { editId } from "../../redux/slices/editIdSlice";
 import { editPreText } from "../../redux/slices/editPreviousText";
+
+import { useDispatch, useSelector } from "react-redux";
+import styles from "./index.module.css";
+
+
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
+
 import EditIcon from "@mui/icons-material/Edit";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -26,6 +33,14 @@ const Favorites = () => {
   const getEditText = useSelector((state) => state.editPreviousText);
   const getEditId = useSelector((state) => state.editIdSlice);
   const dispatch = useDispatch();
+
+// import EditIcon from "@mui/icons-material/Edit";
+import { remove } from "../../redux/slices/addFavorites";
+
+const Favorites = () => {
+  const dispatch = useDispatch();
+
+
   const style = {
     py: 0,
     width: "100%",
@@ -65,6 +80,7 @@ const Favorites = () => {
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
 
+
   const [age, setAge] = useState("");
 
   const handleChange = (event) => {
@@ -86,6 +102,11 @@ const Favorites = () => {
     dispatch(editId(id));
     dispatch(editPreText(text));
     setOpen(true);
+  };
+
+
+  const removeFavorite = (id) => {
+    dispatch(remove(id));
   };
 
   return (
@@ -206,6 +227,7 @@ const Favorites = () => {
                   >
                     <ListItem>
                       <ListItemText primary={videoName.text} />
+
                       <IconButton
                         aria-label="delete"
                         onClick={
@@ -214,10 +236,13 @@ const Favorites = () => {
                         }
                       >
                         <EditIcon />
+
                       </IconButton>
 
                       <IconButton aria-label="delete">
-                        <DeleteIcon />
+                        <DeleteIcon
+                          onClick={() => removeFavorite(videoName.id)}
+                        />
                       </IconButton>
                     </ListItem>
                   </div>
@@ -230,6 +255,7 @@ const Favorites = () => {
                   >
                     <ListItem>
                       <ListItemText primary={videoName.text} />
+
                       <IconButton
                         aria-label="delete"
                         onClick={
@@ -238,9 +264,12 @@ const Favorites = () => {
                         }
                       >
                         <EditIcon />
+
                       </IconButton>
                       <IconButton aria-label="delete">
-                        <DeleteIcon />
+                        <DeleteIcon
+                          onClick={() => removeFavorite(videoName.id)}
+                        />
                       </IconButton>
                     </ListItem>
                     <Divider variant="middle" component="li" />

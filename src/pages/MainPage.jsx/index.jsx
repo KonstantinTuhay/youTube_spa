@@ -47,7 +47,9 @@ const MainPage = () => {
   const changeColor = () => {
     const objRequest = { id: crypto.randomUUID(), text: text };
     dispatch(change(style.color));
+
     dispatch(addFavoriteMovie(objRequest));
+
   };
 
   const similarText = (e) => {
