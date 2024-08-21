@@ -10,9 +10,11 @@ import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 import { enterText } from "../../redux/slices/textSlice";
 import { change } from "../../redux/slices/changesColors";
 import { addFavoriteMovie } from "../../redux/slices/addFavorites";
+import { editPreText } from "../../redux/slices/editPreviousText";
+import { editId } from "../../redux/slices/editIdSlice";
 import styles from "./index.module.css";
 
-const SearchSystem = () => {
+const SearchSystem = ({ open, setOpen }) => {
   const [state, toggle] = useState(true);
   const { x } = useSpring({
     from: { x: 0 },
@@ -34,8 +36,10 @@ const SearchSystem = () => {
   const changeColor = () => {
     const objRequest = { id: crypto.randomUUID(), text: text };
     dispatch(change(style.color));
-
     dispatch(addFavoriteMovie(objRequest));
+    dispatch(editId(objRequest.id));
+    dispatch(editPreText(text));
+    setOpen(true);
   };
 
   const similarText = (e) => {

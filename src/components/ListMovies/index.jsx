@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { useGetMoviesQuery } from "../../redux/apiMovies";
 import { useSelector } from "react-redux";
 import ShowMovie from "../ShowMovie";
 import CircularProgress from "@mui/material/CircularProgress";
 import SearchSystem from "../SearchSystem";
+import ModalWindow from "../ModalWindow";
 import styles from "./index.module.css";
 
 const ListMovies = () => {
+  const [open, setOpen] = useState(false);
+
   const text = useSelector((state) => state.getSlice);
 
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
@@ -24,9 +28,11 @@ const ListMovies = () => {
   }
 
   return (
-    <div>
+    <>
+      <ModalWindow open={open} setOpen={setOpen} />
+
       <div className={styles.content}>
-        <SearchSystem />
+        <SearchSystem open={open} setOpen={setOpen} />
 
         <h5>Video on demand {`"${text}"`}</h5>
 
@@ -36,7 +42,7 @@ const ListMovies = () => {
           })}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
