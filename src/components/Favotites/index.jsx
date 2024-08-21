@@ -1,45 +1,33 @@
-
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { edit } from "../../redux/slices/addFavorites";
 import { editId } from "../../redux/slices/editIdSlice";
 import { editPreText } from "../../redux/slices/editPreviousText";
-
-import { useDispatch, useSelector } from "react-redux";
-import styles from "./index.module.css";
-
-
+import { remove } from "../../redux/slices/addFavorites";
+import ModalWindow from "../ModalWindow";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
-
 import EditIcon from "@mui/icons-material/Edit";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import Slider from "@mui/material/Slider";
+// import Box from "@mui/material/Box";
+// import Button from "@mui/material/Button";
+// import Typography from "@mui/material/Typography";
+// import Modal from "@mui/material/Modal";
+// import FormControl from "@mui/material/FormControl";
+// import InputLabel from "@mui/material/InputLabel";
+// import Input from "@mui/material/Input";
+// import MenuItem from "@mui/material/MenuItem";
+// import Select from "@mui/material/Select";
+// import Slider from "@mui/material/Slider";
 import styles from "./index.module.css";
 
 const Favorites = () => {
-  const getEditText = useSelector((state) => state.editPreviousText);
-  const getEditId = useSelector((state) => state.editIdSlice);
   const dispatch = useDispatch();
-
-// import EditIcon from "@mui/icons-material/Edit";
-import { remove } from "../../redux/slices/addFavorites";
-
-const Favorites = () => {
-  const dispatch = useDispatch();
-
+  // const getEditText = useSelector((state) => state.editPreviousText);
+  // const getEditId = useSelector((state) => state.editIdSlice);
 
   const style = {
     py: 0,
@@ -50,53 +38,43 @@ const Favorites = () => {
     backgroundColor: "background.paper",
   };
 
-  // const focusOnEditInput = useRef(null);
-  // useEffect(() => {
-  //   // console.log(232432423432);
-  //   focusOnEditInput.current.focus();
-  // }, [getEditText]);
-
-  const styleForModal = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
+  // const styleForModal = {
+  //   position: "absolute",
+  //   top: "50%",
+  //   left: "50%",
+  //   transform: "translate(-50%, -50%)",
+  //   width: 400,
+  //   bgcolor: "background.paper",
+  //   border: "2px solid #000",
+  //   boxShadow: 24,
+  //   p: 4,
+  // };
 
   const [open, setOpen] = useState(false);
-  const handleCloseModal = () => {
-    dispatch(editId(null));
-    dispatch(editPreText(null));
-    setOpen(false);
-  };
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // const handleCloseModal = () => {
+  //   dispatch(editId(null));
+  //   dispatch(editPreText(null));
+  //   setOpen(false);
+  // };
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
 
+  // const [age, setAge] = useState("");
 
-  const [age, setAge] = useState("");
+  // const handleChange = (event) => {
+  //   setAge(event.target.value);
+  // };
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  // const saveChangeRequest = (id) => {
+  //   dispatch(edit({ id: id, text: getEditText }));
+  //   dispatch(editId(null));
+  //   dispatch(editPreText(null));
+  //   setOpen(false);
+  // };
 
-  const saveChangeRequest = (id) => {
-    dispatch(edit({ id: id, text: getEditText }));
-    dispatch(editId(null));
-    dispatch(editPreText(null));
-    setOpen(false);
-  };
-
-  const typeEdit = (e) => {
-    dispatch(editPreText(e));
-  };
+  // const typeEdit = (e) => {
+  //   dispatch(editPreText(e));
+  // };
 
   const handleEditId = (id, text) => {
     dispatch(editId(id));
@@ -104,15 +82,14 @@ const Favorites = () => {
     setOpen(true);
   };
 
-
   const removeFavorite = (id) => {
     dispatch(remove(id));
   };
 
   return (
     <>
-      <Modal
-        // key={crypto.randomUUID()}
+      <ModalWindow open={open} setOpen={setOpen} />
+      {/* <Modal
         open={open}
         onClose={handleCloseModal}
         aria-labelledby="modal-modal-title"
@@ -144,8 +121,6 @@ const Favorites = () => {
                   Change request
                 </InputLabel>
                 <Input
-                  // inputRef={focusOnEditInput}
-                  // ref={focusOnEditInput}
                   id="component-simple"
                   defaultValue={getEditText}
                   onChange={(e) => typeEdit(e.target.value)}
@@ -179,7 +154,6 @@ const Favorites = () => {
                   labelId="maximum"
                   aria-label="Videos"
                   defaultValue={30}
-                  // getAriaValueText={10}
                   valueLabelDisplay="auto"
                   shiftStep={30}
                   step={10}
@@ -203,7 +177,7 @@ const Favorites = () => {
             </Box>
           </Typography>
         </Box>
-      </Modal>
+      </Modal> */}
 
       <div className={styles.container}>
         <h2>FAVORITES</h2>
@@ -236,7 +210,6 @@ const Favorites = () => {
                         }
                       >
                         <EditIcon />
-
                       </IconButton>
 
                       <IconButton aria-label="delete">
@@ -264,7 +237,6 @@ const Favorites = () => {
                         }
                       >
                         <EditIcon />
-
                       </IconButton>
                       <IconButton aria-label="delete">
                         <DeleteIcon
