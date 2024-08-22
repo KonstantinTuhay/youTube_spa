@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { edit } from "../../redux/slices/addFavorites";
 import { editId } from "../../redux/slices/editIdSlice";
 import { editPreText } from "../../redux/slices/editPreviousText";
@@ -12,6 +13,8 @@ import Divider from "@mui/material/Divider";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
+import { addFavoriteMovie } from "../../redux/slices/addFavorites";
+import { enterText } from "../../redux/slices/textSlice";
 // import Box from "@mui/material/Box";
 // import Button from "@mui/material/Button";
 // import Typography from "@mui/material/Typography";
@@ -84,6 +87,13 @@ const Favorites = () => {
 
   const removeFavorite = (id) => {
     dispatch(remove(id));
+  };
+
+  const navigate = useNavigate();
+
+  const clickSearch = (text) => {
+    dispatch(enterText(text));
+    navigate("/list");
   };
 
   return (
@@ -200,7 +210,10 @@ const Favorites = () => {
                     className={styles.oneFavoriteVideo}
                   >
                     <ListItem>
-                      <ListItemText primary={videoName.text} />
+                      <ListItemText
+                        primary={videoName.text}
+                        onClick={() => clickSearch(videoName.text)}
+                      />
 
                       <IconButton
                         aria-label="delete"
@@ -227,7 +240,10 @@ const Favorites = () => {
                     className={styles.oneFavoriteVideo}
                   >
                     <ListItem>
-                      <ListItemText primary={videoName.text} />
+                      <ListItemText
+                        primary={videoName.text}
+                        onClick={() => clickSearch(videoName.text)}
+                      />
 
                       <IconButton
                         aria-label="delete"
