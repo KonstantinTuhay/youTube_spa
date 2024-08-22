@@ -12,6 +12,7 @@ import { change } from "../../redux/slices/changesColors";
 import { addFavoriteMovie } from "../../redux/slices/addFavorites";
 import { editPreText } from "../../redux/slices/editPreviousText";
 import { editId } from "../../redux/slices/editIdSlice";
+import { edit } from "../../redux/slices/addFavorites";
 import styles from "./index.module.css";
 
 const SearchSystem = ({ open, setOpen }) => {
@@ -50,6 +51,9 @@ const SearchSystem = ({ open, setOpen }) => {
     } else {
       dispatch(change("red"));
     }
+    // if (color === "red") {
+    //   dispatch(change("red"));
+    // }
   };
 
   const findMovies = () => {
