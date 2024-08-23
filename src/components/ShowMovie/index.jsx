@@ -1,56 +1,81 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
 import styles from "./index.module.css";
 
 const ShowMovie = ({ movie }) => {
+  const isSwitch = useSelector((state) => state.switchCards);
+
+  const style = {
+    width: "100%",
+    borderRadius: 2,
+    border: "1px solid",
+    borderColor: "divider",
+    backgroundColor: "background.paper",
+  };
+
   console.log(movie);
   return (
     <>
-      <div className={styles.cubes}>
-        {/* <div> */}
-        {/* <img
-          src={movie.snippet.thumbnails.default.url}
-          alt="Image Movie"
-          width="245px"
-          height="138px"
-        /> */}
-
-        <Card>
-          <Link
-            to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
-            target="_blank"
-          >
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="165"
-                // width="245"
-                image={movie.snippet.thumbnails.high.url}
-                alt="Image Movie"
-              />
-              <CardContent className={styles.cardContent}>
-                <Typography
-                  gutterBottom
-                  // variant="h5"
-                  // component="div"
-                  className={styles.title}
-                >
-                  {movie.snippet.title}
-                </Typography>
-                <Typography
-                  //  variant="body2"
-                  color="text.secondary"
-                >
-                  {movie.snippet.channelTitle}
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Link>
-        </Card>
+      <div>
+        {isSwitch ? (
+          <Card className={styles.cubes}>
+            <Link
+              to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
+              target="_blank"
+            >
+              <CardActionArea className={styles.cardGrid}>
+                <CardMedia
+                  component="img"
+                  height="165"
+                  // width="245"
+                  image={movie.snippet.thumbnails.high.url}
+                  alt="Image Movie"
+                />
+                <CardContent className={styles.cardContentGrid}>
+                  <Typography
+                    gutterBottom
+                    // variant="h5"
+                    // component="div"
+                    className={styles.title}
+                  >
+                    {movie.snippet.title}
+                  </Typography>
+                  <Typography
+                    //  variant="body2"
+                    color="text.secondary"
+                  >
+                    {movie.snippet.channelTitle}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Link>
+          </Card>
+        ) : (
+          <List sx={style} className={styles.list}>
+            <Link
+              to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
+              target="_blank"
+            >
+              <ListItem>
+                <img
+                  src={movie.snippet.thumbnails.high.url}
+                  className={styles.img}
+                  alt="video"
+                />
+                <ListItemText primary={movie.snippet.title} />
+                <ListItemText primary={movie.snippet.channelTitle} />
+              </ListItem>
+            </Link>
+          </List>
+        )}
         {/* <Card
           hoverable
           style={{

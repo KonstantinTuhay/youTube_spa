@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGetMoviesQuery } from "../../redux/apiMovies";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ShowMovie from "../ShowMovie";
 import CircularProgress from "@mui/material/CircularProgress";
 import SearchSystem from "../SearchSystem";
@@ -9,15 +9,18 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ListIcon from "@mui/icons-material/List";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import { switchCard } from "../../redux/slices/switchCards";
 import styles from "./index.module.css";
 
 const ListMovies = () => {
   const [open, setOpen] = useState(false);
 
+  const dispatch = useDispatch();
   const text = useSelector((state) => state.getSlice);
+  const isSwitch = useSelector((state) => state.switchCards);
+  console.log(isSwitch);
 
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
-  console.log(movies);
 
   if (isLoading) {
     return (
@@ -32,14 +35,14 @@ const ListMovies = () => {
     return <p>Error: {error.message}</p>;
   }
 
-  const [alignment, setAlignment] = useState("left");
+  // const [alignment, setAlignment] = useState("left");
   // const [devices, setDevices] = useState(() => ["phone"]);
 
-  const handleAlignment = (event, newAlignment) => {
-    if (newAlignment !== null) {
-      setAlignment(newAlignment);
-    }
-  };
+  // const handleAlignment = (event, newAlignment) => {
+  // if (newAlignment !== null) {
+  // setAlignment(newAlignment);
+  // }
+  // };
 
   // const handleDevices = (event, newDevices) => {
   //   if (newDevices.length) {
@@ -57,20 +60,28 @@ const ListMovies = () => {
         <h5>Video on demand {`"${text}"`}</h5>
 
         <ToggleButtonGroup
-          value={alignment}
+          // value={alignment}
           exclusive
-          onChange={handleAlignment}
+          // onChange={handleAlignment}
           aria-label="text alignment"
         >
-          <ToggleButton value="left" aria-label="left aligned">
+          <ToggleButton
+            value="left"
+            aria-label="left aligned"
+            onClick={() => dispatch(switchCard(false))}
+          >
             <ListIcon />
           </ToggleButton>
-          <ToggleButton value="center" aria-label="centered">
+          <ToggleButton
+            value="center"
+            aria-label="centered"
+            onClick={() => dispatch(switchCard(true))}
+          >
             <GridViewOutlinedIcon />
           </ToggleButton>
         </ToggleButtonGroup>
 
-        <div className={styles.allMovies}>
+        <div className={isSwitch ? styles.allMoviesGrid : styles.allMoviesFlex}>
           {movies.map((movie) => {
             return <ShowMovie key={movie.id.videoId} movie={movie} />;
           })}

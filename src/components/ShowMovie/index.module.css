@@ -1,32 +1,10 @@
 .cubes {
-  /* width: 245px; */
-  /* height: 226px; */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* flex-direction: column; */
   margin: 5px;
 }
 
-/* .videoTitle,
-.author {
-  margin: 0;
-} */
-/* .videoTitle,
-.author {
-  font-size: 14px;
-  align-self: start;
-  padding: 0;
-} */
-/* 
-.videoTitle {
-  font-weight: 900;
-} */
-
-/* .author {
-  font-weight: 100;
-  opacity: 0.5;
-} */
+.list {
+  margin: 5px;
+}
 
 .title {
   overflow: hidden;
@@ -36,7 +14,31 @@
   -webkit-box-orient: vertical;
 }
 
-.cardContent {
+.cardContentGrid {
   min-height: 120px;
   min-width: 300px;
+}
+
+.cardContentFlex {
+  /* display: flex; */
+  /* min-height: 120px; */
+  /* min-width: 100%; */
+}
+
+.cardList {
+  display: grid;
+}
+
+/* .list {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: "100%";
+  border-radius: 2px;
+  border: 1px solid;
+  border-color: "divider";
+  background-color: "background.paper";
+} */
+
+.img {
+  height: 150px;
 }

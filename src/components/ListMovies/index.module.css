@@ -1,8 +1,14 @@
-.allMovies {
+.allMoviesGrid {
   /* width: 100vh; */
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto auto auto auto;
+}
+
+.allMoviesFlex {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: start; */
 }
 
 input {
