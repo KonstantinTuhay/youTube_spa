@@ -9,6 +9,7 @@ const ListMovies = () => {
   const text = useSelector((state) => state.getSlice);
 
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
+  console.log(movies);
 
   if (isLoading) {
     return (

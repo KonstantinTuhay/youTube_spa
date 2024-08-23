@@ -17,20 +17,28 @@ const ShowMovie = ({ movie }) => {
           height="138px"
         /> */}
 
-        <Card sx={{ maxWidth: 345 }}>
+        <Card>
           <CardActionArea>
             <CardMedia
               component="img"
-              height="140"
+              height="165"
               // width="245"
-              image={movie.snippet.thumbnails.default.url}
+              image={movie.snippet.thumbnails.high.url}
               alt="Image Movie"
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
+            <CardContent className={styles.cardContent}>
+              <Typography
+                gutterBottom
+                // variant="h5"
+                // component="div"
+                className={styles.title}
+              >
                 {movie.snippet.title}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography
+                //  variant="body2"
+                color="text.secondary"
+              >
                 {movie.snippet.channelTitle}
               </Typography>
             </CardContent>

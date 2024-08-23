@@ -14,7 +14,7 @@ export const apiGetMovies = createApi({
     getMovies: builder.query({
       query: (q) => {
         return {
-          url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=12&q=${q}`,
+          url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=24&q=${q}`,
           method: "GET",
           // headers,
         };
