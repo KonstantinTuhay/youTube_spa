@@ -1,11 +1,13 @@
-import styles from "./index.module.css";
+import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
+import styles from "./index.module.css";
 
 const ShowMovie = ({ movie }) => {
+  console.log(movie);
   return (
     <>
       <div className={styles.cubes}>
@@ -18,31 +20,36 @@ const ShowMovie = ({ movie }) => {
         /> */}
 
         <Card>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="165"
-              // width="245"
-              image={movie.snippet.thumbnails.high.url}
-              alt="Image Movie"
-            />
-            <CardContent className={styles.cardContent}>
-              <Typography
-                gutterBottom
-                // variant="h5"
-                // component="div"
-                className={styles.title}
-              >
-                {movie.snippet.title}
-              </Typography>
-              <Typography
-                //  variant="body2"
-                color="text.secondary"
-              >
-                {movie.snippet.channelTitle}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
+          <Link
+            to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
+            target="_blank"
+          >
+            <CardActionArea>
+              <CardMedia
+                component="img"
+                height="165"
+                // width="245"
+                image={movie.snippet.thumbnails.high.url}
+                alt="Image Movie"
+              />
+              <CardContent className={styles.cardContent}>
+                <Typography
+                  gutterBottom
+                  // variant="h5"
+                  // component="div"
+                  className={styles.title}
+                >
+                  {movie.snippet.title}
+                </Typography>
+                <Typography
+                  //  variant="body2"
+                  color="text.secondary"
+                >
+                  {movie.snippet.channelTitle}
+                </Typography>
+              </CardContent>
+            </CardActionArea>
+          </Link>
         </Card>
         {/* <Card
           hoverable
