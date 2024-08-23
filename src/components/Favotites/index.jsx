@@ -61,7 +61,6 @@ const Favorites = () => {
   // };
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
-
   // const [age, setAge] = useState("");
 
   // const handleChange = (event) => {
