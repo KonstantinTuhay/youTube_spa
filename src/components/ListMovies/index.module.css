@@ -9,38 +9,6 @@
   flex-direction: column;
 }
 
-input {
-  width: 300px;
-  height: 30px;
-  border-radius: 5px 0px 0px 5px;
-  border: 2px solid #1390e5;
-  border-right: none;
-  outline: none;
-  background-color: #1391e51d;
-}
-
-.heart {
-  height: 32px;
-  align-self: center;
-  border: 2px solid #1390e5;
-  border-left: none;
-  border-radius: 0px 5px 5px 0px;
-  background-color: #1391e51d;
-  display: flex;
-  justify-content: center;
-  padding: 0px 5px;
-}
-
-.searchSystem {
-  margin: 5px 0;
-  line-height: 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-}
-
 h2 {
   font-size: 50px;
   line-height: 0px;
@@ -53,28 +21,5 @@ h2 {
   justify-content: space-between;
   margin: 5px 0;
   color: black;
-  line-height: 0px;
-}
-
-.favoriteHeart {
-  color: #707070;
-  cursor: pointer;
-  line-height: 0px;
-}
-
-.inputBase {
-  height: 10px;
-  line-height: 0px;
-}
-
-h1 {
-  padding-bottom: 50px;
-  line-height: 0px;
-
-  font-size: 50px;
-}
-
-input[type="text"] {
-  font-size: 30px;
   line-height: 0px;
 }
