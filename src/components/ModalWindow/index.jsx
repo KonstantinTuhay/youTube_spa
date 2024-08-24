@@ -32,7 +32,6 @@ const ModalWindow = ({ open, setOpen }) => {
     p: 4,
   };
 
-  //   const [open, setOpen] = useState(false);
   const handleCloseModal = () => {
     dispatch(editId(null));
     dispatch(editPreText(null));

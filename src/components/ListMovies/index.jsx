@@ -35,51 +35,42 @@ const ListMovies = () => {
     return <p>Error: {error.message}</p>;
   }
 
-  // const [alignment, setAlignment] = useState("left");
-  // const [devices, setDevices] = useState(() => ["phone"]);
-
-  // const handleAlignment = (event, newAlignment) => {
-  // if (newAlignment !== null) {
-  // setAlignment(newAlignment);
-  // }
-  // };
-
-  // const handleDevices = (event, newDevices) => {
-  //   if (newDevices.length) {
-  //     setDevices(newDevices);
-  //   }
-  // };
-
   return (
     <>
       <ModalWindow open={open} setOpen={setOpen} />
 
       <div className={styles.content}>
-        <SearchSystem open={open} setOpen={setOpen} />
+        <SearchSystem
+          open={open}
+          setOpen={setOpen}
+          // className={styles.searchSystem}
+        />
 
-        <h5>Video on demand {`"${text}"`}</h5>
+        <div className={styles.buttDirection}>
+          <h4>Video on demand {`"${text}"`}</h4>
 
-        <ToggleButtonGroup
-          // value={alignment}
-          exclusive
-          // onChange={handleAlignment}
-          aria-label="text alignment"
-        >
-          <ToggleButton
-            value="left"
-            aria-label="left aligned"
-            onClick={() => dispatch(switchCard(false))}
+          <ToggleButtonGroup
+            // value={alignment}
+            exclusive
+            // onChange={handleAlignment}
+            aria-label="text alignment"
           >
-            <ListIcon />
-          </ToggleButton>
-          <ToggleButton
-            value="center"
-            aria-label="centered"
-            onClick={() => dispatch(switchCard(true))}
-          >
-            <GridViewOutlinedIcon />
-          </ToggleButton>
-        </ToggleButtonGroup>
+            <ToggleButton
+              value="left"
+              aria-label="left aligned"
+              onClick={() => dispatch(switchCard(false))}
+            >
+              <ListIcon />
+            </ToggleButton>
+            <ToggleButton
+              value="center"
+              aria-label="centered"
+              onClick={() => dispatch(switchCard(true))}
+            >
+              <GridViewOutlinedIcon />
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </div>
 
         <div className={isSwitch ? styles.allMoviesGrid : styles.allMoviesFlex}>
           {movies.map((movie) => {

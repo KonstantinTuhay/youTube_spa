@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useSpring, animated } from "@react-spring/web";
@@ -12,7 +12,6 @@ import { change } from "../../redux/slices/changesColors";
 import { addFavoriteMovie } from "../../redux/slices/addFavorites";
 import { editPreText } from "../../redux/slices/editPreviousText";
 import { editId } from "../../redux/slices/editIdSlice";
-import { edit } from "../../redux/slices/addFavorites";
 import styles from "./index.module.css";
 
 const SearchSystem = ({ open, setOpen }) => {
@@ -51,9 +50,6 @@ const SearchSystem = ({ open, setOpen }) => {
     } else {
       dispatch(change("red"));
     }
-    // if (color === "red") {
-    //   dispatch(change("red"));
-    // }
   };
 
   const findMovies = () => {
@@ -80,7 +76,6 @@ const SearchSystem = ({ open, setOpen }) => {
           className={styles.inputBase}
           sx={{ ml: 1, flex: 1 }}
           placeholder="Enter your request"
-          // ref={focusOnInput}
           value={text}
           onChange={(e) => similarText(e)}
         />

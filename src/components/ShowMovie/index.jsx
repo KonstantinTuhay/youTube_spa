@@ -35,23 +35,14 @@ const ShowMovie = ({ movie }) => {
                 <CardMedia
                   component="img"
                   height="165"
-                  // width="245"
                   image={movie.snippet.thumbnails.high.url}
                   alt="Image Movie"
                 />
                 <CardContent className={styles.cardContentGrid}>
-                  <Typography
-                    gutterBottom
-                    // variant="h5"
-                    // component="div"
-                    className={styles.title}
-                  >
+                  <Typography gutterBottom className={styles.title}>
                     {movie.snippet.title}
                   </Typography>
-                  <Typography
-                    //  variant="body2"
-                    color="text.secondary"
-                  >
+                  <Typography color="text.secondary">
                     {movie.snippet.channelTitle}
                   </Typography>
                 </CardContent>
@@ -65,13 +56,21 @@ const ShowMovie = ({ movie }) => {
               target="_blank"
             >
               <ListItem>
-                <img
-                  src={movie.snippet.thumbnails.high.url}
-                  className={styles.img}
-                  alt="video"
-                />
-                <ListItemText primary={movie.snippet.title} />
-                <ListItemText primary={movie.snippet.channelTitle} />
+                <Card>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      className={styles.img}
+                      image={movie.snippet.thumbnails.high.url}
+                      alt="Image Movie"
+                    />
+                  </CardActionArea>
+                </Card>
+
+                <div className={styles.cardFlex}>
+                  <ListItemText primary={movie.snippet.title} />
+                  <ListItemText primary={movie.snippet.channelTitle} />
+                </div>
               </ListItem>
             </Link>
           </List>
