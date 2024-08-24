@@ -1,8 +1,12 @@
-.allMovies {
-  /* width: 100vh; */
+.allMoviesGrid {
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto auto auto auto;
+}
+
+.allMoviesFlex {
+  display: flex;
+  flex-direction: column;
 }
 
 input {
@@ -14,16 +18,6 @@ input {
   outline: none;
   background-color: #1391e51d;
 }
-
-/* button {
-  width: 100px;
-  height: 35.63px;
-  background-color: #1390e5;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-} */
 
 .heart {
   height: 32px;
@@ -38,30 +32,49 @@ input {
 }
 
 .searchSystem {
-  /* left: 35%; */
-  align-self: center;
-  align-items: center;
-  display: flex;
+  margin: 5px 0;
+  line-height: 0;
 }
 
 .content {
-  /* position: relative; */
-  /* left: 40%; */
-  /* top: 200px; */
-  /* top: 50%; */
   display: flex;
   flex-direction: column;
-  /* justify-content: start; */
-  /* align-items: center; */
-  /* margin-top: auto; */
-  /* position: absolute; */
-  /* top: 50%; */
-  /* left: 50%; */
-  /* margin-right: -50%; */
-  /* transform: translate(-50%, -50%); */
-  /* margin: 0; */
 }
 
 h2 {
   font-size: 50px;
+  line-height: 0px;
+}
+
+.buttDirection {
+  display: flex;
+  flex-direction: row;
+  line-height: 0;
+  justify-content: space-between;
+  margin: 5px 0;
+  color: black;
+  line-height: 0px;
+}
+
+.favoriteHeart {
+  color: #707070;
+  cursor: pointer;
+  line-height: 0px;
+}
+
+.inputBase {
+  height: 10px;
+  line-height: 0px;
+}
+
+h1 {
+  padding-bottom: 50px;
+  line-height: 0px;
+
+  font-size: 50px;
+}
+
+input[type="text"] {
+  font-size: 30px;
+  line-height: 0px;
 }
