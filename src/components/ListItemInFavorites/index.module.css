@@ -1,0 +1,10 @@
+.oneFavoriteVideo {
+  color: rgb(0, 0, 0);
+  line-height: 0px;
+}
+
+.oneFavoriteVideo:hover {
+  background-color: #d8d8d836;
+  transition: 0.5s;
+  cursor: pointer;
+}
