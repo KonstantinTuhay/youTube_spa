@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import ListItemInFavorites from "../ListItemInFavorites";
 import ModalWindow from "../ModalWindow";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
+import { List, Divider } from "@mui/material";
 import styles from "./index.module.css";
 
 const Favorites = () => {

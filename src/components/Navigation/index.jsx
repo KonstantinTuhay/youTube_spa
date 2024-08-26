@@ -1,22 +1,23 @@
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import Button from "@mui/material/Button";
-import { NavLink, Outlet } from "react-router-dom";
-import { styled } from "@mui/material/styles";
-import Switch from "@mui/material/Switch";
-import Avata from "@mui/material/Avatar";
 import { useState } from "react";
-import Box from "@mui/material/Box";
-import Avatar from "@mui/material/Avatar";
-import Men from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import Settings from "@mui/icons-material/Settings";
-import Logout from "@mui/icons-material/Logout";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import { NavLink } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import {
+  IconButton,
+  FormControlLabel,
+  Tooltip,
+  Divider,
+  ListItemIcon,
+  MenuItem,
+  Menu,
+  Avatar,
+  Box,
+  Typography,
+  Modal,
+  Button,
+  Switch,
+  // Avata,
+} from "@mui/material";
+import { Settings, Logout } from "@mui/icons-material";
 import styles from "./index.module.css";
 
 const Navigation = () => {
@@ -139,7 +140,7 @@ const Navigation = () => {
               </IconButton>
             </Tooltip>
           </Box>
-          <Men
+          <Menu
             anchorEl={anchorEl}
             id="account-menu"
             open={open}
@@ -175,7 +176,7 @@ const Navigation = () => {
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
             <MenuItem onClick={handleClose}>
-              <Avata />
+              <Avatar />
               <Button onClick={handleOpenModal}>Profile</Button>
               <Modal
                 keepMounted
@@ -217,7 +218,7 @@ const Navigation = () => {
                 Log out
               </NavLink>
             </MenuItem>
-          </Men>
+          </Menu>
         </div>
       </nav>
     </>
