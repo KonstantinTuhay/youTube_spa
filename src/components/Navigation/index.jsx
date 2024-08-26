@@ -14,6 +14,7 @@ import {
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import { Settings, Logout } from "@mui/icons-material";
 import Typography from "@mui/material/Typography";
+import { SiYoutubeshorts } from "react-icons/si";
 import styles from "./index.module.css";
 
 const Navigation = () => {
@@ -78,10 +79,10 @@ const Navigation = () => {
     <>
       <Typography sx={{ align: "left" }}>
         <NavLink to="/main">
-          <img src="../../../public/monitor26.png" width="60px" alt="logo" />
+          <SiYoutubeshorts style={{ fontSize: "50px", color: "black" }} />
         </NavLink>
       </Typography>
-      <Typography sx={{ display: "flex", flexGrow: 1, pl: 25 }}>
+      <Typography sx={{ display: "flex", flexGrow: 1, pl: 24 }}>
         <Typography>
           <NavLink className={styles.link} to="/main">
             Search
