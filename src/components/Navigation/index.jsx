@@ -4,36 +4,19 @@ import { styled } from "@mui/material/styles";
 import {
   IconButton,
   FormControlLabel,
-  Tooltip,
   Divider,
   ListItemIcon,
   MenuItem,
   Menu,
   Avatar,
-  Box,
-  Typography,
-  Modal,
-  Button,
   Switch,
-  // Avata,
 } from "@mui/material";
+import PersonAdd from "@mui/icons-material/PersonAdd";
 import { Settings, Logout } from "@mui/icons-material";
+import Typography from "@mui/material/Typography";
 import styles from "./index.module.css";
 
 const Navigation = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const [opens, setOpens] = useState(false);
-  const handleOpenModal = () => setOpens(true);
-  const handleCloseModal = () => setOpens(false);
-
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -82,145 +65,109 @@ const Navigation = () => {
     },
   }));
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
 
   return (
     <>
-      <nav className={styles.nav}>
-        <div>
-          <NavLink to="/main">
-            <img
-              src="../../../public/monitor26.png"
-              width="60px"
-              alt="logo"
-              className={styles.img}
-            />
-          </NavLink>
-        </div>
-        <div className={styles.pages}>
+      <Typography sx={{ align: "left" }}>
+        <NavLink to="/main">
+          <img src="../../../public/monitor26.png" width="60px" alt="logo" />
+        </NavLink>
+      </Typography>
+      <Typography sx={{ display: "flex", flexGrow: 1, pl: 25 }}>
+        <Typography>
           <NavLink className={styles.link} to="/main">
             Search
           </NavLink>
+        </Typography>
+        <Typography>
           <NavLink className={styles.link} to="/favorites">
             Favorites
           </NavLink>
-        </div>
-        <div className={styles.box}>
-          <FormControlLabel
-            control={<MaterialUISwitch defaultChecked />}
-            className={styles.dayNight}
-          />
-          <Box className={styles.profile}>
-            <Tooltip title="Account settings">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                sx={{ ml: 2 }}
-                aria-controls={open ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-              >
-                <Avatar
-                  sx={{ width: 32, height: 32, backgroundColor: "black" }}
-                >
-                  M
-                </Avatar>
-              </IconButton>
-            </Tooltip>
-          </Box>
-          <Menu
-            anchorEl={anchorEl}
-            id="account-menu"
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-              elevation: 0,
-              sx: {
-                overflow: "visible",
-                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: 1.5,
-                "& .MuiAvatar-root": {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                "&::before": {
-                  content: '""',
-                  display: "block",
-                  position: "absolute",
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: "background.paper",
-                  transform: "translateY(-50%) rotate(45deg)",
-                  zIndex: 0,
-                },
-              },
-            }}
-            transformOrigin={{ horizontal: "right", vertical: "top" }}
-            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-          >
-            <MenuItem onClick={handleClose}>
-              <Avatar />
-              <Button onClick={handleOpenModal}>Profile</Button>
-              <Modal
-                keepMounted
-                open={opens}
-                onClose={handleCloseModal}
-                aria-labelledby="keep-mounted-modal-title"
-                aria-describedby="keep-mounted-modal-description"
-              >
-                <Box sx={style}>
-                  <Typography
-                    id="keep-mounted-modal-title"
-                    variant="h6"
-                    component="h2"
-                  >
-                    Text in a modal
-                  </Typography>
-                  <Typography
-                    id="keep-mounted-modal-description"
-                    sx={{ mt: 2 }}
-                  >
-                    Duis mollis, est non commodo luctus, nisi erat porttitor
-                    ligula.
-                  </Typography>
-                </Box>
-              </Modal>
-            </MenuItem>
-            <Divider />
-            <MenuItem onClick={handleClose}>
-              <ListItemIcon>
-                <Settings fontSize="small" />
-              </ListItemIcon>
-              Settings
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
-              <ListItemIcon>
-                <Logout fontSize="small" />
-              </ListItemIcon>
-              <NavLink className={styles.logOut} to="/registr">
-                Log out
-              </NavLink>
-            </MenuItem>
-          </Menu>
-        </div>
-      </nav>
+        </Typography>
+      </Typography>
+      <FormControlLabel control={<MaterialUISwitch defaultChecked />} />
+      <IconButton
+        onClick={handleClick}
+        size="small"
+        aria-controls={open ? "account-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+      >
+        <Avatar sx={{ width: 32, height: 32, backgroundColor: "#000000" }}>
+          M
+        </Avatar>
+      </IconButton>
+      <Menu
+        anchorEl={anchorEl}
+        id="account-menu"
+        open={open}
+        onClose={handleClose}
+        onClick={handleClose}
+        PaperProps={{
+          elevation: 0,
+          sx: {
+            overflow: "visible",
+            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+            mt: 1.5,
+            "& .MuiAvatar-root": {
+              width: 32,
+              height: 32,
+              ml: -0.5,
+              mr: 1,
+            },
+            "&::before": {
+              content: '""',
+              display: "block",
+              position: "absolute",
+              top: 0,
+              right: 14,
+              width: 10,
+              height: 10,
+              bgcolor: "background.paper",
+              transform: "translateY(-50%) rotate(45deg)",
+              zIndex: 0,
+            },
+          },
+        }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+      >
+        <MenuItem onClick={handleClose}>
+          <Avatar /> Profile
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Avatar /> My account
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <PersonAdd fontSize="small" />
+          </ListItemIcon>
+          Add another account
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Settings fontSize="small" />
+          </ListItemIcon>
+          Settings
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <ListItemIcon>
+            <Logout fontSize="small" />
+          </ListItemIcon>
+          <NavLink className={styles.logOut} to="/registr">
+            Log out
+          </NavLink>
+        </MenuItem>
+      </Menu>
     </>
   );
 };
