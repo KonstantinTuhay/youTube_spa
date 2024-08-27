@@ -11,7 +11,7 @@ const Menu = () => {
   return (
     <>
       <AppBar
-        position="fixed"
+        position="static"
         sx={{
           height: 80,
           display: "flex",
