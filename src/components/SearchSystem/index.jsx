@@ -4,10 +4,15 @@ import ButtonForSearch from "../ButtonForSearch";
 import { Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 
-const SearchSystem = ({ open, setOpen }) => {
+const SearchSystem = ({ open, setOpen, style }) => {
+  const { width, textAlign, variant, marginBottom } = style;
   return (
     <>
-      <Typography variant="h2" textAlign="center" marginBottom="50px">
+      <Typography
+        variant={variant}
+        textAlign={textAlign}
+        marginBottom={marginBottom}
+      >
         Search video
       </Typography>
 
@@ -16,7 +21,7 @@ const SearchSystem = ({ open, setOpen }) => {
         sx={{
           display: "flex",
           alignItems: "center",
-          width: 900,
+          width: width,
         }}
       >
         <InputForSearch />

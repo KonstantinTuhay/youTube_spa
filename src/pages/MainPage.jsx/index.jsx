@@ -7,6 +7,13 @@ import Box from "@mui/material/Box";
 const MainPage = () => {
   const [open, setOpen] = useState(false);
 
+  const style = {
+    width: 900,
+    textAlign: "center",
+    variant: "h2",
+    marginBottom: "50px",
+  };
+
   return (
     <>
       <ModalWindow open={open} setOpen={setOpen} />
