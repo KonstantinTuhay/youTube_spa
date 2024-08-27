@@ -22,12 +22,11 @@ const ShowMovie = ({ movie }) => {
     padding: 0,
   };
 
-  console.log(movie);
   return (
     <>
       <div>
         {isSwitch ? (
-          <Card sx={{}}>
+          <Card>
             <Link
               to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
               target="_blank"
@@ -51,7 +50,7 @@ const ShowMovie = ({ movie }) => {
             </Link>
           </Card>
         ) : (
-          <List sx={style} className={styles.list}>
+          <List sx={style}>
             <Link
               to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
               target="_blank"

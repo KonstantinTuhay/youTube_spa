@@ -49,7 +49,6 @@ const ListMovies = () => {
   };
 
   const allMoviesGrid = {
-    // margin: "0 auto",
     mt: "5px",
     display: "grid",
     ["grid-template-columns"]: "auto auto auto auto",
@@ -74,12 +73,13 @@ const ListMovies = () => {
             display: "flex",
             flexDirection: "row",
             justifyContent: "space-between",
+            alignItems: "center",
             margin: "25px 0 0",
             color: "black",
             lineHeight: 0,
           }}
         >
-          <Typography sx={{ fontWeight: 100, opacity: 0.8 }}>
+          <Typography sx={{ opacity: 0.8 }}>
             Video on demand {`"${text}"`}
           </Typography>
 

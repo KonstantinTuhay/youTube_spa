@@ -2,10 +2,6 @@
   margin: 5px;
 }
 
-.list {
-  margin: 5px 0;
-}
-
 .title {
   overflow: hidden;
   text-overflow: ellipsis;
