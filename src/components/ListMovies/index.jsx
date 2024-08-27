@@ -10,6 +10,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ListIcon from "@mui/icons-material/List";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import Box from "@mui/material/Box";
 import styles from "./index.module.css";
 
 const ListMovies = () => {
@@ -23,10 +24,9 @@ const ListMovies = () => {
 
   if (isLoading) {
     return (
-      <p>
-        {" "}
-        <CircularProgress color="inherit" />
-      </p>
+      <Box>
+        <CircularProgress color="inherit" />;
+      </Box>
     );
   }
 
@@ -40,7 +40,6 @@ const ListMovies = () => {
 
       <div>
         <SearchSystem open={open} setOpen={setOpen} />
-
         <div className={styles.buttDirection}>
           <h4>Video on demand {`"${text}"`}</h4>
 
@@ -61,7 +60,6 @@ const ListMovies = () => {
             </ToggleButton>
           </ToggleButtonGroup>
         </div>
-
         <div className={isSwitch ? styles.allMoviesGrid : styles.allMoviesFlex}>
           {movies.map((movie) => {
             return <ShowMovie key={movie.id.videoId} movie={movie} />;
