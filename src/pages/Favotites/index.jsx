@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import ListItemInFavorites from "../ListItemInFavorites";
-import ModalWindow from "../ModalWindow";
+import ListItemInFavorites from "../../components/ListItemInFavorites";
+import ModalWindow from "../../components/ModalWindow";
 import { List, Divider } from "@mui/material";
-import styles from "./index.module.css";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 const Favorites = () => {
   const style = {
@@ -23,8 +24,10 @@ const Favorites = () => {
     <>
       <ModalWindow open={open} setOpen={setOpen} />
 
-      <div className={styles.container}>
-        <h2>FAVORITES</h2>
+      <Box sx={{ mt: "30px", ml: "30px" }}>
+        <Typography variant="h3" gutterBottom>
+          FAVORITES
+        </Typography>
 
         {favoriteMovie.length === 0 ? (
           ""
@@ -54,7 +57,7 @@ const Favorites = () => {
             })}
           </List>
         )}
-      </div>
+      </Box>
     </>
   );
 };
