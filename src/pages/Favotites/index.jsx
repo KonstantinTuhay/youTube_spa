@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import ListItemInFavorites from "../ListItemInFavorites";
-import ModalWindow from "../ModalWindow";
+import ListItemInFavorites from "../../components/ListItemInFavorites";
+import ModalWindow from "../../components/ModalWindow";
 import { List, Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
