@@ -17,7 +17,6 @@ h2 {
 .buttDirection {
   display: flex;
   flex-direction: row;
-  line-height: 0;
   justify-content: space-between;
   margin: 5px 0;
   color: black;

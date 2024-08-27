@@ -11,6 +11,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ListIcon from "@mui/icons-material/List";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
 import styles from "./index.module.css";
 
 const ListMovies = () => {
@@ -24,8 +25,15 @@ const ListMovies = () => {
 
   if (isLoading) {
     return (
-      <Box>
-        <CircularProgress color="inherit" />;
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          mt: "6rem",
+          textAlign: "center",
+        }}
+      >
+        <CircularProgress color="inherit" />
       </Box>
     );
   }
@@ -34,14 +42,32 @@ const ListMovies = () => {
     return <p>Error: {error.message}</p>;
   }
 
+  const style = {
+    width: "100%",
+    textAlign: "start",
+    variant: "h3",
+    marginBottom: "10px",
+  };
+
   return (
     <>
       <ModalWindow open={open} setOpen={setOpen} />
 
-      <div>
-        <SearchSystem open={open} setOpen={setOpen} />
-        <div className={styles.buttDirection}>
-          <h4>Video on demand {`"${text}"`}</h4>
+      <Box sx={{ ml: 3, mt: 5 }}>
+        <SearchSystem open={open} setOpen={setOpen} style={style} />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            margin: "25px 0 0",
+            color: "black",
+            lineHeight: 0,
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: 200 }}>
+            Video on demand {`"${text}"`}
+          </Typography>
 
           <ToggleButtonGroup exclusive aria-label="text alignment">
             <ToggleButton
@@ -59,13 +85,13 @@ const ListMovies = () => {
               <GridViewOutlinedIcon />
             </ToggleButton>
           </ToggleButtonGroup>
-        </div>
+        </Box>
         <div className={isSwitch ? styles.allMoviesGrid : styles.allMoviesFlex}>
           {movies.map((movie) => {
             return <ShowMovie key={movie.id.videoId} movie={movie} />;
           })}
         </div>
-      </div>
+      </Box>
     </>
   );
 };
