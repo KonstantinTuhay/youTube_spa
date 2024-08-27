@@ -12,7 +12,7 @@ import ListIcon from "@mui/icons-material/List";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import styles from "./index.module.css";
+// import styles from "./index.module.css";
 
 const ListMovies = () => {
   const [open, setOpen] = useState(false);
@@ -97,11 +97,11 @@ const ListMovies = () => {
             </ToggleButton>
           </ToggleButtonGroup>
         </Box>
-        <div className={isSwitch ? styles.allMoviesGrid : styles.allMoviesFlex}>
+        <Box sx={isSwitch ? allMoviesGrid : allMoviesFlex}>
           {movies.map((movie) => {
             return <ShowMovie key={movie.id.videoId} movie={movie} />;
           })}
-        </div>
+        </Box>
       </Box>
     </>
   );
