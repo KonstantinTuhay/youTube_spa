@@ -26,7 +26,7 @@ const Favorites = () => {
 
       <Box sx={{ mt: "30px", ml: "30px" }}>
         <Typography variant="h3" gutterBottom>
-          FAVORITES
+          Favorites
         </Typography>
 
         {favoriteMovie.length === 0 ? (

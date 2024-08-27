@@ -19,6 +19,7 @@ const ShowMovie = ({ movie }) => {
     border: "1px solid",
     borderColor: "divider",
     backgroundColor: "background.paper",
+    padding: 0,
   };
 
   console.log(movie);
@@ -26,7 +27,7 @@ const ShowMovie = ({ movie }) => {
     <>
       <div>
         {isSwitch ? (
-          <Card className={styles.cubes}>
+          <Card sx={{}}>
             <Link
               to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
               target="_blank"
@@ -55,7 +56,11 @@ const ShowMovie = ({ movie }) => {
               to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
               target="_blank"
             >
-              <ListItem>
+              <ListItem
+                sx={{
+                  padding: 0,
+                }}
+              >
                 <Card>
                   <CardActionArea>
                     <CardMedia

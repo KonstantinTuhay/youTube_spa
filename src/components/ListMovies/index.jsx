@@ -44,19 +44,23 @@ const ListMovies = () => {
   const style = {
     width: "100%",
     textAlign: "start",
-    variant: "h3",
+    variant: "h4",
     marginBottom: "10px",
   };
 
   const allMoviesGrid = {
-    margin: "0 auto",
+    // margin: "0 auto",
+    mt: "5px",
     display: "grid",
     ["grid-template-columns"]: "auto auto auto auto",
+    gap: "10px",
   };
 
   const allMoviesFlex = {
     display: "flex",
     ["flex-direction"]: "column",
+    mt: "5px",
+    gap: "10px",
   };
 
   return (
@@ -75,7 +79,7 @@ const ListMovies = () => {
             lineHeight: 0,
           }}
         >
-          <Typography variant="h6" sx={{ fontWeight: 200 }}>
+          <Typography sx={{ fontWeight: 100, opacity: 0.8 }}>
             Video on demand {`"${text}"`}
           </Typography>
 

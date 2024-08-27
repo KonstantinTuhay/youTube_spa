@@ -24,7 +24,7 @@ const InputForSearch = () => {
       {" "}
       <InputBase
         fullWidth="true"
-        sx={{ ml: 1, flex: 1 }}
+        sx={{ ml: 1, flex: 1, fontSize: "25px" }}
         placeholder="Enter your request"
         value={text}
         onChange={(e) => similarText(e)}
