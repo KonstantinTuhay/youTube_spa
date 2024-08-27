@@ -49,6 +49,17 @@ const ListMovies = () => {
     marginBottom: "10px",
   };
 
+  const allMoviesGrid = {
+    margin: "0 auto",
+    display: "grid",
+    ["grid-template-columns"]: "auto auto auto auto",
+  };
+
+  const allMoviesFlex = {
+    display: "flex",
+    ["flex-direction"]: "column",
+  };
+
   return (
     <>
       <ModalWindow open={open} setOpen={setOpen} />
