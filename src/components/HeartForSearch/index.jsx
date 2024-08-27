@@ -44,7 +44,7 @@ const HeartForSearch = ({ setOpen }) => {
           }),
         }}
       >
-        <FavoriteSharpIcon onClick={changeColor} style={style} />
+        <FavoriteSharpIcon onClick={changeColor} sx={style} />
       </animated.div>
     </>
   );

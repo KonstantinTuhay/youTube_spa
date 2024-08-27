@@ -64,8 +64,8 @@ const ModalWindow = ({ open, setOpen }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={styleForModal} className={styles.mainBox}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            <h2>Change request</h2>{" "}
+          <Typography id="modal-modal-title" variant="h4">
+            Change request{" "}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Box
@@ -114,7 +114,9 @@ const ModalWindow = ({ open, setOpen }) => {
               <br />
 
               <InputLabel id="maximum" className={styles.inputMaximum}>
-                <p className={styles.inputMaximum}>Maximum quantity</p>
+                <Typography className={styles.inputMaximum}>
+                  Maximum quantity
+                </Typography>
               </InputLabel>
               <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                 <Slider
@@ -131,7 +133,7 @@ const ModalWindow = ({ open, setOpen }) => {
                 />
               </FormControl>
               <br />
-              <div>
+              <Box>
                 <Button
                   variant="contained"
                   onClick={() => saveChangeRequest(getEditId)}
@@ -141,7 +143,7 @@ const ModalWindow = ({ open, setOpen }) => {
                 <Button variant="outlined" onClick={handleCloseModal}>
                   Do not save
                 </Button>
-              </div>
+              </Box>
             </Box>
           </Typography>
         </Box>

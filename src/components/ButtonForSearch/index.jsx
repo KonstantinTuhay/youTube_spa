@@ -11,7 +11,7 @@ const ButtonForSearch = () => {
   return (
     <>
       <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-        <SearchIcon onClick={findMovies} style={{ fontSize: "40px" }} />
+        <SearchIcon onClick={findMovies} sx={{ fontSize: "40px" }} />
       </IconButton>
     </>
   );

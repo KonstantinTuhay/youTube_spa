@@ -4,42 +4,43 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import CardActionArea from "@mui/material/CardActionArea";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import styles from "./index.module.css";
+import Box from "@mui/material/Box";
 
 const ShowMovie = ({ movie }) => {
   const isSwitch = useSelector((state) => state.switchCards);
 
-  const style = {
-    width: "100%",
-    borderRadius: 2,
-    border: "1px solid",
-    borderColor: "divider",
-    backgroundColor: "background.paper",
-  };
-
-  console.log(movie);
   return (
     <>
-      <div>
+      <Box>
         {isSwitch ? (
-          <Card className={styles.cubes}>
+          <Card>
             <Link
               to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
               target="_blank"
             >
-              <CardActionArea className={styles.cardGrid}>
+              <CardActionArea>
                 <CardMedia
                   component="img"
                   height="165"
                   image={movie.snippet.thumbnails.high.url}
                   alt="Image Movie"
                 />
-                <CardContent className={styles.cardContentGrid}>
-                  <Typography gutterBottom className={styles.title}>
+                <CardContent sx={{ minHeight: "80px", minWidth: "300px" }}>
+                  <Typography
+                    sx={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      ["-webkit-line-clamp"]: 2,
+                      ["-webkit-box-orient"]: "vertical",
+                      color: "black",
+                    }}
+                    gutterBottom
+                  >
                     {movie.snippet.title}
                   </Typography>
                   <Typography color="text.secondary">
@@ -50,32 +51,52 @@ const ShowMovie = ({ movie }) => {
             </Link>
           </Card>
         ) : (
-          <List sx={style} className={styles.list}>
+          <List
+            sx={{
+              width: "100%",
+              borderRadius: 2,
+              border: "1px solid",
+              borderColor: "divider",
+              backgroundColor: "background.paper",
+              padding: 0,
+            }}
+          >
             <Link
               to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
               target="_blank"
             >
-              <ListItem>
+              <ListItem
+                sx={{
+                  padding: 0,
+                }}
+              >
                 <Card>
                   <CardActionArea>
                     <CardMedia
+                      sx={{ height: "140px" }}
                       component="img"
-                      className={styles.img}
                       image={movie.snippet.thumbnails.high.url}
                       alt="Image Movie"
                     />
                   </CardActionArea>
                 </Card>
 
-                <div className={styles.cardFlex}>
+                <Box
+                  sx={{
+                    marginLeft: "20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    color: "black",
+                  }}
+                >
                   <ListItemText primary={movie.snippet.title} />
                   <ListItemText primary={movie.snippet.channelTitle} />
-                </div>
+                </Box>
               </ListItem>
             </Link>
           </List>
         )}
-      </div>
+      </Box>
     </>
   );
 };
