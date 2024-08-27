@@ -7,15 +7,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 const Favorites = () => {
-  const style = {
-    py: 0,
-    width: "100%",
-    borderRadius: 2,
-    border: "1px solid",
-    borderColor: "divider",
-    backgroundColor: "background.paper",
-  };
-
   const [open, setOpen] = useState(false);
 
   const favoriteMovie = useSelector((state) => state.addFavorites);
@@ -32,7 +23,16 @@ const Favorites = () => {
         {favoriteMovie.length === 0 ? (
           ""
         ) : (
-          <List sx={style}>
+          <List
+            sx={{
+              py: 0,
+              width: "100%",
+              borderRadius: 2,
+              border: "1px solid",
+              borderColor: "divider",
+              backgroundColor: "background.paper",
+            }}
+          >
             {favoriteMovie.map((videoName, index) => {
               if (index === favoriteMovie.length - 1) {
                 return (
