@@ -1,24 +1,17 @@
-import ShowMovie from "../ShowMovie";
+import VariantView from "../VariantView";
 import SearchSystem from "../SearchSystem";
+import Movies from "../Movies";
 import ModalWindow from "../ModalWindow";
 import { useGetMoviesQuery } from "../../redux/apiMovies";
-import { switchCard } from "../../redux/slices/switchCards";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Typography from "@mui/material/Typography";
+import { useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import ListIcon from "@mui/icons-material/List";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 
 const ListMovies = () => {
   const [open, setOpen] = useState(false);
 
-  const dispatch = useDispatch();
   const text = useSelector((state) => state.getSlice);
-  const isSwitch = useSelector((state) => state.switchCards);
 
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
 
@@ -48,63 +41,14 @@ const ListMovies = () => {
     marginBottom: "10px",
   };
 
-  const allMoviesGrid = {
-    mt: "5px",
-    display: "grid",
-    ["grid-template-columns"]: "auto auto auto auto",
-    gap: "10px",
-  };
-
-  const allMoviesFlex = {
-    display: "flex",
-    ["flex-direction"]: "column",
-    mt: "5px",
-    gap: "10px",
-  };
-
   return (
     <>
       <ModalWindow open={open} setOpen={setOpen} />
 
       <Box sx={{ ml: 3, mt: 5 }}>
         <SearchSystem open={open} setOpen={setOpen} style={style} />
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            margin: "25px 0 0",
-            color: "black",
-            lineHeight: 0,
-          }}
-        >
-          <Typography sx={{ opacity: 0.8 }}>
-            Video on demand {`"${text}"`}
-          </Typography>
-
-          <ToggleButtonGroup exclusive aria-label="text alignment">
-            <ToggleButton
-              value="left"
-              aria-label="left aligned"
-              onClick={() => dispatch(switchCard(false))}
-            >
-              <ListIcon />
-            </ToggleButton>
-            <ToggleButton
-              value="center"
-              aria-label="centered"
-              onClick={() => dispatch(switchCard(true))}
-            >
-              <GridViewOutlinedIcon />
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </Box>
-        <Box sx={isSwitch ? allMoviesGrid : allMoviesFlex}>
-          {movies.map((movie) => {
-            return <ShowMovie key={movie.id.videoId} movie={movie} />;
-          })}
-        </Box>
+        <VariantView />
+        <Movies movies={movies} />
       </Box>
     </>
   );
