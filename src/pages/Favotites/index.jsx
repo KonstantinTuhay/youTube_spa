@@ -21,7 +21,7 @@ const Favorites = () => {
           Favorites
         </Typography>
 
-        {favoriteMovie.length && (
+        {(favoriteMovie.length && (
           <List
             sx={{
               py: 0,
@@ -33,27 +33,24 @@ const Favorites = () => {
             }}
           >
             {favoriteMovie.map((videoName, index) => {
-              if (index === favoriteMovie.length - 1) {
-                return (
+              return (
+                <Box key={crypto.randomUUID()}>
                   <ListItemInFavorites
-                    key={crypto.randomUUID()}
                     videoName={videoName}
                     setOpen={setOpen}
                   />
-                );
-              } else {
-                return (
-                  <Box key={crypto.randomUUID()}>
-                    <ListItemInFavorites
-                      videoName={videoName}
-                      setOpen={setOpen}
-                    />
+                  {index !== favoriteMovie.length - 1 && (
                     <Divider variant="middle" component="li" />
-                  </Box>
-                );
-              }
+                  )}
+                </Box>
+              );
             })}
           </List>
+        )) || (
+          <Box sx={{ textAlign: "center" }}>
+            <ContentPasteOffIcon sx={{ fontSize: "80px" }} />
+            <Typography variant="h4">Not Found</Typography>
+          </Box>
         )}
       </Box>
     </>
