@@ -20,9 +20,7 @@ const Favorites = () => {
           Favorites
         </Typography>
 
-        {favoriteMovie.length === 0 ? (
-          ""
-        ) : (
+        {favoriteMovie.length && (
           <List
             sx={{
               py: 0,
