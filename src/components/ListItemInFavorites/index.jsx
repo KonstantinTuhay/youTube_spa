@@ -12,6 +12,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import styles from "./index.module.css";
 
 const ListItemInFavorites = ({ videoName, setOpen }) => {
+  const { id, text } = videoName;
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,19 +37,16 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
       {" "}
       <div className={styles.oneFavoriteVideo}>
         <ListItem>
-          <ListItemText
-            primary={videoName.text}
-            onClick={() => clickSearch(videoName.text)}
-          />
+          <ListItemText primary={text} onClick={() => clickSearch(text)} />
 
           <IconButton
             aria-label="delete"
-            onClick={() => handleEditId(videoName.id, videoName.text)}
+            onClick={() => handleEditId(id, text)}
           >
             <EditIcon />
           </IconButton>
           <IconButton aria-label="delete">
-            <DeleteIcon onClick={() => removeFavorite(videoName.id)} />
+            <DeleteIcon onClick={() => removeFavorite(id)} />
           </IconButton>
         </ListItem>
       </div>
