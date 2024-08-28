@@ -5,6 +5,7 @@ import ModalWindow from "../../components/ModalWindow";
 import { List, Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import ContentPasteOffIcon from "@mui/icons-material/ContentPasteOff";
 
 const Favorites = () => {
   const [open, setOpen] = useState(false);
@@ -20,9 +21,7 @@ const Favorites = () => {
           Favorites
         </Typography>
 
-        {favoriteMovie.length === 0 ? (
-          ""
-        ) : (
+        {(favoriteMovie.length && (
           <List
             sx={{
               py: 0,
@@ -34,28 +33,24 @@ const Favorites = () => {
             }}
           >
             {favoriteMovie.map((videoName, index) => {
-              if (index === favoriteMovie.length - 1) {
-                return (
-                  <div key={crypto.randomUUID()}>
-                    <ListItemInFavorites
-                      videoName={videoName}
-                      setOpen={setOpen}
-                    />
-                  </div>
-                );
-              } else {
-                return (
-                  <div key={crypto.randomUUID()}>
-                    <ListItemInFavorites
-                      videoName={videoName}
-                      setOpen={setOpen}
-                    />
+              return (
+                <Box key={crypto.randomUUID()}>
+                  <ListItemInFavorites
+                    videoName={videoName}
+                    setOpen={setOpen}
+                  />
+                  {index !== favoriteMovie.length - 1 && (
                     <Divider variant="middle" component="li" />
-                  </div>
-                );
-              }
+                  )}
+                </Box>
+              );
             })}
           </List>
+        )) || (
+          <Box sx={{ textAlign: "center" }}>
+            <ContentPasteOffIcon sx={{ fontSize: "80px" }} />
+            <Typography variant="h4">Not Found</Typography>
+          </Box>
         )}
       </Box>
     </>
