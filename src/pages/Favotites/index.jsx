@@ -5,6 +5,7 @@ import ModalWindow from "../../components/ModalWindow";
 import { List, Divider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import ContentPasteOffIcon from "@mui/icons-material/ContentPasteOff";
 
 const Favorites = () => {
   const [open, setOpen] = useState(false);
@@ -34,22 +35,21 @@ const Favorites = () => {
             {favoriteMovie.map((videoName, index) => {
               if (index === favoriteMovie.length - 1) {
                 return (
-                  <div key={crypto.randomUUID()}>
-                    <ListItemInFavorites
-                      videoName={videoName}
-                      setOpen={setOpen}
-                    />
-                  </div>
+                  <ListItemInFavorites
+                    key={crypto.randomUUID()}
+                    videoName={videoName}
+                    setOpen={setOpen}
+                  />
                 );
               } else {
                 return (
-                  <div key={crypto.randomUUID()}>
+                  <Box key={crypto.randomUUID()}>
                     <ListItemInFavorites
                       videoName={videoName}
                       setOpen={setOpen}
                     />
                     <Divider variant="middle" component="li" />
-                  </div>
+                  </Box>
                 );
               }
             })}
