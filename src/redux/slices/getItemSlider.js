@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const getItemSlider = createSlice({
+export const getItemSlider = createSlice({
   name: "getItemSlider",
   initialState: "",
   reducers: {
@@ -11,4 +11,5 @@ const getItemSlider = createSlice({
 });
 
 export const { getCurrentItemSlider } = getItemSlider.actions;
+
 export default getItemSlider.reducer;

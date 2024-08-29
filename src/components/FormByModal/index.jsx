@@ -13,12 +13,14 @@ import { edit } from "../../redux/slices/addEditRemoveFavorites";
 import { getId } from "../../redux/slices/getIdMovie";
 import { getPreText } from "../../redux/slices/getPreviousText";
 import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
+import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
+import { change } from "../../redux/slices/changesColors";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
   const getEditText = useSelector((state) => state.getPreviousText);
   const getEditId = useSelector((state) => state.getIdMovie);
-
+  const textFromInpit = useSelector((state) => state.getTextFromInput);
   const [age, setAge] = useState("");
 
   const handleChange = (event) => {
@@ -26,6 +28,14 @@ const FormByModal = ({ setOpen }) => {
   };
 
   const saveChangeRequest = (id) => {
+    // const objRequest = {
+    //   id: crypto.randomUUID(),
+    //   text: textFromInpit,
+    //   // maxQuantity: `${itemSlider}`,
+    // };
+    // dispatch(addFavoriteMovie(objRequest));
+    // dispatch(getId(objRequest.id));
+    // dispatch(getPreText(textFromInpit));
     dispatch(edit({ id: id, text: getEditText }));
     dispatch(getId(null));
     dispatch(getPreText(null));
@@ -43,6 +53,7 @@ const FormByModal = ({ setOpen }) => {
   };
 
   const getItemSlider = (e) => {
+    // console.log(e.target.value);
     dispatch(getCurrentItemSlider(e.target.value));
   };
 
