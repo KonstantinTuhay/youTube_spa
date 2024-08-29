@@ -13,15 +13,14 @@ import Box from "@mui/material/Box";
 const ShowMovie = ({ movie }) => {
   const isSwitch = useSelector((state) => state.switchCards);
 
+  const linkOnYouTube = import.meta.env.VITE_LINK_ON_YOUTUBE + movie.id.videoId;
+
   return (
     <>
       <Box>
         {isSwitch ? (
           <Card>
-            <Link
-              to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
-              target="_blank"
-            >
+            <Link to={linkOnYouTube} target="_blank">
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -61,10 +60,7 @@ const ShowMovie = ({ movie }) => {
               padding: 0,
             }}
           >
-            <Link
-              to={`https://www.youtube.com/watch?v=${movie.id.videoId}`}
-              target="_blank"
-            >
+            <Link to={linkOnYouTube} target="_blank">
               <ListItem
                 sx={{
                   padding: 0,
