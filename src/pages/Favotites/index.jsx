@@ -10,7 +10,7 @@ import ContentPasteOffIcon from "@mui/icons-material/ContentPasteOff";
 const Favorites = () => {
   const [open, setOpen] = useState(false);
 
-  const favoriteMovie = useSelector((state) => state.addFavorites);
+  const favoriteMovie = useSelector((state) => state.addEditRemoveFavorites);
 
   return (
     <>

@@ -10,7 +10,7 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 const VariantView = () => {
   const dispatch = useDispatch();
 
-  const text = useSelector((state) => state.getSlice);
+  const text = useSelector((state) => state.getTextForSearch);
 
   return (
     <>

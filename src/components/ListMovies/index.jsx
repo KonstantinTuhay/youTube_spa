@@ -11,7 +11,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 const ListMovies = () => {
   const [open, setOpen] = useState(false);
 
-  const text = useSelector((state) => state.getSlice);
+  const text = useSelector((state) => state.getTextForSearch);
 
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
 

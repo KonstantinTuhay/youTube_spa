@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const textSlice = createSlice({
-  name: "text",
+export const getTextForSearch = createSlice({
+  name: "textForSearch",
   initialState: "",
   reducers: {
     enterText: (state, action) => {
@@ -10,6 +10,6 @@ export const textSlice = createSlice({
   },
 });
 
-export const { enterText } = textSlice.actions;
+export const { enterText } = getTextForSearch.actions;
 
-export default textSlice.reducer;
+export default getTextForSearch.reducer;

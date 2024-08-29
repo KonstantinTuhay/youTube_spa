@@ -1,13 +1,13 @@
 import InputBase from "@mui/material/InputBase";
 import { useDispatch, useSelector } from "react-redux";
-import { enterText } from "../../redux/slices/textSlice";
+import { enterText } from "../../redux/slices/getTextForSearch";
 import { change } from "../../redux/slices/changesColors";
 
 const InputForSearch = () => {
   const dispatch = useDispatch();
 
-  const text = useSelector((state) => state.getSlice);
-  const favoriteMovie = useSelector((state) => state.addFavorites);
+  const text = useSelector((state) => state.getTextForSearch);
+  const favoriteMovie = useSelector((state) => state.addEditRemoveFavorites);
 
   const similarText = (e) => {
     dispatch(enterText(e.target.value));

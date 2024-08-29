@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { editId } from "../../redux/slices/editIdSlice";
-import { editPreText } from "../../redux/slices/editPreviousText";
-import { addFavoriteMovie } from "../../redux/slices/addFavorites";
+import { getId } from "../../redux/slices/getIdMovie";
+import { getPreText } from "../../redux/slices/getPreviousText";
+import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
 import { change } from "../../redux/slices/changesColors";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 import { useSpring, animated } from "@react-spring/web";
@@ -17,7 +17,7 @@ const HeartForSearch = ({ setOpen }) => {
 
   const dispatch = useDispatch();
   const color = useSelector((state) => state.changesColors);
-  const text = useSelector((state) => state.getSlice);
+  const text = useSelector((state) => state.getTextForSearch);
 
   const style = {
     color: color,
@@ -28,8 +28,8 @@ const HeartForSearch = ({ setOpen }) => {
     const objRequest = { id: crypto.randomUUID(), text: text };
     dispatch(change(style.color));
     dispatch(addFavoriteMovie(objRequest));
-    dispatch(editId(objRequest.id));
-    dispatch(editPreText(text));
+    dispatch(getId(objRequest.id));
+    dispatch(getPreText(text));
     setOpen(true);
   };
   return (

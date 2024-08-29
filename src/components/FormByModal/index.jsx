@@ -9,14 +9,14 @@ import Input from "@mui/material/Input";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Slider from "@mui/material/Slider";
-import { edit } from "../../redux/slices/addFavorites";
-import { editId } from "../../redux/slices/editIdSlice";
-import { editPreText } from "../../redux/slices/editPreviousText";
+import { edit } from "../../redux/slices/addEditRemoveFavorites";
+import { getId } from "../../redux/slices/getIdMovie";
+import { getPreText } from "../../redux/slices/getPreviousText";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
-  const getEditText = useSelector((state) => state.editPreviousText);
-  const getEditId = useSelector((state) => state.editIdSlice);
+  const getEditText = useSelector((state) => state.getPreviousText);
+  const getEditId = useSelector((state) => state.getIdMovie);
 
   const [age, setAge] = useState("");
 
@@ -26,18 +26,18 @@ const FormByModal = ({ setOpen }) => {
 
   const saveChangeRequest = (id) => {
     dispatch(edit({ id: id, text: getEditText }));
-    dispatch(editId(null));
-    dispatch(editPreText(null));
+    dispatch(getId(null));
+    dispatch(getPreText(null));
     setOpen(false);
   };
 
   const typeEdit = (e) => {
-    dispatch(editPreText(e));
+    dispatch(getPreText(e));
   };
 
   const handleCloseModal = () => {
-    dispatch(editId(null));
-    dispatch(editPreText(null));
+    dispatch(getId(null));
+    dispatch(getPreText(null));
     setOpen(false);
   };
 
