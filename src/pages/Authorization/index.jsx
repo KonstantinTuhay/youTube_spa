@@ -20,7 +20,7 @@ const Authorization = () => {
       console.log(response);
 
       localStorage.setItem("token", response.data.token);
-      navigate("/main");
+      navigate("/");
 
       reset();
     } catch (error) {

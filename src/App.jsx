@@ -16,7 +16,7 @@ function App() {
         <Route path="/authorization" element={<Authorization />} />
         <Route element={<PrivateRoute />}>
           <Route path="/" element={<Menu />}>
-            <Route path="main" element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
             <Route path="favorites" element={<Favorites />} />
             <Route path="list" element={<ListMovies />} />
           </Route>
