@@ -20,18 +20,6 @@ const ModalWindow = ({ open, setOpen }) => {
   const getEditText = useSelector((state) => state.editPreviousText);
   const getEditId = useSelector((state) => state.editIdSlice);
 
-  const styleForModal = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
-  };
-
   const handleCloseModal = () => {
     dispatch(editId(null));
     dispatch(editPreText(null));
@@ -63,16 +51,30 @@ const ModalWindow = ({ open, setOpen }) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={styleForModal} className={styles.mainBox}>
+        <FormControl
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: 400,
+            backgroundColor: "background.paper",
+            border: "2px solid #000",
+            boxShadow: 24,
+            p: 4,
+            borderRadius: "30px",
+          }}
+        >
           <Typography id="modal-modal-title" variant="h4">
             Change request{" "}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Box
-              className={styles.box}
               component="form"
               sx={{
                 "& > :not(style)": { m: 1 },
+                display: "flex",
+                flexDirection: "column",
               }}
               noValidate
               autoComplete="off"
@@ -113,11 +115,18 @@ const ModalWindow = ({ open, setOpen }) => {
               </FormControl>
               <br />
 
-              <InputLabel id="maximum" className={styles.inputMaximum}>
-                <Typography className={styles.inputMaximum}>
+              <FormControl>
+                <InputLabel
+                  id="maximum"
+                  sx={{
+                    position: "relative",
+                    left: -13,
+                  }}
+                >
                   Maximum quantity
-                </Typography>
-              </InputLabel>
+                </InputLabel>
+              </FormControl>
+
               <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                 <Slider
                   label="Maximum quantity"
@@ -146,7 +155,7 @@ const ModalWindow = ({ open, setOpen }) => {
               </Box>
             </Box>
           </Typography>
-        </Box>
+        </FormControl>
       </Modal>
     </>
   );
