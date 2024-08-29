@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { switchCard } from "../../redux/slices/switchCards";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -7,10 +7,8 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import ListIcon from "@mui/icons-material/List";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 
-const VariantView = () => {
+const VariantView = ({ textFromInput }) => {
   const dispatch = useDispatch();
-
-  const text = useSelector((state) => state.getTextForSearch);
 
   return (
     <>
@@ -26,7 +24,7 @@ const VariantView = () => {
         }}
       >
         <Typography sx={{ opacity: 0.8 }}>
-          Video on demand {`"${text}"`}
+          Video on demand {`"${textFromInput}"`}
         </Typography>
 
         <ToggleButtonGroup exclusive aria-label="text alignment">

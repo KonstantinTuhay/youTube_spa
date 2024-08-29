@@ -1,16 +1,15 @@
 import InputBase from "@mui/material/InputBase";
 import { useDispatch, useSelector } from "react-redux";
-import { enterText } from "../../redux/slices/getTextForSearch";
+import { getText } from "../../redux/slices/getTextFromInput";
 import { change } from "../../redux/slices/changesColors";
 
-const InputForSearch = () => {
+const InputForSearch = ({ textFromInput }) => {
   const dispatch = useDispatch();
 
-  const text = useSelector((state) => state.getTextForSearch);
   const favoriteMovie = useSelector((state) => state.addEditRemoveFavorites);
 
   const similarText = (e) => {
-    dispatch(enterText(e.target.value));
+    dispatch(getText(e.target.value));
     const isSimilar = favoriteMovie.find((item) => item === e.target.value);
     if (isSimilar) {
       dispatch(change("black"));
@@ -26,7 +25,7 @@ const InputForSearch = () => {
         fullWidth="true"
         sx={{ ml: 1, flex: 1, fontSize: "25px" }}
         placeholder="Enter your request"
-        value={text}
+        value={textFromInput}
         onChange={(e) => similarText(e)}
       />
     </>
