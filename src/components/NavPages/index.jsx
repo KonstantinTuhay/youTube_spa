@@ -6,7 +6,7 @@ const NavPages = () => {
   return (
     <>
       <Typography>
-        <NavLink className={styles.link} to="/main">
+        <NavLink className={styles.link} to="/">
           Search
         </NavLink>
       </Typography>

@@ -4,7 +4,7 @@ import { SiYoutubeshorts } from "react-icons/si";
 const Logo = () => {
   return (
     <>
-      <NavLink to="/main">
+      <NavLink to="/">
         <SiYoutubeshorts style={{ fontSize: "50px", color: "black" }} />
       </NavLink>
     </>
