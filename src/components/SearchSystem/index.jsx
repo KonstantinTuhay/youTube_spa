@@ -4,7 +4,7 @@ import ButtonForSearch from "../ButtonForSearch";
 import { Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 
-const SearchSystem = ({ open, setOpen, style }) => {
+const SearchSystem = ({ open, setOpen, style, textFromInput }) => {
   const { width, textAlign, variant, marginBottom } = style;
   return (
     <>
@@ -24,7 +24,7 @@ const SearchSystem = ({ open, setOpen, style }) => {
           width: width,
         }}
       >
-        <InputForSearch />
+        <InputForSearch textFromInput={textFromInput} />
 
         <HeartForSearch setOpen={setOpen} />
 

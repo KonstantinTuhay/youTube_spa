@@ -10,11 +10,12 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 const ListMovies = () => {
   const [open, setOpen] = useState(false);
+  const textFromInput = useSelector((state) => state.getTextFromInput);
 
   const text = useSelector((state) => state.getTextForSearch);
 
   const { data: movies, error, isLoading } = useGetMoviesQuery(text);
-
+  console.log(textFromInput);
   if (isLoading) {
     return (
       <Box
@@ -46,8 +47,13 @@ const ListMovies = () => {
       <ModalWindow open={open} setOpen={setOpen} />
 
       <Box sx={{ ml: 3, mt: 5 }}>
-        <SearchSystem open={open} setOpen={setOpen} style={style} />
-        <VariantView />
+        <SearchSystem
+          open={open}
+          setOpen={setOpen}
+          style={style}
+          textFromInput={textFromInput}
+        />
+        <VariantView textFromInput={textFromInput} />
         <Movies movies={movies} />
       </Box>
     </>

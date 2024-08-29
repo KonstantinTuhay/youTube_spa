@@ -6,9 +6,11 @@ import getTextForSearch from "./slices/getTextForSearch";
 import getIdMovie from "./slices/getIdMovie";
 import getPreviousText from "./slices/getPreviousText";
 import switchCards from "./slices/switchCards";
+import getTextFromInput from "./slices/getTextFromInput";
 
 export const store = configureStore({
   reducer: {
+    getTextFromInput: getTextFromInput,
     getTextForSearch: getTextForSearch,
     switchCards: switchCards,
     changesColors: changesColors,
