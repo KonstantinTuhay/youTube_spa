@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const switchCards = createSlice({
-  name: "switch",
+  name: "switchCard",
   initialState: true,
   reducers: {
     switchCard: (state, action) => {

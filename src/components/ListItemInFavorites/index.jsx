@@ -1,7 +1,7 @@
-import { editId } from "../../redux/slices/editIdSlice";
-import { editPreText } from "../../redux/slices/editPreviousText";
-import { remove } from "../../redux/slices/addFavorites";
-import { enterText } from "../../redux/slices/textSlice";
+import { getId } from "../../redux/slices/getIdMovie";
+import { getPreText } from "../../redux/slices/getPreviousText";
+import { remove } from "../../redux/slices/addEditRemoveFavorites";
+import { enterText } from "../../redux/slices/getTextForSearch";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
@@ -22,8 +22,8 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
   };
 
   const handleEditId = (id, text) => {
-    dispatch(editId(id));
-    dispatch(editPreText(text));
+    dispatch(getId(id));
+    dispatch(getPreText(text));
     setOpen(true);
   };
 
