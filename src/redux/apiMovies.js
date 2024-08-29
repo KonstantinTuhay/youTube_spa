@@ -1,9 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// const headers = {
-//   Authorization: `Bearer ${import.meta.env.VITE_KEY}`,
-// };
-
 export const apiGetMovies = createApi({
   reducerPath: "apiGetMovies",
   baseQuery: fetchBaseQuery({
@@ -16,7 +12,6 @@ export const apiGetMovies = createApi({
         return {
           url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=24&q=${q}`,
           method: "GET",
-          // headers,
         };
       },
       transformResponse: (response) => response.items,

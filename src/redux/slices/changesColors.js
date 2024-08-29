@@ -6,7 +6,7 @@ const changesColors = createSlice({
   reducers: {
     change: (state, action) => {
       if (action.payload === "#707070") {
-        return (state = "red");
+        return (state = "#FF0000");
       } else {
         return (state = "#707070");
       }

@@ -5,7 +5,6 @@ const switchCards = createSlice({
   initialState: true,
   reducers: {
     switchCard: (state, action) => {
-      console.log(action.payload);
       return (state = action.payload);
     },
   },
