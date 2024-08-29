@@ -12,6 +12,7 @@ import Slider from "@mui/material/Slider";
 import { edit } from "../../redux/slices/addEditRemoveFavorites";
 import { getId } from "../../redux/slices/getIdMovie";
 import { getPreText } from "../../redux/slices/getPreviousText";
+import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
@@ -39,6 +40,10 @@ const FormByModal = ({ setOpen }) => {
     dispatch(getId(null));
     dispatch(getPreText(null));
     setOpen(false);
+  };
+
+  const getItemSlider = (e) => {
+    dispatch(getCurrentItemSlider(e.target.value));
   };
 
   return (
@@ -123,13 +128,15 @@ const FormByModal = ({ setOpen }) => {
                 label="Maximum quantity"
                 labelId="maximum"
                 aria-label="Videos"
-                defaultValue={30}
+                // getAriaValueText={valuetext}
+                defaultValue={24}
                 valueLabelDisplay="auto"
-                shiftStep={30}
+                shiftStep={24}
                 step={10}
                 marks
-                min={10}
+                min={4}
                 max={100}
+                onChange={(e) => getItemSlider(e)}
               />
             </FormControl>
             <br />

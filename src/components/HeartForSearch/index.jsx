@@ -18,6 +18,7 @@ const HeartForSearch = ({ setOpen }) => {
   const dispatch = useDispatch();
   const color = useSelector((state) => state.changesColors);
   const textFromInpit = useSelector((state) => state.getTextFromInput);
+  const itemSlider = useSelector((state) => state.getItemSlider);
 
   const style = {
     color: color,
@@ -25,7 +26,11 @@ const HeartForSearch = ({ setOpen }) => {
   };
 
   const changeColor = () => {
-    const objRequest = { id: crypto.randomUUID(), text: textFromInpit };
+    const objRequest = {
+      id: crypto.randomUUID(),
+      text: textFromInpit,
+      maxQuantity: itemSlider,
+    };
     dispatch(change(style.color));
     dispatch(addFavoriteMovie(objRequest));
     dispatch(getId(objRequest.id));

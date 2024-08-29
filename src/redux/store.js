@@ -7,9 +7,11 @@ import getIdMovie from "./slices/getIdMovie";
 import getPreviousText from "./slices/getPreviousText";
 import switchCards from "./slices/switchCards";
 import getTextFromInput from "./slices/getTextFromInput";
+import getItemSlider from "./slices/getItemSlider";
 
 export const store = configureStore({
   reducer: {
+    getItemSlider: getItemSlider,
     getTextFromInput: getTextFromInput,
     getTextForSearch: getTextForSearch,
     switchCards: switchCards,
