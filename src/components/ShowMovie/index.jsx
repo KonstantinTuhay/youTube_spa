@@ -9,6 +9,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Box from "@mui/material/Box";
+import styles from "./index.module.css";
 
 const ShowMovie = ({ movie }) => {
   const isSwitch = useSelector((state) => state.switchCards);
@@ -20,7 +21,7 @@ const ShowMovie = ({ movie }) => {
       <Box>
         {isSwitch ? (
           <Card>
-            <Link to={linkOnYouTube} target="_blank">
+            <Link to={linkOnYouTube} target="_blank" className={styles.link}>
               <CardActionArea>
                 <CardMedia
                   component="img"
@@ -29,17 +30,7 @@ const ShowMovie = ({ movie }) => {
                   alt="Image Movie"
                 />
                 <CardContent sx={{ minHeight: "80px", minWidth: "300px" }}>
-                  <Typography
-                    sx={{
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      ["-webkit-line-clamp"]: 2,
-                      ["-webkit-box-orient"]: "vertical",
-                      color: "black",
-                    }}
-                    gutterBottom
-                  >
+                  <Typography className={styles.typography} gutterBottom>
                     {movie.snippet.title}
                   </Typography>
                   <Typography color="text.secondary">
@@ -60,7 +51,7 @@ const ShowMovie = ({ movie }) => {
               padding: 0,
             }}
           >
-            <Link to={linkOnYouTube} target="_blank">
+            <Link to={linkOnYouTube} target="_blank" className={styles.link}>
               <ListItem
                 sx={{
                   padding: 0,
