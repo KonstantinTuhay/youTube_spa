@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles";
+import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import { FormControlLabel, Switch } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { switchTheme } from "../../redux/slices/switchDayNight";
@@ -12,6 +12,16 @@ const SwitchDayNight = () => {
     console.log(dayNightTheme);
     dispatch(switchTheme(!dayNightTheme));
   };
+
+  const customTheme = createTheme({
+    palette: {
+      mode: "dark",
+      // primary: {
+      //   main: "#1976d2",
+      //   contrastText: "white",
+      // },
+    },
+  });
 
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -31,13 +41,15 @@ const SwitchDayNight = () => {
         },
         "& + .MuiSwitch-track": {
           opacity: 1,
-          backgroundColor:
-            theme.palette.mode === "dark" ? "#8796A5" : "#aab4be",
+          backgroundColor: "#aab4be",
+          ...theme.applyStyles("dark", {
+            backgroundColor: "#8ea587",
+          }),
         },
       },
     },
     "& .MuiSwitch-thumb": {
-      backgroundColor: theme.palette.mode === "dark" ? "#ffffff" : "#000000",
+      backgroundColor: "#001e3c",
       width: 32,
       height: 32,
       "&::before": {
@@ -53,21 +65,30 @@ const SwitchDayNight = () => {
           "#fff"
         )}" d="M9.305 1.667V3.75h1.389V1.667h-1.39zm-4.707 1.95l-.982.982L5.09 6.072l.982-.982-1.473-1.473zm10.802 0L13.927 5.09l.982.982 1.473-1.473-.982-.982zM10 5.139a4.872 4.872 0 00-4.862 4.86A4.872 4.872 0 0010 14.862 4.872 4.872 0 0014.86 10 4.872 4.872 0 0010 5.139zm0 1.389A3.462 3.462 0 0113.471 10a3.462 3.462 0 01-3.473 3.472A3.462 3.462 0 016.527 10 3.462 3.462 0 0110 6.528zM1.665 9.305v1.39h2.083v-1.39H1.666zm14.583 0v1.39h2.084v-1.39h-2.084zM5.09 13.928L3.616 15.4l.982.982 1.473-1.473-.982-.982zm9.82 0l-.982.982 1.473 1.473.982-.982-1.473-1.473zM9.305 16.25v2.083h1.389V16.25h-1.39z"/></svg>')`,
       },
+      ...theme.applyStyles("dark", {
+        backgroundColor: "#000000",
+      }),
     },
     "& .MuiSwitch-track": {
       opacity: 1,
-      backgroundColor: theme.palette.mode === "dark" ? "#8796A5" : "#aab4be",
+      backgroundColor: "#14892b",
       borderRadius: 20 / 2,
+      ...theme.applyStyles("dark", {
+        backgroundColor: "#4b2323",
+      }),
     },
   }));
+
   return (
     <>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <MaterialUISwitch defaultChecked onChange={() => switchTh()} />
-          }
-        />
+      <FormGroup theme={customTheme}>
+        <ThemeProvider theme={customTheme}>
+          <FormControlLabel
+            control={
+              <MaterialUISwitch defaultChecked onChange={() => switchTh()} />
+            }
+          />
+        </ThemeProvider>
       </FormGroup>
     </>
   );
