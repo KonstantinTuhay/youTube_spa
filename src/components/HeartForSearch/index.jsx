@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { getId } from "../../redux/slices/getIdMovie";
-import { getPreText } from "../../redux/slices/getPreviousText";
-import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
 import { change } from "../../redux/slices/changesColors";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 import { useSpring, animated } from "@react-spring/web";
 import { useDispatch, useSelector } from "react-redux";
+import { isDivide } from "../../redux/slices/divideFeatureForModal";
 
 const HeartForSearch = ({ setOpen }) => {
   const [state, toggle] = useState(true);
@@ -17,9 +15,7 @@ const HeartForSearch = ({ setOpen }) => {
 
   const dispatch = useDispatch();
   const color = useSelector((state) => state.changesColors);
-  const textFromInpit = useSelector((state) => state.getTextFromInput);
   const itemSlider = useSelector((state) => state.getItemSlider);
-  console.log(itemSlider);
 
   const style = {
     color: color,
@@ -28,15 +24,8 @@ const HeartForSearch = ({ setOpen }) => {
 
   const changeColor = () => {
     console.log(itemSlider);
-    // const objRequest = {
-    //   id: crypto.randomUUID(),
-    //   text: textFromInpit,
-    //   maxQuantity: `${itemSlider}`,
-    // };
     dispatch(change(style.color));
-    // dispatch(addFavoriteMovie(objRequest));
-    // dispatch(getId(objRequest.id));
-    // dispatch(getPreText(textFromInpit));
+    dispatch(isDivide(false));
     setOpen(true);
   };
   return (

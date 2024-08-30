@@ -13,9 +13,15 @@ const ListMovies = () => {
   const textFromInput = useSelector((state) => state.getTextFromInput);
 
   const text = useSelector((state) => state.getTextForSearch);
+  const itemSlider = useSelector((state) => state.sendItemSlider);
 
-  const { data: movies, error, isLoading } = useGetMoviesQuery(text);
-  console.log(textFromInput);
+  console.log(itemSlider);
+  const {
+    data: movies,
+    error,
+    isLoading,
+  } = useGetMoviesQuery([`${itemSlider}`, text]);
+  console.log(itemSlider);
   if (isLoading) {
     return (
       <Box

@@ -9,10 +9,13 @@ import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
+import { isDivide } from "../../redux/slices/divideFeatureForModal";
+import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
+import { sendCurrentItemSlider } from "../../redux/slices/sendItemSlider";
 import styles from "./index.module.css";
 
 const ListItemInFavorites = ({ videoName, setOpen }) => {
-  const { id, text } = videoName;
+  const { id, text, maxQuantity } = videoName;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,12 +25,16 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
   };
 
   const handleEditId = (id, text) => {
+    dispatch(getCurrentItemSlider(maxQuantity));
+    dispatch(isDivide(true));
     dispatch(getId(id));
     dispatch(getPreText(text));
     setOpen(true);
   };
 
   const clickSearch = (text) => {
+    dispatch(sendCurrentItemSlider(maxQuantity));
+
     dispatch(enterText(text));
     navigate("/list");
   };

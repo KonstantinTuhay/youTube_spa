@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const getItemSlider = createSlice({
   name: "getItemSlider",
-  initialState: "",
+  initialState: 24,
   reducers: {
     getCurrentItemSlider: (state, action) => {
       return (state = action.payload);

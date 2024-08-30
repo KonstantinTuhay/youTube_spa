@@ -8,10 +8,14 @@ import getPreviousText from "./slices/getPreviousText";
 import switchCards from "./slices/switchCards";
 import getTextFromInput from "./slices/getTextFromInput";
 import getItemSlider from "./slices/getItemSlider";
+import divideFeatureForModal from "./slices/divideFeatureForModal";
+import sendItemSlider from "./slices/sendItemSlider";
 
 export const store = configureStore({
   reducer: {
     getItemSlider: getItemSlider,
+    sendItemSlider: sendItemSlider,
+    divideFeatureForModal: divideFeatureForModal,
     getTextFromInput: getTextFromInput,
     getTextForSearch: getTextForSearch,
     switchCards: switchCards,
