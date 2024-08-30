@@ -21,7 +21,6 @@ const ListMovies = () => {
     error,
     isLoading,
   } = useGetMoviesQuery([`${itemSlider}`, text]);
-  console.log(itemSlider);
   if (isLoading) {
     return (
       <Box

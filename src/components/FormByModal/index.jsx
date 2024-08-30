@@ -15,6 +15,7 @@ import { getPreText } from "../../redux/slices/getPreviousText";
 import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
 import { getText } from "../../redux/slices/getTextFromInput";
 import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
+import { sendCurrentItemSlider } from "../../redux/slices/sendItemSlider";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const FormByModal = ({ setOpen }) => {
   const textFromInpit = useSelector((state) => state.getTextFromInput);
   const isDivideFeature = useSelector((state) => state.divideFeatureForModal);
   const itemSlider = useSelector((state) => state.getItemSlider);
-
+  const sendItemSlider = useSelector((state) => state.sendItemSlider);
+  console.log(itemSlider);
   const [age, setAge] = useState("");
 
   const handleChange = (event) => {
@@ -33,7 +35,8 @@ const FormByModal = ({ setOpen }) => {
 
   const saveChangeRequest = (id) => {
     if (isDivideFeature) {
-      dispatch(edit({ id: id, text: getEditText }));
+      // dispatch(sendCurrentItemSlider(itemSlider));
+      dispatch(edit({ id: id, text: getEditText, maxQuantity: itemSlider }));
       dispatch(getId(null));
       dispatch(getPreText(null));
       setOpen(false);

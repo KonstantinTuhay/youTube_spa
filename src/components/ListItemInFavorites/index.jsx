@@ -34,7 +34,7 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
 
   const clickSearch = (text) => {
     dispatch(sendCurrentItemSlider(maxQuantity));
-
+    dispatch(getCurrentItemSlider(24));
     dispatch(enterText(text));
     navigate("/list");
   };
