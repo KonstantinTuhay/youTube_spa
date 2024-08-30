@@ -11,8 +11,14 @@
   color: white;
 }
 
-.link:hover {
+.linkDay:hover {
   background-color: rgba(118, 111, 111, 0.209);
+  border-radius: 50%;
+  transition: all 1s;
+}
+
+.linkNight:hover {
+  background-color: rgba(126, 120, 120, 0.209);
   border-radius: 50%;
   transition: all 1s;
 }

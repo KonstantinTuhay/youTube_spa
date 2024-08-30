@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Settings, Logout } from "@mui/icons-material";
 import PersonAdd from "@mui/icons-material/PersonAdd";
+import Stack from "@mui/material/Stack";
 import { useSelector } from "react-redux";
 
 const AccountSettings = () => {
@@ -26,7 +27,29 @@ const AccountSettings = () => {
 
   return (
     <>
-      <IconButton
+      <Stack
+        sx={{
+          width: 32,
+          height: 32,
+          display: "flex",
+          textAlign: "right",
+          justifyContent: "center",
+          border: "0px solid",
+          borderRadius: "50%",
+          backgroundColor: dayNightTheme ? "#000000" : "#ffffff",
+        }}
+      >
+        <ListItemIcon>
+          <NavLink to="/registr">
+            <Logout
+              sx={{
+                color: dayNightTheme ? "#ffffff" : "#000000",
+              }}
+            />
+          </NavLink>
+        </ListItemIcon>
+      </Stack>
+      {/* <IconButton
         onClick={handleClick}
         size="small"
         aria-controls={open ? "account-menu" : undefined}
@@ -80,31 +103,12 @@ const AccountSettings = () => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize="small" />
-          </ListItemIcon>
-          Settings
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
           <NavLink to="/registr">Log out</NavLink>
         </MenuItem>
-      </Menu>
+      </Menu> */}
     </>
   );
 };
