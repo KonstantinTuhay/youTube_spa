@@ -14,15 +14,6 @@ import Stack from "@mui/material/Stack";
 import { useSelector } from "react-redux";
 
 const AccountSettings = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const open = Boolean(anchorEl);
-
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   return (
@@ -44,6 +35,8 @@ const AccountSettings = () => {
             <Logout
               sx={{
                 color: dayNightTheme ? "#ffffff" : "#000000",
+                mt: "3px",
+                ml: "6px",
               }}
             />
           </NavLink>
