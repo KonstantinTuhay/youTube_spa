@@ -1,7 +1,18 @@
 import { styled } from "@mui/material/styles";
 import { FormControlLabel, Switch } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import { switchTheme } from "../../redux/slices/switchDayNight";
+import FormGroup from "@mui/material/FormGroup";
 
 const SwitchDayNight = () => {
+  const dispatch = useDispatch();
+  const dayNightTheme = useSelector((state) => state.switchDayNight);
+
+  const switchTh = () => {
+    console.log(dayNightTheme);
+    dispatch(switchTheme(!dayNightTheme));
+  };
+
   const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     width: 62,
     height: 34,
@@ -51,7 +62,13 @@ const SwitchDayNight = () => {
   }));
   return (
     <>
-      <FormControlLabel control={<MaterialUISwitch defaultChecked />} />
+      <FormGroup>
+        <FormControlLabel
+          control={
+            <MaterialUISwitch defaultChecked onChange={() => switchTh()} />
+          }
+        />
+      </FormGroup>
     </>
   );
 };

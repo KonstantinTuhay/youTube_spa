@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { Settings, Logout } from "@mui/icons-material";
 import PersonAdd from "@mui/icons-material/PersonAdd";
+import { useSelector } from "react-redux";
 
 const AccountSettings = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -21,6 +22,8 @@ const AccountSettings = () => {
   };
   const open = Boolean(anchorEl);
 
+  const dayNightTheme = useSelector((state) => state.switchDayNight);
+
   return (
     <>
       <IconButton
@@ -30,7 +33,14 @@ const AccountSettings = () => {
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
       >
-        <Avatar sx={{ width: 32, height: 32, backgroundColor: "#000000" }}>
+        <Avatar
+          sx={{
+            width: 32,
+            height: 32,
+            backgroundColor: dayNightTheme ? "#000000" : "#ffffff",
+            color: dayNightTheme ? "#ffffff" : "#000000",
+          }}
+        >
           M
         </Avatar>
       </IconButton>

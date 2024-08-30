@@ -7,10 +7,12 @@ import getIdMovie from "./slices/getIdMovie";
 import getPreviousText from "./slices/getPreviousText";
 import switchCards from "./slices/switchCards";
 import getTextFromInput from "./slices/getTextFromInput";
+import switchDayNight from "./slices/switchDayNight";
 
 export const store = configureStore({
   reducer: {
     getTextFromInput: getTextFromInput,
+    switchDayNight: switchDayNight,
     getTextForSearch: getTextForSearch,
     switchCards: switchCards,
     changesColors: changesColors,
