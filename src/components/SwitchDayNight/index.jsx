@@ -9,8 +9,6 @@ const SwitchDayNight = () => {
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   const switchTh = (e) => {
-    console.log(e.target);
-    console.log(dayNightTheme);
     dispatch(switchTheme(!dayNightTheme));
   };
 
@@ -40,7 +38,6 @@ const SwitchDayNight = () => {
             borderRadius: "50%",
           }),
         },
-
         "& + .MuiSwitch-track": {
           opacity: 1,
           backgroundColor: "#aab4be",
