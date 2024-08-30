@@ -1,8 +1,14 @@
-.link {
+.linkDay {
   padding: 30px;
   text-decoration: none;
-  color: black;
   font-size: 18px;
+  color: black;
+}
+.linkNight {
+  padding: 30px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
 }
 
 .link:hover {
