@@ -82,6 +82,9 @@ const AccountSettings = () => {
         <MenuItem onClick={handleClose}>
           <Avatar /> Profile
         </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Avatar /> My account
+        </MenuItem>
         <Divider />
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
