@@ -12,6 +12,7 @@ import divideFeatureForModal from "./slices/divideFeatureForModal";
 import sendItemSlider from "./slices/sendItemSlider";
 import setSortValue from "./slices/setSortValue";
 import getSortValue from "./slices/getSortValue";
+import switchDayNight from "./slices/switchDayNight";
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     sendItemSlider: sendItemSlider,
     divideFeatureForModal: divideFeatureForModal,
     getTextFromInput: getTextFromInput,
+    switchDayNight: switchDayNight,
     getTextForSearch: getTextForSearch,
     switchCards: switchCards,
     changesColors: changesColors,
