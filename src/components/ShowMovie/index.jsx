@@ -34,7 +34,7 @@ const ShowMovie = ({ movie }) => {
                   sx={{
                     minHeight: "80px",
                     minWidth: "300px",
-                    backgroundColor: dayNightTheme ? "white" : "black",
+                    backgroundColor: dayNightTheme ? "white" : "#606060",
                   }}
                 >
                   <Typography
@@ -68,7 +68,7 @@ const ShowMovie = ({ movie }) => {
               borderColor: "divider",
               // backgroundColor: "background.paper",
               padding: 0,
-              backgroundColor: dayNightTheme ? "background.paper" : "black",
+              backgroundColor: dayNightTheme ? "background.paper" : "#606060",
             }}
           >
             <Link to={linkOnYouTube} target="_blank" className={styles.link}>

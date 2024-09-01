@@ -52,7 +52,12 @@ const ListMovies = () => {
     <>
       <ModalWindow open={open} setOpen={setOpen} />
 
-      <Box sx={{ ml: 3, mt: 5 }}>
+      <Box
+        sx={{
+          ml: 3,
+          pt: 5,
+        }}
+      >
         <SearchSystem
           open={open}
           setOpen={setOpen}
