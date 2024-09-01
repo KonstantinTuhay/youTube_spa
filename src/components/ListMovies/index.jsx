@@ -26,10 +26,10 @@ const ListMovies = () => {
     return (
       <Box
         sx={{
+          height: "100vh",
           display: "flex",
           justifyContent: "center",
-          mt: "6rem",
-          textAlign: "center",
+          alignItems: "center",
         }}
       >
         <CircularProgress color="inherit" />
@@ -55,7 +55,8 @@ const ListMovies = () => {
       <Box
         sx={{
           ml: 3,
-          pt: 5,
+          pt: 15,
+          pb: 3,
         }}
       >
         <SearchSystem

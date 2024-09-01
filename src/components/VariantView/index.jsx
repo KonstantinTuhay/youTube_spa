@@ -31,7 +31,7 @@ const VariantView = ({ textFromInput }) => {
         <ToggleButtonGroup exclusive aria-label="text alignment">
           <ToggleButton
             sx={{
-              borderColor: dayNightTheme ? "black" : "white",
+              borderColor: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
             }}
             value="left"
             aria-label="left aligned"
@@ -39,13 +39,13 @@ const VariantView = ({ textFromInput }) => {
           >
             <ListIcon
               sx={{
-                color: dayNightTheme ? "black" : "white",
+                color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
               }}
             />
           </ToggleButton>
           <ToggleButton
             sx={{
-              borderColor: dayNightTheme ? "black" : "white",
+              borderColor: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
             }}
             value="center"
             aria-label="centered"
@@ -53,7 +53,7 @@ const VariantView = ({ textFromInput }) => {
           >
             <GridViewOutlinedIcon
               sx={{
-                color: dayNightTheme ? "black" : "white",
+                color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
               }}
             />
           </ToggleButton>

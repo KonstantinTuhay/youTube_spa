@@ -16,8 +16,14 @@ const Favorites = () => {
     <>
       <ModalWindow open={open} setOpen={setOpen} />
 
-      <Box sx={{ pt: "30px", ml: "30px" }}>
-        <Typography variant="h3" gutterBottom>
+      <Box
+        sx={{
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Typography variant="h3" sx={{ mt: 15, ml: 3 }}>
           Favorites
         </Typography>
 

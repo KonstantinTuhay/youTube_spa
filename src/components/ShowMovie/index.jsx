@@ -47,10 +47,10 @@ const ShowMovie = ({ movie }) => {
                     {movie.snippet.title}
                   </Typography>
                   <Typography
-                    className={styles.typography}
+                    className={styles.typographyChanel}
                     color="text.secondary"
                     sx={{
-                      color: dayNightTheme ? "black" : "white",
+                      color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
                     }}
                   >
                     {movie.snippet.channelTitle}
@@ -66,7 +66,6 @@ const ShowMovie = ({ movie }) => {
               borderRadius: 2,
               border: "1px solid",
               borderColor: "divider",
-              // backgroundColor: "background.paper",
               padding: 0,
               backgroundColor: dayNightTheme ? "background.paper" : "#606060",
             }}
