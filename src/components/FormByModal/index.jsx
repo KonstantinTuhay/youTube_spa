@@ -15,6 +15,7 @@ import { getPreText } from "../../redux/slices/getPreviousText";
 import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
 import { getText } from "../../redux/slices/getTextFromInput";
 import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
+import { setValueForSorting } from "../../redux/slices/setSortValue";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
@@ -24,26 +25,35 @@ const FormByModal = ({ setOpen }) => {
   const textFromInpit = useSelector((state) => state.getTextFromInput);
   const isDivideFeature = useSelector((state) => state.divideFeatureForModal);
   const itemSlider = useSelector((state) => state.getItemSlider);
-
-  const [sortOption, setSortOption] = useState("");
-
-  const handleChange = (event) => {
-    setSortOption(event.target.value);
+  const setSort = useSelector((state) => state.setSortValue);
+  console.log(setSort);
+  const handleChange = (e) => {
+    dispatch(setValueForSorting(e.target.value));
   };
 
   const saveChangeRequest = (id) => {
     if (isDivideFeature) {
-      dispatch(edit({ id: id, text: getEditText, maxQuantity: itemSlider }));
+      dispatch(
+        edit({
+          id: id,
+          text: getEditText,
+          maxQuantity: itemSlider,
+          sort: setSort,
+        })
+      );
       dispatch(getId(null));
       dispatch(getPreText(null));
+      // dispatch(setValueForSorting("relevance"));
       setOpen(false);
     } else {
       const objRequest = {
         id: crypto.randomUUID(),
         text: textFromInpit,
         maxQuantity: itemSlider,
+        sort: setSort,
       };
       dispatch(addFavoriteMovie(objRequest));
+      // dispatch(setValueForSorting("relevance"));
       dispatch(getId(objRequest.id));
       dispatch(getPreText(textFromInpit));
       setOpen(false);
@@ -132,15 +142,15 @@ const FormByModal = ({ setOpen }) => {
               <Select
                 labelId="sorting"
                 id="sorting"
-                value={sortOption}
-                onChange={handleChange}
+                value={setSort}
+                onChange={(e) => handleChange(e)}
                 label="Sorting"
               >
-                <MenuItem value={"default"}>default</MenuItem>
+                <MenuItem value={"relevance"}>relevance</MenuItem>
                 <MenuItem value={"date"}>date</MenuItem>
                 <MenuItem value={"rating"}>rating</MenuItem>
                 <MenuItem value={"title"}>title</MenuItem>
-                <MenuItem value={"view"}>view</MenuItem>
+                <MenuItem value={"viewCount"}>view</MenuItem>
               </Select>
             </FormControl>
             <br />

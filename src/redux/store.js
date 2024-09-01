@@ -10,10 +10,14 @@ import getTextFromInput from "./slices/getTextFromInput";
 import getItemSlider from "./slices/getItemSlider";
 import divideFeatureForModal from "./slices/divideFeatureForModal";
 import sendItemSlider from "./slices/sendItemSlider";
+import setSortValue from "./slices/setSortValue";
+import getSortValue from "./slices/getSortValue";
 
 export const store = configureStore({
   reducer: {
     getItemSlider: getItemSlider,
+    getSortValue: getSortValue,
+    setSortValue: setSortValue,
     sendItemSlider: sendItemSlider,
     divideFeatureForModal: divideFeatureForModal,
     getTextFromInput: getTextFromInput,

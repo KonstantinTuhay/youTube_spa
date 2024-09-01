@@ -12,6 +12,7 @@ const addEditRemoveFavorites = createSlice({
       if (editMovie) {
         editMovie.text = action.payload.text;
         editMovie.maxQuantity = action.payload.maxQuantity;
+        editMovie.sort = action.payload.sort;
       }
     },
     remove: (state, action) => {
