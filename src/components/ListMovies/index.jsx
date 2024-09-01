@@ -11,11 +11,17 @@ import CircularProgress from "@mui/material/CircularProgress";
 const ListMovies = () => {
   const [open, setOpen] = useState(false);
   const textFromInput = useSelector((state) => state.getTextFromInput);
-
   const text = useSelector((state) => state.getTextForSearch);
+  const itemSlider = useSelector((state) => state.sendItemSlider);
+  const getSort = useSelector((state) => state.getSortValue);
+  console.log(getSort);
 
-  const { data: movies, error, isLoading } = useGetMoviesQuery(text);
-  console.log(textFromInput);
+  console.log(itemSlider);
+  const {
+    data: movies,
+    error,
+    isLoading,
+  } = useGetMoviesQuery([`${itemSlider}`, text, getSort]);
   if (isLoading) {
     return (
       <Box

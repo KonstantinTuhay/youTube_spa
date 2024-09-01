@@ -9,10 +9,15 @@ import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
+import { isDivide } from "../../redux/slices/divideFeatureForModal";
+import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
+import { sendCurrentItemSlider } from "../../redux/slices/sendItemSlider";
+import { getValueForSorting } from "../../redux/slices/getSortValue";
+import { setValueForSorting } from "../../redux/slices/setSortValue";
 import styles from "./index.module.css";
 
 const ListItemInFavorites = ({ videoName, setOpen }) => {
-  const { id, text } = videoName;
+  const { id, text, maxQuantity, sort } = videoName;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,13 +26,20 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
     dispatch(remove(id));
   };
 
-  const handleEditId = (id, text) => {
+  const handleEditId = (id, text, maxQuantity, sort) => {
+    dispatch(setValueForSorting(sort));
+    dispatch(getCurrentItemSlider(maxQuantity));
+    dispatch(isDivide(true));
     dispatch(getId(id));
     dispatch(getPreText(text));
     setOpen(true);
   };
 
   const clickSearch = (text) => {
+    dispatch(getValueForSorting(sort));
+    dispatch(setValueForSorting("relevance"));
+    dispatch(sendCurrentItemSlider(maxQuantity));
+    dispatch(getCurrentItemSlider(24));
     dispatch(enterText(text));
     navigate("/list");
   };
@@ -41,7 +53,7 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
 
           <IconButton
             aria-label="delete"
-            onClick={() => handleEditId(id, text)}
+            onClick={() => handleEditId(id, text, maxQuantity, sort)}
           >
             <EditIcon />
           </IconButton>

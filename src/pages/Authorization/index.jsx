@@ -1,6 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Input, Button } from "antd";
+import { Container } from "@mui/material";
 import api from "../../../api";
 import styles from "./index.module.css";
 
@@ -29,63 +30,76 @@ const Authorization = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className={styles.registration_form}
+    <Container
+      sx={{
+        mt: "5%",
+        display: "flex",
+        textAlign: "center",
+        justifyContent: "center",
+      }}
     >
-      <div>
-        <img src="../../../public/monitor26.png" width="60px" alt="computer" />
-        <h1>Authorization</h1>
-        <label>Email:</label>
-        <Controller
-          name="email"
-          control={control}
-          rules={{
-            required: "Поле обязательно для заполнения",
-            pattern: {
-              value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
-              message: "Введите корректный email",
-            },
-          }}
-          render={({ field }) => <Input {...field} placeholder="Email" />}
-        />
-        <p>{errors.email?.message}</p>
-      </div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className={styles.registration_form}
+      >
+        <div>
+          <img
+            src="../../../public/monitor26.png"
+            width="60px"
+            alt="computer"
+          />
+          <h1>Authorization</h1>
+          <label>Email:</label>
+          <Controller
+            name="email"
+            control={control}
+            rules={{
+              required: "Поле обязательно для заполнения",
+              pattern: {
+                value: /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/,
+                message: "Введите корректный email",
+              },
+            }}
+            render={({ field }) => <Input {...field} placeholder="Email" />}
+          />
+          <p>{errors.email?.message}</p>
+        </div>
 
-      <div>
-        <label>Password:</label>
-        <Controller
-          name="password"
-          control={control}
-          rules={{
-            required: "Поле обязательно для заполнения",
-            minLength: {
-              value: 6,
-              message:
-                "Пароль должен быть не меньше 6 символов и содержать хотя бы одну заглавную букву",
-            },
-            validate: (letter) => {
-              return (
-                letter
-                  .split("")
-                  .filter((item) => !isFinite(item))
-                  .map((item) => item === item.toUpperCase())
-                  .includes(true) ||
-                "Пароль должен содержать хотя бы одну заглавную букву"
-              );
-            },
-          }}
-          render={({ field }) => (
-            <Input {...field} placeholder="Введите пароль" />
-          )}
-        />
-        <p>{errors.password?.message}</p>
-      </div>
+        <div>
+          <label>Password:</label>
+          <Controller
+            name="password"
+            control={control}
+            rules={{
+              required: "Поле обязательно для заполнения",
+              minLength: {
+                value: 6,
+                message:
+                  "Пароль должен быть не меньше 6 символов и содержать хотя бы одну заглавную букву",
+              },
+              validate: (letter) => {
+                return (
+                  letter
+                    .split("")
+                    .filter((item) => !isFinite(item))
+                    .map((item) => item === item.toUpperCase())
+                    .includes(true) ||
+                  "Пароль должен содержать хотя бы одну заглавную букву"
+                );
+              },
+            }}
+            render={({ field }) => (
+              <Input {...field} placeholder="Введите пароль" />
+            )}
+          />
+          <p>{errors.password?.message}</p>
+        </div>
 
-      <Button type="primary" htmlType="submit">
-        Sign In
-      </Button>
-    </form>
+        <Button type="primary" htmlType="submit">
+          Sign In
+        </Button>
+      </form>
+    </Container>
   );
 };
 

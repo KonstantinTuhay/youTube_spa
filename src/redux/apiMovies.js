@@ -8,9 +8,9 @@ export const apiGetMovies = createApi({
   tagTypes: ["Movies"],
   endpoints: (builder) => ({
     getMovies: builder.query({
-      query: (q) => {
+      query: ([item, q, sort]) => {
         return {
-          url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=24&q=${q}`,
+          url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=${item}&q=${q}&order=${sort}`,
           method: "GET",
         };
       },

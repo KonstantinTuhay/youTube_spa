@@ -12,33 +12,66 @@ import Slider from "@mui/material/Slider";
 import { edit } from "../../redux/slices/addEditRemoveFavorites";
 import { getId } from "../../redux/slices/getIdMovie";
 import { getPreText } from "../../redux/slices/getPreviousText";
+import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
+import { getText } from "../../redux/slices/getTextFromInput";
+import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
+import { setValueForSorting } from "../../redux/slices/setSortValue";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
+
   const getEditText = useSelector((state) => state.getPreviousText);
   const getEditId = useSelector((state) => state.getIdMovie);
-
-  const [age, setAge] = useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const textFromInpit = useSelector((state) => state.getTextFromInput);
+  const isDivideFeature = useSelector((state) => state.divideFeatureForModal);
+  const itemSlider = useSelector((state) => state.getItemSlider);
+  const setSort = useSelector((state) => state.setSortValue);
+  console.log(setSort);
+  const handleChange = (e) => {
+    dispatch(setValueForSorting(e.target.value));
   };
 
   const saveChangeRequest = (id) => {
-    dispatch(edit({ id: id, text: getEditText }));
-    dispatch(getId(null));
-    dispatch(getPreText(null));
-    setOpen(false);
+    if (isDivideFeature) {
+      dispatch(
+        edit({
+          id: id,
+          text: getEditText,
+          maxQuantity: itemSlider,
+          sort: setSort,
+        })
+      );
+      dispatch(getId(null));
+      dispatch(getPreText(null));
+      // dispatch(setValueForSorting("relevance"));
+      setOpen(false);
+    } else {
+      const objRequest = {
+        id: crypto.randomUUID(),
+        text: textFromInpit,
+        maxQuantity: itemSlider,
+        sort: setSort,
+      };
+      dispatch(addFavoriteMovie(objRequest));
+      // dispatch(setValueForSorting("relevance"));
+      dispatch(getId(objRequest.id));
+      dispatch(getPreText(textFromInpit));
+      setOpen(false);
+    }
   };
 
   const typeEdit = (e) => {
-    dispatch(getPreText(e));
+    isDivideFeature ? dispatch(getPreText(e)) : dispatch(getText(e));
   };
 
   const handleCloseModal = () => {
     dispatch(getId(null));
     dispatch(getPreText(null));
     setOpen(false);
+  };
+
+  const getItemSlider = (e) => {
+    dispatch(getCurrentItemSlider(e.target.value));
   };
 
   return (
@@ -58,9 +91,16 @@ const FormByModal = ({ setOpen }) => {
           borderRadius: "30px",
         }}
       >
-        <Typography id="modal-modal-title" variant="h4">
-          Change request{" "}
-        </Typography>
+        {isDivideFeature ? (
+          <Typography id="modal-modal-title" variant="h4">
+            Change request{" "}
+          </Typography>
+        ) : (
+          <Typography id="modal-modal-title" variant="h4">
+            Save request{" "}
+          </Typography>
+        )}
+
         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           <Box
             component="form"
@@ -76,14 +116,23 @@ const FormByModal = ({ setOpen }) => {
               <InputLabel htmlFor="component-simple" disabled>
                 Request
               </InputLabel>
-              <Input id="component-simple" defaultValue={getEditText} />
+              <Input
+                id="component-simple"
+                defaultValue={isDivideFeature ? getEditText : textFromInpit}
+              />
             </FormControl>
             <br />
             <FormControl variant="standard">
-              <InputLabel htmlFor="component-simple">Change request</InputLabel>
+              {isDivideFeature ? (
+                <InputLabel htmlFor="component-simple">
+                  Change request
+                </InputLabel>
+              ) : (
+                <InputLabel htmlFor="component-simple">Save request</InputLabel>
+              )}
               <Input
                 id="component-simple"
-                defaultValue={getEditText}
+                defaultValue={isDivideFeature ? getEditText : textFromInpit}
                 onChange={(e) => typeEdit(e.target.value)}
               />
             </FormControl>
@@ -93,15 +142,15 @@ const FormByModal = ({ setOpen }) => {
               <Select
                 labelId="sorting"
                 id="sorting"
-                value={age}
-                onChange={handleChange}
+                value={setSort}
+                onChange={(e) => handleChange(e)}
                 label="Sorting"
               >
-                <MenuItem value={10}>default</MenuItem>
-                <MenuItem value={20}>date</MenuItem>
-                <MenuItem value={30}>score</MenuItem>
-                <MenuItem value={30}>name</MenuItem>
-                <MenuItem value={30}>views</MenuItem>
+                <MenuItem value={"relevance"}>relevance</MenuItem>
+                <MenuItem value={"date"}>date</MenuItem>
+                <MenuItem value={"rating"}>rating</MenuItem>
+                <MenuItem value={"title"}>title</MenuItem>
+                <MenuItem value={"viewCount"}>view</MenuItem>
               </Select>
             </FormControl>
             <br />
@@ -123,13 +172,14 @@ const FormByModal = ({ setOpen }) => {
                 label="Maximum quantity"
                 labelId="maximum"
                 aria-label="Videos"
-                defaultValue={30}
+                defaultValue={isDivideFeature ? itemSlider : 24}
                 valueLabelDisplay="auto"
-                shiftStep={30}
-                step={10}
+                shiftStep={24}
+                step={4}
                 marks
-                min={10}
-                max={100}
+                min={4}
+                max={48}
+                onChange={(e) => getItemSlider(e)}
               />
             </FormControl>
             <br />

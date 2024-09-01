@@ -33,7 +33,10 @@ const ShowMovie = ({ movie }) => {
                   <Typography className={styles.typography} gutterBottom>
                     {movie.snippet.title}
                   </Typography>
-                  <Typography color="text.secondary">
+                  <Typography
+                    className={styles.typography}
+                    color="text.secondary"
+                  >
                     {movie.snippet.channelTitle}
                   </Typography>
                 </CardContent>
