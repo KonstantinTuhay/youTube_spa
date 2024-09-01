@@ -15,7 +15,6 @@ import { getPreText } from "../../redux/slices/getPreviousText";
 import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
 import { getText } from "../../redux/slices/getTextFromInput";
 import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
-import { sendCurrentItemSlider } from "../../redux/slices/sendItemSlider";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
@@ -25,17 +24,15 @@ const FormByModal = ({ setOpen }) => {
   const textFromInpit = useSelector((state) => state.getTextFromInput);
   const isDivideFeature = useSelector((state) => state.divideFeatureForModal);
   const itemSlider = useSelector((state) => state.getItemSlider);
-  const sendItemSlider = useSelector((state) => state.sendItemSlider);
-  console.log(itemSlider);
-  const [age, setAge] = useState("");
+
+  const [sortOption, setSortOption] = useState("");
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSortOption(event.target.value);
   };
 
   const saveChangeRequest = (id) => {
     if (isDivideFeature) {
-      // dispatch(sendCurrentItemSlider(itemSlider));
       dispatch(edit({ id: id, text: getEditText, maxQuantity: itemSlider }));
       dispatch(getId(null));
       dispatch(getPreText(null));
@@ -135,15 +132,15 @@ const FormByModal = ({ setOpen }) => {
               <Select
                 labelId="sorting"
                 id="sorting"
-                value={age}
+                value={sortOption}
                 onChange={handleChange}
                 label="Sorting"
               >
-                <MenuItem value={10}>default</MenuItem>
-                <MenuItem value={20}>date</MenuItem>
-                <MenuItem value={30}>score</MenuItem>
-                <MenuItem value={30}>name</MenuItem>
-                <MenuItem value={30}>views</MenuItem>
+                <MenuItem value={"default"}>default</MenuItem>
+                <MenuItem value={"date"}>date</MenuItem>
+                <MenuItem value={"rating"}>rating</MenuItem>
+                <MenuItem value={"title"}>title</MenuItem>
+                <MenuItem value={"view"}>view</MenuItem>
               </Select>
             </FormControl>
             <br />
