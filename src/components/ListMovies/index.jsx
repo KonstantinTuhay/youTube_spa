@@ -26,10 +26,10 @@ const ListMovies = () => {
     return (
       <Box
         sx={{
+          height: "100vh",
           display: "flex",
           justifyContent: "center",
-          mt: "6rem",
-          textAlign: "center",
+          alignItems: "center",
         }}
       >
         <CircularProgress color="inherit" />
@@ -52,7 +52,13 @@ const ListMovies = () => {
     <>
       <ModalWindow open={open} setOpen={setOpen} />
 
-      <Box sx={{ ml: 3, mt: 5 }}>
+      <Box
+        sx={{
+          ml: 3,
+          pt: 15,
+          pb: 3,
+        }}
+      >
         <SearchSystem
           open={open}
           setOpen={setOpen}

@@ -13,6 +13,7 @@ import styles from "./index.module.css";
 
 const ShowMovie = ({ movie }) => {
   const isSwitch = useSelector((state) => state.switchCards);
+  const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   const linkOnYouTube = import.meta.env.VITE_LINK_ON_YOUTUBE + movie.id.videoId;
 
@@ -29,13 +30,28 @@ const ShowMovie = ({ movie }) => {
                   image={movie.snippet.thumbnails.high.url}
                   alt="Image Movie"
                 />
-                <CardContent sx={{ minHeight: "80px", minWidth: "300px" }}>
-                  <Typography className={styles.typography} gutterBottom>
+                <CardContent
+                  sx={{
+                    minHeight: "80px",
+                    minWidth: "300px",
+                    backgroundColor: dayNightTheme ? "white" : "#606060",
+                  }}
+                >
+                  <Typography
+                    className={styles.typography}
+                    gutterBottom
+                    sx={{
+                      color: dayNightTheme ? "black" : "white",
+                    }}
+                  >
                     {movie.snippet.title}
                   </Typography>
                   <Typography
-                    className={styles.typography}
+                    className={styles.typographyChanel}
                     color="text.secondary"
+                    sx={{
+                      color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
+                    }}
                   >
                     {movie.snippet.channelTitle}
                   </Typography>
@@ -50,20 +66,24 @@ const ShowMovie = ({ movie }) => {
               borderRadius: 2,
               border: "1px solid",
               borderColor: "divider",
-              backgroundColor: "background.paper",
               padding: 0,
+              backgroundColor: dayNightTheme ? "background.paper" : "#606060",
             }}
           >
             <Link to={linkOnYouTube} target="_blank" className={styles.link}>
               <ListItem
                 sx={{
                   padding: 0,
+                  border: "0px",
                 }}
               >
                 <Card>
                   <CardActionArea>
                     <CardMedia
-                      sx={{ height: "140px" }}
+                      sx={{
+                        height: "140px",
+                        color: dayNightTheme ? "black" : "white",
+                      }}
                       component="img"
                       image={movie.snippet.thumbnails.high.url}
                       alt="Image Movie"
@@ -79,8 +99,18 @@ const ShowMovie = ({ movie }) => {
                     color: "black",
                   }}
                 >
-                  <ListItemText primary={movie.snippet.title} />
-                  <ListItemText primary={movie.snippet.channelTitle} />
+                  <ListItemText
+                    sx={{
+                      color: dayNightTheme ? "black" : "white",
+                    }}
+                    primary={movie.snippet.title}
+                  />
+                  <ListItemText
+                    sx={{
+                      color: dayNightTheme ? "black" : "white",
+                    }}
+                    primary={movie.snippet.channelTitle}
+                  />
                 </Box>
               </ListItem>
             </Link>

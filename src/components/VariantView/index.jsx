@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { switchCard } from "../../redux/slices/switchCards";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -9,6 +9,7 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 
 const VariantView = ({ textFromInput }) => {
   const dispatch = useDispatch();
+  const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   return (
     <>
@@ -19,7 +20,7 @@ const VariantView = ({ textFromInput }) => {
           justifyContent: "space-between",
           alignItems: "center",
           margin: "25px 0 0",
-          color: "black",
+          color: dayNightTheme ? "black" : "white",
           lineHeight: 0,
         }}
       >
@@ -29,18 +30,32 @@ const VariantView = ({ textFromInput }) => {
 
         <ToggleButtonGroup exclusive aria-label="text alignment">
           <ToggleButton
+            sx={{
+              borderColor: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
+            }}
             value="left"
             aria-label="left aligned"
             onClick={() => dispatch(switchCard(false))}
           >
-            <ListIcon />
+            <ListIcon
+              sx={{
+                color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
+              }}
+            />
           </ToggleButton>
           <ToggleButton
+            sx={{
+              borderColor: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
+            }}
             value="center"
             aria-label="centered"
             onClick={() => dispatch(switchCard(true))}
           >
-            <GridViewOutlinedIcon />
+            <GridViewOutlinedIcon
+              sx={{
+                color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
+              }}
+            />
           </ToggleButton>
         </ToggleButtonGroup>
       </Box>
