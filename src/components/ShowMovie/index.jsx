@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import ShowView from "../ShowView";
 import {
   Card,
   CardContent,
@@ -10,14 +11,41 @@ import {
   ListItem,
   ListItemText,
   Box,
+  CircularProgress,
 } from "@mui/material";
+import { useGetViewCountQuery } from "../../redux/apiMovies";
 import styles from "./index.module.css";
 
 const ShowMovie = ({ movie }) => {
+  const {
+    data: views,
+    error,
+    isLoading,
+  } = useGetViewCountQuery([`${movie.id.videoId}`]);
+
   const isSwitch = useSelector((state) => state.switchCards);
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   const linkOnYouTube = import.meta.env.VITE_LINK_ON_YOUTUBE + movie.id.videoId;
+
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress color="inherit" />
+      </Box>
+    );
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
     <Box>
@@ -33,8 +61,8 @@ const ShowMovie = ({ movie }) => {
               />
               <CardContent
                 sx={{
-                  minHeight: "80px",
-                  minWidth: "300px",
+                  maxHeight: "100px",
+                  maxWidth: "350px",
                   backgroundColor: dayNightTheme ? "white" : "#606060",
                 }}
               >
@@ -42,6 +70,7 @@ const ShowMovie = ({ movie }) => {
                   className={styles.typography}
                   gutterBottom
                   sx={{
+                    minHeight: "50px",
                     color: dayNightTheme ? "black" : "white",
                   }}
                 >
@@ -51,10 +80,23 @@ const ShowMovie = ({ movie }) => {
                   className={styles.typographyChanel}
                   color="text.secondary"
                   sx={{
-                    color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
+                    minHeight: "20px",
+                    color: dayNightTheme ? "rgb(0, 0, 0)" : "white",
                   }}
                 >
                   {movie.snippet.channelTitle}
+                </Typography>
+                <Typography
+                  className={styles.typographyChanel}
+                  color="text.secondary"
+                  sx={{
+                    minHeight: "20px",
+                    color: dayNightTheme ? "rgba(0, 0, 0, 0.5)" : "white",
+                  }}
+                >
+                  {views.map((view) => {
+                    return <ShowView key={view.id} view={view} />;
+                  })}
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -111,6 +153,14 @@ const ShowMovie = ({ movie }) => {
                     color: dayNightTheme ? "black" : "white",
                   }}
                   primary={movie.snippet.channelTitle}
+                />
+                <ListItemText
+                  sx={{
+                    color: dayNightTheme ? "rgba(0, 0, 0, 0.5)" : "white",
+                  }}
+                  primary={views.map((view) => {
+                    return <ShowView key={view.id} view={view} />;
+                  })}
                 />
               </Box>
             </ListItem>
