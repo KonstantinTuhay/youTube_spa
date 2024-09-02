@@ -11,7 +11,7 @@ const Favorites = () => {
   const [open, setOpen] = useState(false);
 
   const favoriteMovie = useSelector((state) => state.addEditRemoveFavorites);
-  console.log(favoriteMovie);
+
   return (
     <>
       <ModalWindow open={open} setOpen={setOpen} />
