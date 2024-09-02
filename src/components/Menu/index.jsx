@@ -1,22 +1,19 @@
-import { Outlet } from "react-router-dom";
-import { Layout } from "antd";
 import Navigation from "../Navigation";
-import { AppBar, Container } from "@mui/material";
-import Toolbar from "@mui/material/Toolbar";
-import styles from "./index.module.css";
+import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { AppBar, Container, Toolbar, Box } from "@mui/material";
 
 const Menu = () => {
-  const { Sider, Content } = Layout;
+  const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   return (
     <>
       <AppBar
-        position="fixed"
         sx={{
           height: 80,
           display: "flex",
           justifyContent: "center",
-          backgroundColor: "#6AADE9",
+          backgroundColor: dayNightTheme ? "#6AADE9" : "black",
         }}
       >
         <Container maxWidth="xl">
@@ -26,11 +23,17 @@ const Menu = () => {
         </Container>
       </AppBar>
 
-      <Sider width="25%" className={styles.siderStyle} />
-      <Content className={styles.contentStyle}>
-        <Outlet />
-      </Content>
-      <Sider width="25%" className={styles.siderStyle} />
+      <Box
+        sx={{
+          display: "block",
+          backgroundColor: dayNightTheme ? "white" : "gray",
+          color: dayNightTheme ? "black" : "white",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Outlet />
+        </Container>
+      </Box>
     </>
   );
 };

@@ -1,12 +1,4 @@
-.cubes {
-  margin: 5px;
-}
-
-.list {
-  margin: 5px 0;
-}
-
-.title {
+.typography {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -15,22 +7,15 @@
   color: black;
 }
 
-.cardContentGrid {
-  min-height: 120px;
-  min-width: 300px;
+.link {
+  text-decoration: none;
 }
 
-.cardList {
-  display: grid;
-}
-
-.img {
-  height: 140px;
-}
-
-.cardFlex {
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  color: black;
+.typographyChanel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: rgba(0, 0, 0, 0.117);
 }

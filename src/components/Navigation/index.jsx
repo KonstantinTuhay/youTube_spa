@@ -1,9 +1,8 @@
 import Logo from "../Logo";
 import NavPages from "../NavPages";
-import AccountSettings from "../AccountSettings";
+import GoOut from "../GoOut";
 import SwitchDayNight from "../SwitchDayNight";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
+import { Box, Typography, Tooltip } from "@mui/material";
 
 const Navigation = () => {
   return (
@@ -14,10 +13,13 @@ const Navigation = () => {
       <Typography sx={{ display: "flex", flexGrow: 1, pl: 24 }}>
         <NavPages />
       </Typography>
-      <SwitchDayNight />
-      <Tooltip title="Account settings">
-        <AccountSettings />
-      </Tooltip>
+
+      <Box sx={{ display: "flex" }}>
+        <SwitchDayNight />
+        <Tooltip title="Account settings">
+          <GoOut />
+        </Tooltip>
+      </Box>
     </>
   );
 };
