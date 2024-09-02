@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import styles from "./index.module.css";
 
-const ShowMovie = ({ movie }) => {
+const ShowMovie = ({ movie, views }) => {
   const isSwitch = useSelector((state) => state.switchCards);
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
@@ -51,10 +51,21 @@ const ShowMovie = ({ movie }) => {
                   className={styles.typographyChanel}
                   color="text.secondary"
                   sx={{
-                    color: dayNightTheme ? "rgba(0, 0, 0, 0.51)" : "white",
+                    color: dayNightTheme ? "rgb(0, 0, 0)" : "white",
                   }}
                 >
                   {movie.snippet.channelTitle}
+                </Typography>
+                <Typography
+                  className={styles.typographyChanel}
+                  color="text.secondary"
+                  sx={{
+                    color: dayNightTheme ? "rgb(0, 0, 0)" : "white",
+                  }}
+                >
+                  {views.map((view) => {
+                    return <ShowView key={view.id} view={view} />;
+                  })}
                 </Typography>
               </CardContent>
             </CardActionArea>

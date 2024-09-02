@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import ShowMovie from "../ShowMovie";
 import Box from "@mui/material/Box";
 
-const Movies = ({ movies }) => {
+const Movies = ({ movies, views }) => {
   const isSwitch = useSelector((state) => state.switchCards);
 
   const allMoviesGrid = {
@@ -22,7 +22,7 @@ const Movies = ({ movies }) => {
   return (
     <Box sx={isSwitch ? allMoviesGrid : allMoviesFlex}>
       {movies.map((movie) => {
-        return <ShowMovie key={movie.id.videoId} movie={movie} />;
+        return <ShowMovie key={movie.id.videoId} movie={movie} views={views} />;
       })}
     </Box>
   );
