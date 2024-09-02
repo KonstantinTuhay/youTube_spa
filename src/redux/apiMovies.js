@@ -19,7 +19,19 @@ export const apiGetMovies = createApi({
       onError: (error) => console.error("Произошла ошибка:", error),
       providesTags: ["Movies"],
     }),
+    getViewCount: builder.query({
+      query: ([item, q]) => {
+        return {
+          url: `/videos?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=statistics&chart=mostPopular&maxResults=${item}&q=${q}`,
+          method: "GET",
+        };
+      },
+      transformResponse: (response) => response.items,
+      onSuccess: (data) => console.log("Запрос успешен!", data),
+      onError: (error) => console.error("Произошла ошибка:", error),
+      providesTags: ["Views"],
+    }),
   }),
 });
 
-export const { useGetMoviesQuery } = apiGetMovies;
+export const { useGetMoviesQuery, useGetViewCountQuery } = apiGetMovies;
