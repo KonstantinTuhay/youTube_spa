@@ -4,7 +4,7 @@ import VariantView from "../../components/VariantView";
 import SearchSystem from "../../components/SearchSystem";
 import Movies from "../../components/Movies";
 import ModalWindow from "../../components/ModalWindow";
-import { useGetMoviesQuery, useGetViewCountQuery } from "../../redux/apiMovies";
+import { useGetMoviesQuery } from "../../redux/apiMovies";
 import { Box, CircularProgress } from "@mui/material";
 
 const ListMovies = () => {
@@ -20,13 +20,6 @@ const ListMovies = () => {
     error,
     isLoading,
   } = useGetMoviesQuery([`${itemSlider}`, text, getSort]);
-
-  const {
-    data: views,
-    // error,
-    // isLoading,
-  } = useGetViewCountQuery([`${itemSlider}`, text]);
-  console.log(views);
 
   if (isLoading) {
     return (
@@ -72,7 +65,7 @@ const ListMovies = () => {
           textFromInput={textFromInput}
         />
         <VariantView textFromInput={textFromInput} />
-        <Movies movies={movies} views={views} />
+        <Movies movies={movies} />
       </Box>
     </>
   );

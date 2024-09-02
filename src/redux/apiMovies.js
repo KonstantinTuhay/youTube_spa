@@ -20,9 +20,9 @@ export const apiGetMovies = createApi({
       providesTags: ["Movies"],
     }),
     getViewCount: builder.query({
-      query: ([item, q]) => {
+      query: ([viewId]) => {
         return {
-          url: `/videos?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=statistics&chart=mostPopular&maxResults=${item}&q=${q}`,
+          url: `/videos?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=statistics&id=${viewId}`,
           method: "GET",
         };
       },
