@@ -4,7 +4,7 @@ import { ListItemIcon } from "@mui/material";
 import { Logout } from "@mui/icons-material";
 import Stack from "@mui/material/Stack";
 
-const AccountSettings = () => {
+const GoOut = () => {
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   return (
@@ -37,4 +37,4 @@ const AccountSettings = () => {
   );
 };
 
-export default AccountSettings;
+export default GoOut;

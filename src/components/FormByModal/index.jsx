@@ -1,5 +1,11 @@
-import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { edit } from "../../redux/slices/addEditRemoveFavorites";
+import { getId } from "../../redux/slices/getIdMovie";
+import { getPreText } from "../../redux/slices/getPreviousText";
+import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
+import { getText } from "../../redux/slices/getTextFromInput";
+import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
+import { setValueForSorting } from "../../redux/slices/setSortValue";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -9,13 +15,6 @@ import Input from "@mui/material/Input";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Slider from "@mui/material/Slider";
-import { edit } from "../../redux/slices/addEditRemoveFavorites";
-import { getId } from "../../redux/slices/getIdMovie";
-import { getPreText } from "../../redux/slices/getPreviousText";
-import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
-import { getText } from "../../redux/slices/getTextFromInput";
-import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
-import { setValueForSorting } from "../../redux/slices/setSortValue";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
@@ -26,7 +25,7 @@ const FormByModal = ({ setOpen }) => {
   const isDivideFeature = useSelector((state) => state.divideFeatureForModal);
   const itemSlider = useSelector((state) => state.getItemSlider);
   const setSort = useSelector((state) => state.setSortValue);
-  console.log(setSort);
+
   const handleChange = (e) => {
     dispatch(setValueForSorting(e.target.value));
   };
@@ -43,7 +42,6 @@ const FormByModal = ({ setOpen }) => {
       );
       dispatch(getId(null));
       dispatch(getPreText(null));
-      // dispatch(setValueForSorting("relevance"));
       setOpen(false);
     } else {
       const objRequest = {
@@ -53,7 +51,6 @@ const FormByModal = ({ setOpen }) => {
         sort: setSort,
       };
       dispatch(addFavoriteMovie(objRequest));
-      // dispatch(setValueForSorting("relevance"));
       dispatch(getId(objRequest.id));
       dispatch(getPreText(textFromInpit));
       setOpen(false);
@@ -154,7 +151,6 @@ const FormByModal = ({ setOpen }) => {
               </Select>
             </FormControl>
             <br />
-
             <FormControl>
               <InputLabel
                 id="maximum"

@@ -2,6 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { Input, Radio, Button, Modal } from "antd";
 import { Container } from "@mui/material";
+import { SiYoutubeshorts } from "react-icons/si";
 import api from "../../../api";
 import styles from "./index.module.css";
 
@@ -46,7 +47,7 @@ const Registr = () => {
         onSubmit={handleSubmit(onSubmit)}
         className={styles.registration_form}
       >
-        <img src="../../../public/monitor26.png" width="60px" alt="computer" />
+        <SiYoutubeshorts style={{ fontSize: "50px", width: "60px" }} />
         <h1 className={styles.header}>Registration</h1>
         <div className={styles.labels}>
           <label>First name:</label>

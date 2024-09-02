@@ -11,11 +11,7 @@ const InputForSearch = ({ textFromInput }) => {
   const similarText = (e) => {
     dispatch(getText(e.target.value));
     const isSimilar = favoriteMovie.find((item) => item === e.target.value);
-    if (isSimilar) {
-      dispatch(change("black"));
-    } else {
-      dispatch(change("red"));
-    }
+    isSimilar ? dispatch(change("black")) : dispatch(change("red"));
   };
 
   return (
