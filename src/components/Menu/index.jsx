@@ -11,7 +11,6 @@ const Menu = () => {
   return (
     <>
       <AppBar
-        // position="static"
         sx={{
           height: 80,
           display: "flex",
@@ -29,7 +28,6 @@ const Menu = () => {
       <Box
         sx={{
           display: "block",
-          // height: "100vh",
           backgroundColor: dayNightTheme ? "white" : "gray",
           color: dayNightTheme ? "black" : "white",
         }}

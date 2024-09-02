@@ -1,7 +1,7 @@
-import VariantView from "../VariantView";
-import SearchSystem from "../SearchSystem";
-import Movies from "../Movies";
-import ModalWindow from "../ModalWindow";
+import VariantView from "../../components/VariantView";
+import SearchSystem from "../../components/SearchSystem";
+import Movies from "../../components/Movies";
+import ModalWindow from "../../components/ModalWindow";
 import { useGetMoviesQuery } from "../../redux/apiMovies";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -10,18 +10,18 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 const ListMovies = () => {
   const [open, setOpen] = useState(false);
+
   const textFromInput = useSelector((state) => state.getTextFromInput);
   const text = useSelector((state) => state.getTextForSearch);
   const itemSlider = useSelector((state) => state.sendItemSlider);
   const getSort = useSelector((state) => state.getSortValue);
-  console.log(getSort);
 
-  console.log(itemSlider);
   const {
     data: movies,
     error,
     isLoading,
   } = useGetMoviesQuery([`${itemSlider}`, text, getSort]);
+
   if (isLoading) {
     return (
       <Box

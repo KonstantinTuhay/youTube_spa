@@ -17,18 +17,18 @@ import switchDayNight from "./slices/switchDayNight";
 export const store = configureStore({
   reducer: {
     getItemSlider: getItemSlider,
+    sendItemSlider: sendItemSlider,
     getSortValue: getSortValue,
     setSortValue: setSortValue,
-    sendItemSlider: sendItemSlider,
     divideFeatureForModal: divideFeatureForModal,
-    getTextFromInput: getTextFromInput,
     switchDayNight: switchDayNight,
-    getTextForSearch: getTextForSearch,
     switchCards: switchCards,
+    getTextFromInput: getTextFromInput,
+    getTextForSearch: getTextForSearch,
     changesColors: changesColors,
-    addEditRemoveFavorites: addEditRemoveFavorites,
     getIdMovie: getIdMovie,
     getPreviousText: getPreviousText,
+    addEditRemoveFavorites: addEditRemoveFavorites,
     [apiGetMovies.reducerPath]: apiGetMovies.reducer,
   },
   middleware: (getDefaultMiddleware) =>

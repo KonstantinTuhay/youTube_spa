@@ -15,7 +15,6 @@ const HeartForSearch = ({ setOpen }) => {
 
   const dispatch = useDispatch();
   const color = useSelector((state) => state.changesColors);
-  const itemSlider = useSelector((state) => state.getItemSlider);
 
   const style = {
     color: color,
@@ -23,7 +22,6 @@ const HeartForSearch = ({ setOpen }) => {
   };
 
   const changeColor = () => {
-    console.log(itemSlider);
     dispatch(change(style.color));
     dispatch(isDivide(false));
     setOpen(true);
