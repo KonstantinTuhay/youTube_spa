@@ -25,7 +25,7 @@ const MainPage = () => {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: dayNightTheme ? "white" : "gray",
+          backgroundColor: dayNightTheme ? "#FFFFFF" : "#808080",
         }}
       >
         <SearchSystem open={open} setOpen={setOpen} style={style} />

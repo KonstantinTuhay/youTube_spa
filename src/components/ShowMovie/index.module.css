@@ -17,4 +17,5 @@
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  color: rgba(0, 0, 0, 0.117);
 }

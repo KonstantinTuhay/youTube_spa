@@ -2,6 +2,7 @@ import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Input, Button } from "antd";
 import { Container } from "@mui/material";
+import { SiYoutubeshorts } from "react-icons/si";
 import api from "../../../api";
 import styles from "./index.module.css";
 
@@ -18,7 +19,6 @@ const Authorization = () => {
   const onSubmit = async (dataUser) => {
     try {
       const response = await api.post("/auth/login", dataUser);
-      console.log(response);
 
       localStorage.setItem("token", response.data.token);
       navigate("/");
@@ -43,11 +43,7 @@ const Authorization = () => {
         className={styles.registration_form}
       >
         <div>
-          <img
-            src="../../../public/monitor26.png"
-            width="60px"
-            alt="computer"
-          />
+          <SiYoutubeshorts style={{ fontSize: "50px", width: "60px" }} />
           <h1>Authorization</h1>
           <label>Email:</label>
           <Controller

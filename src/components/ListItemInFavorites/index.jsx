@@ -1,4 +1,9 @@
 import { getId } from "../../redux/slices/getIdMovie";
+import { isDivide } from "../../redux/slices/divideFeatureForModal";
+import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
+import { sendCurrentItemSlider } from "../../redux/slices/sendItemSlider";
+import { getValueForSorting } from "../../redux/slices/getSortValue";
+import { setValueForSorting } from "../../redux/slices/setSortValue";
 import { getPreText } from "../../redux/slices/getPreviousText";
 import { remove } from "../../redux/slices/addEditRemoveFavorites";
 import { enterText } from "../../redux/slices/getTextForSearch";
@@ -9,11 +14,6 @@ import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
-import { isDivide } from "../../redux/slices/divideFeatureForModal";
-import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
-import { sendCurrentItemSlider } from "../../redux/slices/sendItemSlider";
-import { getValueForSorting } from "../../redux/slices/getSortValue";
-import { setValueForSorting } from "../../redux/slices/setSortValue";
 import styles from "./index.module.css";
 
 const ListItemInFavorites = ({ videoName, setOpen }) => {

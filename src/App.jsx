@@ -5,7 +5,7 @@ import MainPage from "./pages/MainPage.jsx";
 import PrivateRoute from "./components/PrivateRoute";
 import Favorites from "./pages/Favotites/index.jsx";
 import Menu from "./components/Menu";
-import ListMovies from "./components/ListMovies";
+import ListMovies from "./pages/ListMovies/index.jsx";
 import "./App.css";
 
 function App() {

@@ -1,6 +1,6 @@
+import { useSelector } from "react-redux";
 import ShowMovie from "../ShowMovie";
 import Box from "@mui/material/Box";
-import { useSelector } from "react-redux";
 
 const Movies = ({ movies }) => {
   const isSwitch = useSelector((state) => state.switchCards);

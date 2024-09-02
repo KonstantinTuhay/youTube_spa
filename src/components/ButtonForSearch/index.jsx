@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
-import { enterText } from "../../redux/slices/getTextForSearch";
 import { useSelector, useDispatch } from "react-redux";
 import { sendCurrentItemSlider } from "../../redux/slices/sendItemSlider";
 import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
+import { enterText } from "../../redux/slices/getTextForSearch";
 import { getValueForSorting } from "../../redux/slices/getSortValue";
 import { setValueForSorting } from "../../redux/slices/setSortValue";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 
 const ButtonForSearch = () => {
   const navigate = useNavigate();
