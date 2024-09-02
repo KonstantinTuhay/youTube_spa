@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
-import Modal from "@mui/material/Modal";
 import { getId } from "../../redux/slices/getIdMovie";
 import { getPreText } from "../../redux/slices/getPreviousText";
 import FormByModal from "../FormByModal";
+import Modal from "@mui/material/Modal";
 
 const ModalWindow = ({ open, setOpen }) => {
   const dispatch = useDispatch();

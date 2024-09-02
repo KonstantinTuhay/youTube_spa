@@ -1,14 +1,16 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import CardActionArea from "@mui/material/CardActionArea";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import Box from "@mui/material/Box";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+} from "@mui/material";
 import styles from "./index.module.css";
 
 const ShowMovie = ({ movie }) => {

@@ -1,7 +1,7 @@
-import InputBase from "@mui/material/InputBase";
 import { useDispatch, useSelector } from "react-redux";
 import { getText } from "../../redux/slices/getTextFromInput";
 import { change } from "../../redux/slices/changesColors";
+import InputBase from "@mui/material/InputBase";
 
 const InputForSearch = ({ textFromInput }) => {
   const dispatch = useDispatch();

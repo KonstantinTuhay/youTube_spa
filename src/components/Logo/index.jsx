@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { SiYoutubeshorts } from "react-icons/si";
 import { useSelector } from "react-redux";
+import { SiYoutubeshorts } from "react-icons/si";
 
 const Logo = () => {
   const dayNightTheme = useSelector((state) => state.switchDayNight);

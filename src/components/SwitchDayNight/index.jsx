@@ -1,8 +1,13 @@
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import { FormControlLabel, Switch } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { switchTheme } from "../../redux/slices/switchDayNight";
-import FormGroup from "@mui/material/FormGroup";
+import {
+  styled,
+  createTheme,
+  ThemeProvider,
+  FormControlLabel,
+  Switch,
+  FormGroup,
+} from "@mui/material";
 
 const SwitchDayNight = () => {
   const dispatch = useDispatch();

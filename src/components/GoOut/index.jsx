@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { ListItemIcon } from "@mui/material";
+import { ListItemIcon, Stack } from "@mui/material";
 import { Logout } from "@mui/icons-material";
-import Stack from "@mui/material/Stack";
 
 const GoOut = () => {
   const dayNightTheme = useSelector((state) => state.switchDayNight);

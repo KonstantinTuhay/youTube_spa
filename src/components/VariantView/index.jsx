@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { switchCard } from "../../redux/slices/switchCards";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import {
+  Box,
+  Typography,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
 import ListIcon from "@mui/icons-material/List";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 

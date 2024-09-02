@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { change } from "../../redux/slices/changesColors";
+import { isDivide } from "../../redux/slices/divideFeatureForModal";
 import FavoriteSharpIcon from "@mui/icons-material/FavoriteSharp";
 import { useSpring, animated } from "@react-spring/web";
-import { useDispatch, useSelector } from "react-redux";
-import { isDivide } from "../../redux/slices/divideFeatureForModal";
 
 const HeartForSearch = ({ setOpen }) => {
   const [state, toggle] = useState(true);

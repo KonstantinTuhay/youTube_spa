@@ -1,9 +1,7 @@
 import Navigation from "../Navigation";
 import { Outlet } from "react-router-dom";
-import { AppBar, Container } from "@mui/material";
-import Toolbar from "@mui/material/Toolbar";
 import { useSelector } from "react-redux";
-import Box from "@mui/material/Box";
+import { AppBar, Container, Toolbar, Box } from "@mui/material";
 
 const Menu = () => {
   const dayNightTheme = useSelector((state) => state.switchDayNight);

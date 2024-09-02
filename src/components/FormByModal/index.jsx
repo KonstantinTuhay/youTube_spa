@@ -6,15 +6,17 @@ import { getCurrentItemSlider } from "../../redux/slices/getItemSlider";
 import { getText } from "../../redux/slices/getTextFromInput";
 import { addFavoriteMovie } from "../../redux/slices/addEditRemoveFavorites";
 import { setValueForSorting } from "../../redux/slices/setSortValue";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import Input from "@mui/material/Input";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import Slider from "@mui/material/Slider";
+import {
+  Box,
+  Button,
+  Typography,
+  FormControl,
+  InputLabel,
+  Input,
+  MenuItem,
+  Select,
+  Slider,
+} from "@mui/material";
 
 const FormByModal = ({ setOpen }) => {
   const dispatch = useDispatch();
