@@ -13,8 +13,8 @@ const ButtonForSearch = () => {
 
   const dispatch = useDispatch();
 
-  const defValQuantityMovie = 24; //use for default value quantity movie
-  const defValForSorting = "relevance"; //use for default value sorting
+  const defValQuantityMovie = 24; //that's used for default value quantity movie
+  const defValForSorting = "relevance"; //that's used for default value sorting
 
   const itemSlider = useSelector((state) => state.getItemSlider);
   const textFromInput = useSelector((state) => state.getTextFromInput);
