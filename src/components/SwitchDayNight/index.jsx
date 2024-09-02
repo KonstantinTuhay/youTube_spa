@@ -13,7 +13,7 @@ const SwitchDayNight = () => {
   const dispatch = useDispatch();
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
-  const switchTh = (e) => {
+  const switchTh = () => {
     dispatch(switchTheme(!dayNightTheme));
   };
 
