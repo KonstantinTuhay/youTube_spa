@@ -1,6 +1,6 @@
-import Typography from "@mui/material/Typography";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Typography from "@mui/material/Typography";
 import styles from "./index.module.css";
 
 const NavPages = () => {

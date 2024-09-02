@@ -2,9 +2,7 @@ import Logo from "../Logo";
 import NavPages from "../NavPages";
 import GoOut from "../GoOut";
 import SwitchDayNight from "../SwitchDayNight";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import { Box } from "@mui/material";
+import { Box, Typography, Tooltip } from "@mui/material";
 
 const Navigation = () => {
   return (

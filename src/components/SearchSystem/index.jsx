@@ -1,8 +1,7 @@
 import InputForSearch from "../InputForSearch";
 import HeartForSearch from "../HeartForSearch";
 import ButtonForSearch from "../ButtonForSearch";
-import { Typography } from "@mui/material";
-import Paper from "@mui/material/Paper";
+import { Typography, Paper } from "@mui/material";
 
 const SearchSystem = ({ open, setOpen, style, textFromInput }) => {
   const { width, textAlign, variant, marginBottom } = style;

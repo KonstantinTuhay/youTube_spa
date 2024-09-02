@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Input, Button } from "antd";
 import { Container } from "@mui/material";
 import { SiYoutubeshorts } from "react-icons/si";
-import api from "../../../api";
+import api from "../../utils/api";
 import styles from "./index.module.css";
 
 const Authorization = () => {

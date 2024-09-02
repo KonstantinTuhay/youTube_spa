@@ -1,12 +1,11 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import VariantView from "../../components/VariantView";
 import SearchSystem from "../../components/SearchSystem";
 import Movies from "../../components/Movies";
 import ModalWindow from "../../components/ModalWindow";
 import { useGetMoviesQuery } from "../../redux/apiMovies";
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import Box from "@mui/material/Box";
-import CircularProgress from "@mui/material/CircularProgress";
+import { Box, CircularProgress } from "@mui/material";
 
 const ListMovies = () => {
   const [open, setOpen] = useState(false);

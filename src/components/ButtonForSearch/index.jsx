@@ -13,25 +13,26 @@ const ButtonForSearch = () => {
 
   const dispatch = useDispatch();
 
+  const defValQuantityMovie = 24; //that's used for default value quantity movie
+  const defValForSorting = "relevance"; //that's used for default value sorting
+
   const itemSlider = useSelector((state) => state.getItemSlider);
   const textFromInput = useSelector((state) => state.getTextFromInput);
   const setSort = useSelector((state) => state.setSortValue);
 
   const findMovies = () => {
     dispatch(getValueForSorting(setSort));
-    dispatch(setValueForSorting("relevance"));
     dispatch(sendCurrentItemSlider(itemSlider));
     dispatch(enterText(textFromInput));
-    dispatch(getCurrentItemSlider(24));
+    dispatch(setValueForSorting(defValForSorting));
+    dispatch(getCurrentItemSlider(defValQuantityMovie));
     navigate("/list");
   };
 
   return (
-    <>
-      <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-        <SearchIcon onClick={findMovies} sx={{ fontSize: "40px" }} />
-      </IconButton>
-    </>
+    <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+      <SearchIcon onClick={findMovies} sx={{ fontSize: "40px" }} />
+    </IconButton>
   );
 };
 

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Input, Radio, Button, Modal } from "antd";
 import { Container } from "@mui/material";
 import { SiYoutubeshorts } from "react-icons/si";
-import api from "../../../api";
+import api from "../../utils/api";
 import styles from "./index.module.css";
 
 const Registr = () => {

@@ -20,13 +20,11 @@ const Movies = ({ movies }) => {
   };
 
   return (
-    <>
-      <Box sx={isSwitch ? allMoviesGrid : allMoviesFlex}>
-        {movies.map((movie) => {
-          return <ShowMovie key={movie.id.videoId} movie={movie} />;
-        })}
-      </Box>
-    </>
+    <Box sx={isSwitch ? allMoviesGrid : allMoviesFlex}>
+      {movies.map((movie) => {
+        return <ShowMovie key={movie.id.videoId} movie={movie} />;
+      })}
+    </Box>
   );
 };
 

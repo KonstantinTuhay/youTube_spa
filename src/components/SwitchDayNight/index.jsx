@@ -1,14 +1,19 @@
-import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
-import { FormControlLabel, Switch } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { switchTheme } from "../../redux/slices/switchDayNight";
-import FormGroup from "@mui/material/FormGroup";
+import {
+  styled,
+  createTheme,
+  ThemeProvider,
+  FormControlLabel,
+  Switch,
+  FormGroup,
+} from "@mui/material";
 
 const SwitchDayNight = () => {
   const dispatch = useDispatch();
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
-  const switchTh = (e) => {
+  const switchTh = () => {
     dispatch(switchTheme(!dayNightTheme));
   };
 
@@ -79,21 +84,19 @@ const SwitchDayNight = () => {
   }));
 
   return (
-    <>
-      <FormGroup>
-        <ThemeProvider theme={customTheme}>
-          <FormControlLabel
-            control={
-              <MaterialUISwitch
-                defaultChecked
-                checked={dayNightTheme}
-                onChange={(e) => switchTh(e)}
-              />
-            }
-          />
-        </ThemeProvider>
-      </FormGroup>
-    </>
+    <FormGroup>
+      <ThemeProvider theme={customTheme}>
+        <FormControlLabel
+          control={
+            <MaterialUISwitch
+              defaultChecked
+              checked={dayNightTheme}
+              onChange={(e) => switchTh(e)}
+            />
+          }
+        />
+      </ThemeProvider>
+    </FormGroup>
   );
 };
 

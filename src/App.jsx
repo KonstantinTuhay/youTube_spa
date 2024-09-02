@@ -10,21 +10,19 @@ import "./App.css";
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route path="/registr" element={<Registr />} />
-        <Route path="/authorization" element={<Authorization />} />
-        <Route element={<PrivateRoute />}>
-          <Route path="/" element={<Menu />}>
-            <Route path="/" element={<MainPage />} />
-            <Route path="favorites" element={<Favorites />} />
-            <Route path="list" element={<ListMovies />} />
-          </Route>
+    <Routes>
+      <Route path="/registr" element={<Registr />} />
+      <Route path="/authorization" element={<Authorization />} />
+      <Route element={<PrivateRoute />}>
+        <Route path="/" element={<Menu />}>
+          <Route path="/" element={<MainPage />} />
+          <Route path="favorites" element={<Favorites />} />
+          <Route path="list" element={<ListMovies />} />
         </Route>
+      </Route>
 
-        <Route path="*" element={<Navigate to="registr" />} />
-      </Routes>
-    </>
+      <Route path="*" element={<Navigate to="registr" />} />
+    </Routes>
   );
 }
 

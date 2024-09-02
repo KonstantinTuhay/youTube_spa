@@ -9,15 +9,16 @@ import { remove } from "../../redux/slices/addEditRemoveFavorites";
 import { enterText } from "../../redux/slices/getTextForSearch";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
+import { Box, ListItem, ListItemText, IconButton } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import styles from "./index.module.css";
 
 const ListItemInFavorites = ({ videoName, setOpen }) => {
   const { id, text, maxQuantity, sort } = videoName;
+
+  const defValQuantityMovie = 24; //that's used for default value quantity movie
+  const defValForSorting = "relevance"; //that's used for default value sorting
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,32 +38,29 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
 
   const clickSearch = (text) => {
     dispatch(getValueForSorting(sort));
-    dispatch(setValueForSorting("relevance"));
     dispatch(sendCurrentItemSlider(maxQuantity));
-    dispatch(getCurrentItemSlider(24));
     dispatch(enterText(text));
+    dispatch(getCurrentItemSlider(defValQuantityMovie));
+    dispatch(setValueForSorting(defValForSorting));
     navigate("/list");
   };
 
   return (
-    <>
-      {" "}
-      <div className={styles.oneFavoriteVideo}>
-        <ListItem>
-          <ListItemText primary={text} onClick={() => clickSearch(text)} />
+    <Box className={styles.oneFavoriteVideo}>
+      <ListItem>
+        <ListItemText primary={text} onClick={() => clickSearch(text)} />
 
-          <IconButton
-            aria-label="delete"
-            onClick={() => handleEditId(id, text, maxQuantity, sort)}
-          >
-            <EditIcon />
-          </IconButton>
-          <IconButton aria-label="delete">
-            <DeleteIcon onClick={() => removeFavorite(id)} />
-          </IconButton>
-        </ListItem>
-      </div>
-    </>
+        <IconButton
+          aria-label="delete"
+          onClick={() => handleEditId(id, text, maxQuantity, sort)}
+        >
+          <EditIcon />
+        </IconButton>
+        <IconButton aria-label="delete">
+          <DeleteIcon onClick={() => removeFavorite(id)} />
+        </IconButton>
+      </ListItem>
+    </Box>
   );
 };
 
