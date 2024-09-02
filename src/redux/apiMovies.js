@@ -10,7 +10,9 @@ export const apiGetMovies = createApi({
     getMovies: builder.query({
       query: ([item, q, sort]) => {
         return {
-          url: `/search?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=snippet&type=video,channel,playlist&maxResults=${item}&q=${q}&order=${sort}`,
+          url: `/search?key=${
+            import.meta.env.VITE_KEY
+          }&part=snippet&type=video,channel,playlist&maxResults=${item}&q=${q}&order=${sort}`,
           method: "GET",
         };
       },
@@ -22,7 +24,9 @@ export const apiGetMovies = createApi({
     getViewCount: builder.query({
       query: ([viewId]) => {
         return {
-          url: `/videos?key=AIzaSyBRbw7E44FNOaUi4VGBizBk6MnmpS8F4Bo&part=statistics&id=${viewId}`,
+          url: `/videos?key=${
+            import.meta.env.VITE_KEY
+          }&part=statistics&id=${viewId}`,
           method: "GET",
         };
       },
