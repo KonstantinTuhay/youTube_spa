@@ -62,7 +62,7 @@ const ShowMovie = ({ movie }) => {
               <CardContent
                 sx={{
                   maxHeight: "100px",
-                  maxWidth: "300px",
+                  maxWidth: "350px",
                   backgroundColor: dayNightTheme ? "white" : "#606060",
                 }}
               >
