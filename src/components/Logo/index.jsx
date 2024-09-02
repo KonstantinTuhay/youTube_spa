@@ -6,13 +6,11 @@ const Logo = () => {
   const dayNightTheme = useSelector((state) => state.switchDayNight);
 
   return (
-    <>
-      <NavLink to="/">
-        <SiYoutubeshorts
-          style={{ fontSize: "50px", color: dayNightTheme ? "black" : "white" }}
-        />
-      </NavLink>
-    </>
+    <NavLink to="/">
+      <SiYoutubeshorts
+        style={{ fontSize: "50px", color: dayNightTheme ? "black" : "white" }}
+      />
+    </NavLink>
   );
 };
 

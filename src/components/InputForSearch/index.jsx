@@ -15,16 +15,13 @@ const InputForSearch = ({ textFromInput }) => {
   };
 
   return (
-    <>
-      {" "}
-      <InputBase
-        fullWidth="true"
-        sx={{ ml: 1, flex: 1, fontSize: "25px" }}
-        placeholder="Enter your request"
-        value={textFromInput}
-        onChange={(e) => similarText(e)}
-      />
-    </>
+    <InputBase
+      fullWidth="true"
+      sx={{ ml: 1, flex: 1, fontSize: "25px" }}
+      placeholder="Enter your request"
+      value={textFromInput}
+      onChange={(e) => similarText(e)}
+    />
   );
 };
 

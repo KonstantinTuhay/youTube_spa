@@ -14,16 +14,14 @@ const ModalWindow = ({ open, setOpen }) => {
   };
 
   return (
-    <>
-      <Modal
-        open={open}
-        onClose={handleCloseModal}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <FormByModal setOpen={setOpen} />
-      </Modal>
-    </>
+    <Modal
+      open={open}
+      onClose={handleCloseModal}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <FormByModal setOpen={setOpen} />
+    </Modal>
   );
 };
 

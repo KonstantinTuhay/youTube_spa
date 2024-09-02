@@ -9,6 +9,7 @@ import { remove } from "../../redux/slices/addEditRemoveFavorites";
 import { enterText } from "../../redux/slices/getTextForSearch";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -45,24 +46,21 @@ const ListItemInFavorites = ({ videoName, setOpen }) => {
   };
 
   return (
-    <>
-      {" "}
-      <div className={styles.oneFavoriteVideo}>
-        <ListItem>
-          <ListItemText primary={text} onClick={() => clickSearch(text)} />
+    <Box className={styles.oneFavoriteVideo}>
+      <ListItem>
+        <ListItemText primary={text} onClick={() => clickSearch(text)} />
 
-          <IconButton
-            aria-label="delete"
-            onClick={() => handleEditId(id, text, maxQuantity, sort)}
-          >
-            <EditIcon />
-          </IconButton>
-          <IconButton aria-label="delete">
-            <DeleteIcon onClick={() => removeFavorite(id)} />
-          </IconButton>
-        </ListItem>
-      </div>
-    </>
+        <IconButton
+          aria-label="delete"
+          onClick={() => handleEditId(id, text, maxQuantity, sort)}
+        >
+          <EditIcon />
+        </IconButton>
+        <IconButton aria-label="delete">
+          <DeleteIcon onClick={() => removeFavorite(id)} />
+        </IconButton>
+      </ListItem>
+    </Box>
   );
 };
 

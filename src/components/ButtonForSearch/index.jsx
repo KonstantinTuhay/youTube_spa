@@ -27,11 +27,9 @@ const ButtonForSearch = () => {
   };
 
   return (
-    <>
-      <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
-        <SearchIcon onClick={findMovies} sx={{ fontSize: "40px" }} />
-      </IconButton>
-    </>
+    <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+      <SearchIcon onClick={findMovies} sx={{ fontSize: "40px" }} />
+    </IconButton>
   );
 };
 

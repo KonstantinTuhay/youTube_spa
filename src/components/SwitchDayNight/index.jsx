@@ -79,21 +79,19 @@ const SwitchDayNight = () => {
   }));
 
   return (
-    <>
-      <FormGroup>
-        <ThemeProvider theme={customTheme}>
-          <FormControlLabel
-            control={
-              <MaterialUISwitch
-                defaultChecked
-                checked={dayNightTheme}
-                onChange={(e) => switchTh(e)}
-              />
-            }
-          />
-        </ThemeProvider>
-      </FormGroup>
-    </>
+    <FormGroup>
+      <ThemeProvider theme={customTheme}>
+        <FormControlLabel
+          control={
+            <MaterialUISwitch
+              defaultChecked
+              checked={dayNightTheme}
+              onChange={(e) => switchTh(e)}
+            />
+          }
+        />
+      </ThemeProvider>
+    </FormGroup>
   );
 };
 
