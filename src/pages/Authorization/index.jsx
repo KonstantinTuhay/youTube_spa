@@ -1,6 +1,7 @@
 import { useForm, Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Input, Button } from "antd";
+import { Input, Button, Space } from "antd";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { Container } from "@mui/material";
 import { SiYoutubeshorts } from "react-icons/si";
 import api from "../../utils/api";
@@ -85,7 +86,13 @@ const Authorization = () => {
               },
             }}
             render={({ field }) => (
-              <Input {...field} placeholder="Введите пароль" />
+              <Input.Password
+                {...field}
+                placeholder="Enter your password"
+                iconRender={(visible) =>
+                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+                }
+              />
             )}
           />
           <p>{errors.password?.message}</p>
