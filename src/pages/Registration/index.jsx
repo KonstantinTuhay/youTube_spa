@@ -57,7 +57,7 @@ const Registr = () => {
             control={control}
             rules={{ required: "Поле обязательно для заполнения" }}
             render={({ field }) => (
-              <Input {...field} placeholder="Введите имя" />
+              <Input {...field} placeholder="Enter your first name" />
             )}
           />
           <p>{errors.text?.message}</p>
@@ -104,7 +104,7 @@ const Registr = () => {
             name="age"
             control={control}
             render={({ field }) => (
-              <Input type="number" {...field} placeholder="Число" />
+              <Input type="number" {...field} placeholder="Number" />
             )}
           />
           <p>{errors.number?.message}</p>
@@ -135,7 +135,7 @@ const Registr = () => {
               },
             }}
             render={({ field }) => (
-              <Input {...field} placeholder="Введите пароль" />
+              <Input {...field} placeholder="Enter password" />
             )}
           />
           <p>{errors.password?.message}</p>
